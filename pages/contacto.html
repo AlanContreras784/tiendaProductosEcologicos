@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Talento Tech Ecommerce</title>
+    <!-- Font Awesome: librería de íconos -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <!-- Estilos generales compartidos con el home -->
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Estilos específicos de la página de contacto -->
+    <link rel="stylesheet" href="../estilos/contacto.css">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <!-- Mismo header que en index.html para mantener consistencia -->
+    <header class="header">
+        <a href="../index.html">
+            <img src="../img/logo1.png" class="logo" alt="Logo Talento Tech" width="40px" height="40px">
+        </a>
+        <div>
+            <ul id="navbar" class="navbar">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/tienda.html">Tienda</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="../pages/contacto.html">Contacto</a></li>
+                <li>
+                    <a href="../pages/carrito.html">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <!-- Botón cerrar menú mobile -->
+                <a href="#" id="close" class="close">
+                    <i class="far fa-times" aria-hidden="true"></i>
+                </a>
+            </ul>
+        </div>
+        <!-- Versión mobile -->
+        <div class="mobile">
+            <a href="../pages/carrito.html">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ==================== FORMULARIO DE CONTACTO ==================== -->
+        <!-- Sección principal con el formulario y datos del equipo -->
+        <!-- El formulario usa Formspree para el envío real de datos -->
+        <section class="form-details">
+
+            <!-- Formulario conectado a Formspree -->
+            <!-- Reemplazar TU_ID_FORMSPREE con el ID obtenido en formspree.io -->
+            <form action="https://tuFormulario" method="POST" id="formularioContacto">
+                <span>DEJA UN MENSAJE</span>
+                <h2>Queremos saber de ti</h2>
+
+                <!-- Campo: Nombre -->
+                <div class="campo-control">
+                    <input type="text" id="tuNombre" name="nombre" placeholder="Tu Nombre">
+                    <div class="texto-error"></div>
+                </div>
+
+                <!-- Campo: Correo electrónico -->
+                <div class="campo-control">
+                    <input type="text" id="tuCorreo" name="correo" placeholder="Correo electrónico">
+                    <div class="texto-error"></div>
+                </div>
+
+                <!-- Campo: Asunto -->
+                <div class="campo-control">
+                    <input type="text" id="asunto" name="asunto" placeholder="Asunto">
+                    <div class="texto-error"></div>
+                </div>
+
+                <!-- Campo: Mensaje -->
+                <div class="campo-control">
+                    <textarea id="tuMensaje" name="mensaje" cols="30" rows="10" placeholder="Tu mensaje"></textarea>
+                    <div class="texto-error"></div>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <!-- Información del equipo de contacto -->
+            <div class="people">
+                <div>
+                    <img src="../img/people/1.png" alt="Martín Gómez">
+                    <p>
+                        <span>Martín Gómez</span>
+                        Gerente Senior de Marketing <br>
+                        Teléfono: (011) 4567-8901 <br>
+                        Correo: contact.martin@example.com
+                    </p>
+                </div>
+                <div>
+                    <img src="../img/people/3.png" alt="Sofía Rodríguez">
+                    <p>
+                        <span>Sofía Rodríguez</span>
+                        Gerente Senior de Marketing <br>
+                        Teléfono: (011) 5678-9012 <br>
+                        Correo: contact.sofia@example.com
+                    </p>
+                </div>
+                <div>
+                    <img src="../img/people/2.png" alt="Diego Pérez">
+                    <p>
+                        <span>Diego Pérez</span>
+                        Gerente Senior de Marketing <br>
+                        Teléfono: (011) 6789-0123 <br>
+                        Correo: contact.diego@example.com
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== MAPA ==================== -->
+        <!-- iframe de Google Maps - cumple el ítem 2 de multimedia -->
+        <section class="seccion-mapa section-p1">
+            <h2>¿Dónde encontrarnos?</h2>
+            <p>Visitanos en nuestra sede central en Buenos Aires</p>
+            <div class="mapa-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9847266774455!2d-58.38415842346471!3d-34.60373537295286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf22b96b23%3A0x4fcaa0e8e7c38765!2sAv.%20de%20Mayo%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1715000000000!5m2!1ses!2sar"
+                    width="100%" height="400" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="Ubicación de la tienda en Buenos Aires">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- ==================== NEWSLETTER ==================== -->
+        <!-- Sección de suscripción por email - igual que en home -->
+        <section class="newsletter section-p1 section-m1">
+            <div class="newstext">
+                <h4>Suscribite al Newsletter</h4>
+                <p>Recibí novedades de nuestra tienda y <span>ofertas exclusivas</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Tu correo electrónico">
+                <button>Suscribirme</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- Mismo footer que en index.html -->
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contacto</h4>
+            <p><strong>Dirección:</strong> Av. Siempreviva 742, Ciudad Autónoma de Buenos Aires</p>
+            <p><strong>Teléfono:</strong> +54 11 1234 5678</p>
+            <p><strong>Horario:</strong> 9:00 - 18:00, Lunes a Viernes</p>
+            <div class="follow">
+                <h4>Seguinos</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>Mi Cuenta</h4>
+            <a href="#">Iniciar Sesión</a>
+            <a href="#">Ver Carrito</a>
+            <a href="#">Mis Favoritos</a>
+            <a href="#">Seguimiento de Pedido</a>
+            <a href="#">Ayuda</a>
+        </div>
+        <div class="col install">
+            <h4>Descargá la App</h4>
+            <p>Desde App Store o Google Play</p>
+            <div class="row">
+                <img src="../img/pay/app.jpg" alt="App Store">
+                <img src="../img/pay/play.jpg" alt="Google Play">
+            </div>
+            <p>Pasarelas de pago seguras</p>
+            <img src="../img/pay/pay.png" alt="Métodos de Pago">
+        </div>
+        <div class="copyright">
+            <p>© 2025, Nefle Miguel Ángel | Talento Tech - Ecommerce</p>
+        </div>
+    </footer>
+    <script src="../script/script.js"></script>
+    <script src="../script/contactoStorage.js"></script>
+    <script src="../script/contactoValidacion.js"></script>
+
+</body>
+
+</html>

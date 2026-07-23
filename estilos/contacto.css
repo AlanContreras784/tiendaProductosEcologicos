@@ -1,0 +1,212 @@
+/* ============================================================
+   SECCIÓN FORMULARIO DE CONTACTO
+   Layout con Flexbox: formulario a la izquierda,
+   datos del equipo a la derecha
+   ============================================================ */
+
+.form-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 30px;
+    padding: 60px;
+    border: 1px solid #e1e1e1;
+}
+
+/* Formulario ocupa el 50% del ancho con un máximo definido */
+.form-details form {
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.form-details form span {
+    font-size: 12px;
+    color: #088178;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.form-details form h2 {
+    font-size: 26px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+
+/* Campos de texto y área de mensaje */
+.form-details form input,
+.form-details form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* Altura del área de mensaje */
+.form-details form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Botón de envío */
+.form-details form button {
+    background-color: #088178;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.form-details form button:hover {
+    background-color: #066f66;
+}
+
+/* Contenedor de cada campo (input + mensaje de error) */
+.campo-control {
+    width: 100%;
+}
+
+/* Borde rojo cuando el campo tiene error */
+.campo-control.error input,
+.campo-control.error textarea {
+    border-color: #ff0000;
+}
+
+/* Mensaje de error - oculto por defecto */
+.campo-control .texto-error {
+    color: #ff0000;
+    font-size: 0.8em;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+/* Se muestra cuando el campo tiene la clase error */
+.campo-control.error .texto-error {
+    display: block;
+}
+
+
+/* ============================================================
+   INFORMACIÓN DEL EQUIPO
+   Columna derecha con foto y datos de cada contacto
+   ============================================================ */
+
+.form-details .people {
+    padding-bottom: 25px;
+}
+
+.form-details .people div {
+    padding-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-details .people div img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.form-details .people div p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 25px;
+}
+
+/* Nombre del contacto resaltado */
+.form-details .people div p span {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+
+/* ============================================================
+   SECCIÓN MAPA
+   iframe de Google Maps con estilos consistentes al diseño
+   ============================================================ */
+
+.seccion-mapa {
+    text-align: center;
+    background-color: #f8faf9;
+    padding: 40px 120px;
+}
+
+.seccion-mapa h2 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.seccion-mapa > p {
+    color: #465b52;
+    margin-bottom: 25px;
+}
+
+/* Contenedor del iframe con borde y sombra del mismo estilo que las cards */
+.mapa-container {
+    border: 1px solid #cce7d0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 799px) {
+    .seccion-mapa {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 477px) {
+    .seccion-mapa {
+        padding: 30px 15px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   Adaptaciones para tablets y móviles
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 799px) {
+    .form-details {
+        padding: 40px;
+        flex-direction: column;
+    }
+
+    .form-details form {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .form-details .people {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 477px) {
+    .form-details {
+        margin: 10px;
+        padding: 20px 15px;
+    }
+}
