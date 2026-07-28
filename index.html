@@ -30,6 +30,12 @@
                         <span id="cart-badge" class="cart-badge">0</span>
                     </a>
                 </li>
+                <!-- Panel admin: solo visible si el rol del token es ADMIN -->
+                <li id="menuAdmin" style="display:none;"><a href="pages/admin.html">Panel Admin</a></li>
+                <!-- Nombre de usuario cuando hay sesión iniciada -->
+                <span id="navUsuario"></span>
+                <a href="login.html" id="loginLink">Iniciar Sesión</a>
+                <a href="#" id="logoutLink">Cerrar Sesión</a>
                 <a href="#" id="close" class="close">
                     <i class="far fa-times" aria-hidden="true"></i>
                 </a>
@@ -38,6 +44,7 @@
         <div class="mobile">
             <a href="pages/carrito.html">
                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="cart-badge">0</span>
             </a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
@@ -250,7 +257,7 @@
             <span id="toastMensaje"></span>
             <button id="btnCerrarToast">✕</button>
         </div>
-        
+
     </main>
 
     <!-- ==================== FOOTER ==================== -->
@@ -271,8 +278,8 @@
         </div>
         <div class="col">
             <h4>Mi Cuenta</h4>
-            <a href="#">Iniciar Sesión</a>
-            <a href="#">Ver Carrito</a>
+            <a href="login.html">Iniciar Sesión</a>
+            <a href="pages/carrito.html">Ver Carrito</a>
             <a href="#">Mis Favoritos</a>
             <a href="#">Seguimiento de Pedido</a>
             <a href="#">Ayuda</a>
@@ -293,6 +300,7 @@
     </footer>
 
     <script src="script/api.js"></script>
+    <script src="script/navbar.js"></script>
     <script src="script/script.js"></script>
     <script src="script/index.js"></script>
     <script src="script/toast.js"></script>

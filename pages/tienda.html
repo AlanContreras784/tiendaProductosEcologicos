@@ -31,6 +31,10 @@
                         <span id="cart-badge" class="cart-badge">0</span>
                     </a>
                 </li>
+                <!-- Panel admin: solo visible si el rol del token es ADMIN -->
+                <li id="menuAdmin" style="display:none;"><a href="admin.html">Panel Admin</a></li>
+                <!-- Nombre de usuario cuando hay sesión iniciada -->
+                <span id="navUsuario"></span>
                 <a href="../login.html" id="loginLink">
                     Iniciar Sesión
                 </a>
@@ -46,7 +50,7 @@
         <div class="mobile">
             <a href="carrito.html">
                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                <span id="cart-badge" class="cart-badge">0</span>
+                <span class="cart-badge">0</span>
             </a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
@@ -99,7 +103,7 @@
         </div>
         <div class="col">
             <h4>Mi Cuenta</h4>
-            <a href="#">Iniciar Sesión</a>
+            <a href="../login.html">Iniciar Sesión</a>
             <a href="carrito.html">Ver Carrito</a>
             <a href="#">Mis Favoritos</a>
             <a href="#">Seguimiento de Pedido</a>
@@ -119,9 +123,10 @@
             <p>© 2025, Alan Contreras | Talento Tech - Ecommerce</p>
         </copyright>
     </footer>
-    
+
     <script src="../script/toast.js"></script>
     <script src="../script/api.js"></script>
+    <script src="../script/navbar.js"></script>
     <script src="../script/tienda.js"></script>
     <script src="../script/script.js"></script>
 </body>

@@ -30,3 +30,103 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+/* ==================== TOOLBAR TIENDA (buscador, filtro, orden) ==================== */
+
+.tienda-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 30px 0;
+    padding: 16px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+}
+
+.tienda-toolbar input[type="search"],
+.tienda-toolbar select {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.tienda-toolbar input[type="search"] {
+    flex: 2 1 240px;
+}
+
+.tienda-toolbar select {
+    flex: 1 1 180px;
+    cursor: pointer;
+}
+
+.tienda-toolbar input[type="search"]:focus,
+.tienda-toolbar select:focus {
+    outline: none;
+    border-color: #088178;
+}
+
+/* ==================== MENSAJES DE ESTADO ==================== */
+
+.mensaje-vacio,
+.mensaje-error {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+/* ==================== PAGINACIÓN ==================== */
+
+.tienda-paginacion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.tienda-paginacion button {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tienda-paginacion button:hover:not(:disabled) {
+    background-color: #088178;
+    color: #fff;
+    border-color: #088178;
+}
+
+.tienda-paginacion button.activa {
+    background-color: #088178;
+    color: #fff;
+    border-color: #088178;
+    font-weight: 700;
+}
+
+.tienda-paginacion button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 600px) {
+    .tienda-toolbar {
+        flex-direction: column;
+    }
+
+    .tienda-toolbar input[type="search"],
+    .tienda-toolbar select {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
