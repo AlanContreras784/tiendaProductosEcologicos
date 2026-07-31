@@ -41,6 +41,15 @@ export class Paginator {
         this.currentPage = 1;
 
         this.render();
+           
+        if (this.onPageChange) {
+
+            this.onPageChange(
+                this.startIndex,
+                this.endIndex,
+                this.currentPage
+            );
+        }
 
     }
 
@@ -106,7 +115,7 @@ export class Paginator {
 
         const nav = document.createElement("nav");
 
-        nav.className = "pagination";
+        nav.className = "tienda-paginacion";
 
         nav.setAttribute(
             "aria-label",
@@ -141,7 +150,7 @@ export class Paginator {
 
             if (i === this.currentPage) {
 
-                boton.classList.add("active");
+                boton.classList.add("activa");
 
                 boton.setAttribute(
                     "aria-current",

@@ -1,72 +1,65 @@
 // ======================================================
 // productoCard.js
-// Componente reutilizable para representar un producto.
+// Card reutilizable respetando diseño original.
 // ======================================================
 
-/**
- * Genera el HTML de una tarjeta de producto.
- *
- * @param {Object} producto Producto recibido desde la API.
- * @returns {string} HTML de la tarjeta.
- */
 export function crearProductoCard(producto) {
 
     return `
 
-<article class="producto">
+    <article class="producto">
 
-    <figure class="producto-imagen">
+        <figure>
+            <img
+                src="${producto.imagenUrl}"
+                alt="${producto.nombre}">
+        </figure>
 
-        <img
-            src="${producto.imagenUrl}"
-            alt="${producto.nombre}">
 
-    </figure>
+        <div class="producto-descripcion">
 
-    <section class="producto-contenido">
+            <span>
+                ${producto.categoria?.nombre ?? "Sin categoría"}
+            </span>
 
-        <span class="producto-categoria">
 
-            ${producto.categoria.nombre}
+            <h5>
+                ${producto.nombre}
+            </h5>
 
-        </span>
 
-        <h3>
+            <h4>
+                $${producto.precio.toFixed(2)}
+            </h4>
 
-            ${producto.nombre}
+        </div>
 
-        </h3>
 
-        <p class="producto-precio">
+        <footer>
 
-            $${producto.precio.toFixed(2)}
+            <button
+                class="ver-descripcion btn-detalle"
+                data-id="${producto.id}">
+                
+                Ver descripción
 
-        </p>
+            </button>
 
-    </section>
 
-    <footer class="producto-footer">
+            <button
+                class="carrito btn-agregar"
+                data-id="${producto.id}">
+                
+                <i class="fa-solid fa-cart-shopping"></i>
+                Agregar
 
-        <button
-            class="btn-detalle"
-            data-id="${producto.id}">
+            </button>
 
-            Ver descripción
 
-        </button>
+        </footer>
 
-        <button
-            class="btn-agregar"
-            data-id="${producto.id}">
 
-            Agregar al carrito
+    </article>
 
-        </button>
-
-    </footer>
-
-</article>
-
-`;
-
+    `;
 }

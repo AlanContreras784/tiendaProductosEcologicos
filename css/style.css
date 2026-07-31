@@ -277,7 +277,7 @@ body {
    ============================================================ */
 
 .hero {
-    background-image: url('img/hero4.jpg');
+    background-image: url('../img/hero4.jpg');
     display: flex;
     align-items: center;
     justify-content: flex-end;

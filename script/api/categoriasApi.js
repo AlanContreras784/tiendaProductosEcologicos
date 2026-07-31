@@ -1,7 +1,14 @@
+// ======================================================
+// categoriasApi.js
+// Comunicación con endpoints de categorías
+// ======================================================
+
 import { apiClient } from "./apiClient.js";
 
-export function obtenerCategorias() {
 
-    return apiClient("/categorias");
+// Obtiene todas las categorías
+export async function obtenerCategorias() {
+
+    return await apiClient("/categorias");
 
 }

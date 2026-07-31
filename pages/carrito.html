@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - Talento Tech Ecommerce</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../estilos/carrito.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages/carrito.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                 <li id="menuAdmin" style="display:none;"><a href="admin.html">Panel Admin</a></li>
                 <!-- Nombre de usuario cuando hay sesión iniciada -->
                 <span id="navUsuario"></span>
-                <a href="../login.html" id="loginLink">Iniciar Sesión</a>
+                <a href="login.html" id="loginLink">Iniciar Sesión</a>
                 <a href="#" id="logoutLink">Cerrar Sesión</a>
                 <a href="#" id="close" class="close">
                     <i class="far fa-times" aria-hidden="true"></i>
@@ -82,7 +82,7 @@
                     <button class="normal">Aplicar</button>
                 </div>
             </div>
-            <div id="subtotal">
+            <div id="subtotalImporte">
                 <h3>Total del Carrito</h3>
                 <table>
                     <tr>
@@ -91,14 +91,14 @@
                     </tr>
                     <tr>
                         <td>Envío</td>
-                        <td>Gratis</td>
+                        <td id="envioImporte">$500.00</td>
                     </tr>
                     <tr>
                         <td><strong>Total</strong></td>
-                        <td><strong id="total">$0.00</strong></td>
+                        <td><strong id="totalImporte">$0.00</strong></td>
                     </tr>
                 </table>
-                <button class="normal">Proceder al pago</button>
+                <button id="btnPagar" class="normal">Proceder al pago</button>
             </div>
         </section>
         <!-- TOAST -->
@@ -137,7 +137,7 @@
         </div>
         <div class="col">
             <h4>Mi Cuenta</h4>
-            <a href="../login.html">Iniciar Sesión</a>
+            <a href="login.html">Iniciar Sesión</a>
             <a href="carrito.html">Ver Carrito</a>
             <a href="#">Mis Favoritos</a>
             <a href="#">Seguimiento de Pedido</a>

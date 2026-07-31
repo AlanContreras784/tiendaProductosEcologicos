@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talento Tech Ecommerce</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
     <!-- ==================== HEADER ==================== -->
     <header class="header">
         <a href="index.html">
-            <img src="img/logo1.png" class="logo" alt="Logo Talento Tech" width="40px" height="40px">
+            <img src="./img/logo1.png" class="logo" alt="Logo Talento Tech" width="40px" height="40px">
         </a>
         <div>
             <ul id="navbar" class="navbar">
@@ -34,7 +34,7 @@
                 <li id="menuAdmin" style="display:none;"><a href="pages/admin.html">Panel Admin</a></li>
                 <!-- Nombre de usuario cuando hay sesión iniciada -->
                 <span id="navUsuario"></span>
-                <a href="login.html" id="loginLink">Iniciar Sesión</a>
+                <a href="pages/login.html" id="loginLink">Iniciar Sesión</a>
                 <a href="#" id="logoutLink">Cerrar Sesión</a>
                 <a href="#" id="close" class="close">
                     <i class="far fa-times" aria-hidden="true"></i>
@@ -70,7 +70,7 @@
             <div class="productos-container">
 
                 <div class="producto">
-                    <img src="img/productos/calular.jpg" alt="Celular">
+                    <img src="./img/productos/calular.jpg" alt="Celular">
                     <div class="producto-descripcion">
                         <span>Celulares</span>
                         <h5>Smartphone último modelo</h5>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="producto">
-                    <img src="img/productos/auriculares.jpg" alt="Auriculares">
+                    <img src=":/img/productos/auriculares.jpg" alt="Auriculares">
                     <div class="producto-descripcion">
                         <span>Audio</span>
                         <h5>Auriculares inalámbricos</h5>
@@ -278,7 +278,7 @@
         </div>
         <div class="col">
             <h4>Mi Cuenta</h4>
-            <a href="login.html">Iniciar Sesión</a>
+            <a href="pages/login.html">Iniciar Sesión</a>
             <a href="pages/carrito.html">Ver Carrito</a>
             <a href="#">Mis Favoritos</a>
             <a href="#">Seguimiento de Pedido</a>
@@ -299,12 +299,16 @@
         </copyright>
     </footer>
 
-    <script src="script/api.js"></script>
-    <script src="script/navbar.js"></script>
-    <script src="script/script.js"></script>
-    <script src="script/index.js"></script>
-    <script src="script/toast.js"></script>
+    <!-- Componentes -->
+    <script type="module" src="script/components/toast.js"></script>
 
-</body>
+    <script type="module" src="script/components/navbar.js"></script>
+
+    <!-- Páginas -->
+    <script type="module" src="script/pages/home.js"></script>
+
+    <!-- Scripts generales (solo si no usan imports) -->
+    <script src="script/script.js"></script>
+    </body>
 
 </html>

@@ -3,10 +3,13 @@ import { apiClient } from "./apiClient.js";
 /**
  * Obtiene el carrito del usuario autenticado.
  */
-export function obtenerCarrito() {
-
-    return apiClient("/carritos/mi-carrito");
-
+export async function obtenerCarrito() {
+    const carrito = await apiClient(
+        "/carritos/mi-carrito"
+    );
+    return Array.isArray(carrito)
+        ? carrito[0]
+        : carrito;
 }
 
 /**
@@ -69,3 +72,4 @@ export function obtenerResumen() {
     return apiClient("/carritos/mi-carrito/resumen");
 
 }
+
