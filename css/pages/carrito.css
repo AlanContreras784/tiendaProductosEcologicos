@@ -119,9 +119,10 @@
     padding: 30px;
 }
 
-#coupon h3,
-#subtotal h3 {
+#coupon h2,
+#subtotal h2 {
     padding-bottom: 15px;
+    font-size: 2rem;
 }
 
 #coupon input {
@@ -171,7 +172,7 @@
 
 /* Responsive  */
 @media (max-width: 799px) {
-    #cart-add {
+    #cart-add article {
         flex-direction: column;
     }
 
@@ -214,4 +215,47 @@
     #cart table td:nth-child(5) input {
         width: 40px;
     }
+}
+/* ======================================================
+   CONTROLES DE CANTIDAD DEL CARRITO
+   ====================================================== */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-restar,
+.btn-sumar {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #088178;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #088178;
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-restar:hover,
+.btn-sumar:hover {
+    background-color: #088178;
+    color: white;
+}
+.quantity-controls input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: 600;
+}
+/* Botón restar deshabilitado cuando la cantidad es mínima */
+.btn-restar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }

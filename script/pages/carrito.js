@@ -4,12 +4,13 @@
 //
 // Responsabilidades:
 // - Cargar el carrito del usuario.
-// - Mostrar los productos.
-// - Mostrar el resumen.
-// - Eliminar productos.
+// - Mostrar productos.
+// - Mostrar resumen.
+// - Agregar unidades.
 // - Descontar unidades.
-// - Vaciar el carrito.
-// - Actualizar el badge del navbar.
+// - Eliminar productos.
+// - Vaciar carrito.
+// - Actualizar badge navbar.
 //
 // No contiene:
 // - fetch directo.
@@ -18,6 +19,7 @@
 import {
     obtenerCarrito,
     obtenerResumen,
+    agregarProducto,
     descontarProducto,
     eliminarProducto,
     vaciarCarrito
@@ -32,74 +34,84 @@ import {
     mostrarSpinner,
     ocultarSpinner
 } from "../components/spinner.js";
+import {
+    confirmarAccion
+} from "../components/modalConfirmacion.js";
 // ======================================================
 // Estado interno
 // ======================================================
 let carrito = null;
 let resumen = null;
 // ======================================================
-// Elementos del DOM
+// Elementos DOM
 // ======================================================
-
 const elementos = {
     tablaProductos:
-        document.getElementById("tablaCarrito"),
+        document.getElementById("tabla_carrito"),
     subtotal:
-        document.getElementById("subtotal"),
+        document.getElementById("subtotalImporte"),
     envio:
-        document.getElementById("envio"),
+        document.getElementById("envioImporte"),
     total:
-        document.getElementById("total"),
+        document.getElementById("totalImporte"),
     botonVaciar:
-        document.getElementById("btnVaciarCarrito")
-};
+        document.getElementById("btn-vaciar")
 
+};
 // ======================================================
 // Inicialización
 // ======================================================
-
-async function iniciarCarrito() {
-    try {
+async function iniciarCarrito(){
+    try{
         mostrarSpinner();
         await actualizarVista();
         inicializarEventos();
-    } catch (error) {
+    }
+    catch(error){
         console.error(error);
         mostrarToast(
             "No se pudo cargar el carrito."
         );
-    } finally {
+    }
+    finally{
         ocultarSpinner();
     }
 }
 // ======================================================
-// Actualiza toda la vista.
+// Actualiza toda la vista
 // ======================================================
-async function actualizarVista() {
-
+async function actualizarVista(){
     carrito = await obtenerCarrito();
-
     resumen = await obtenerResumen();
-
     renderizarProductos();
-
+    renderizarResumen();
     await cargarBadgeNavbar();
-
 }
 // ======================================================
-// Renderiza la tabla del carrito.
+// Render resumen
 // ======================================================
-function renderizarProductos() {
-
-    const tbody = document.getElementById("tabla_carrito");
-
-    if (!tbody) return;
-
+function renderizarResumen(){
+    if(!resumen) return;
+    elementos.subtotal.textContent =
+        `$${Number(resumen.subtotal).toFixed(2)}`;
+    elementos.envio.textContent =
+        `$${Number(resumen.envio).toFixed(2)}`;
+    elementos.total.textContent =
+        `$${Number(resumen.total).toFixed(2)}`;
+}
+// ======================================================
+// Render productos
+// ======================================================
+function renderizarProductos(){
+    const tbody =
+        elementos.tablaProductos;
+    if(!tbody) return;
     tbody.innerHTML = "";
-
-    // Si el carrito no existe o no tiene productos
-    if (!carrito || !carrito.productos || carrito.productos.length === 0) {
-
+    if(
+        !carrito ||
+        !carrito.productos ||
+        carrito.productos.length === 0
+    ){
         tbody.innerHTML = `
             <tr>
                 <td colspan="6">
@@ -107,60 +119,253 @@ function renderizarProductos() {
                 </td>
             </tr>
         `;
-
         return;
     }
-
     carrito.productos.forEach(item => {
-
         const subtotal =
-            item.cantidad * item.producto.precio;
-
+            item.cantidad *
+            item.producto.precio;
         tbody.insertAdjacentHTML(
             "beforeend",
-            crearFilaProducto(item, subtotal)
+            crearFilaProducto(
+                item,
+                subtotal
+            )
         );
-
     });
-
 }
 // ======================================================
-// Genera el HTML de una fila del carrito.
+// Crear fila producto
 // ======================================================
-function crearFilaProducto(item, subtotal) {
+
+function crearFilaProducto(
+    item,
+    subtotal
+){
 
     return `
-        <tr>
-            <td>
+
+    <tr>
+
+        <td>
+            <button
+                class="remove-btn"
+                data-id="${item.producto.id}"
+                title="Eliminar">
+
+                <i class="far fa-times-circle"></i>
+
+            </button>
+        </td>
+
+
+        <td>
+
+            <img
+                src="${item.producto.imagenUrl}"
+                alt="${item.producto.nombre}">
+
+        </td>
+
+
+        <td>
+            ${item.producto.nombre}
+        </td>
+
+
+        <td>
+            $${item.producto.precio.toFixed(2)}
+        </td>
+
+
+        <td>
+
+            <div class="quantity-controls">
+
+
                 <button
-                    class="remove-btn"
+                    class="btn-restar"
                     data-id="${item.producto.id}"
-                    title="Eliminar">
-                    <i class="far fa-times-circle"></i>
+                    ${item.cantidad === 1 ? "disabled" : ""}>
+
+                    -
+
                 </button>
-            </td>
-            <td>
-                <img
-                    src="${item.producto.imagenUrl}"
-                    alt="${item.producto.nombre}">
-            </td>
-            <td>
-                ${item.producto.nombre}
-            </td>
-            <td>
-                $${item.producto.precio.toFixed(2)}
-            </td>
-            <td>
+
+
                 <input
                     type="number"
                     value="${item.cantidad}"
                     readonly>
-            </td>
-            <td>
-                $${subtotal.toFixed(2)}
-            </td>
-        </tr>
+
+
+                <button
+                    class="btn-sumar"
+                    data-id="${item.producto.id}">
+
+                    +
+
+                </button>
+
+
+            </div>
+
+        </td>
+
+
+        <td>
+            $${subtotal.toFixed(2)}
+        </td>
+
+
+    </tr>
+
     `;
+
+}
+// ======================================================
+// Eventos
+// ======================================================
+function inicializarEventos(){
+    if(elementos.tablaProductos){
+        elementos.tablaProductos.addEventListener(
+            "click",
+            manejarAccionesTabla
+        );
+    }
+    if(elementos.botonVaciar){
+        elementos.botonVaciar.addEventListener(
+            "click",
+            vaciarTodo
+        );
+    }
+}
+// ======================================================
+// Delegación eventos tabla
+// ======================================================
+async function manejarAccionesTabla(e){
+    const boton =
+        e.target.closest("button");
+    if(!boton) return;
+    const idProducto =
+        boton.dataset.id;
+    if(!idProducto) return;
+    if(
+        boton.classList.contains(
+            "remove-btn"
+        )
+    ){
+        await eliminar(idProducto);
+    }
+    if(
+        boton.classList.contains(
+            "btn-restar"
+        )
+    ){
+        await descontar(idProducto);
+    }
+    if(
+        boton.classList.contains(
+            "btn-sumar"
+        )
+    ){
+        await sumar(idProducto);
+    }
+}
+// ======================================================
+// Sumar unidad
+// ======================================================
+async function sumar(idProducto){
+    try{
+        mostrarSpinner();
+        await agregarProducto(idProducto);
+        mostrarToast(
+            "Cantidad actualizada"
+        );
+        await actualizarVista();
+    }
+    catch(error){
+        console.error(error);
+        mostrarToast(
+            "No se pudo agregar"
+        );
+    }
+    finally{
+        ocultarSpinner();
+    }
+}
+// ======================================================
+// Descontar unidad
+// ======================================================
+async function descontar(idProducto){
+    try{
+        mostrarSpinner();
+        await descontarProducto(idProducto);
+        mostrarToast(
+            "Cantidad actualizada"
+        );
+        await actualizarVista();
+    }
+    catch(error){
+        console.error(error);
+        mostrarToast(
+            "No se pudo actualizar"
+        );
+    }
+    finally{
+        ocultarSpinner();
+    }
+}
+// ======================================================
+// Eliminar producto
+// ======================================================
+async function eliminar(idProducto){
+    try{
+        mostrarSpinner();
+        await eliminarProducto(idProducto);
+        mostrarToast(
+            "Producto eliminado"
+        );
+        await actualizarVista();
+    }
+    catch(error){
+        console.error(error);
+        mostrarToast(
+            "No se pudo eliminar"
+        );
+    }
+    finally{
+        ocultarSpinner();
+    }
+}
+// ======================================================
+// Vaciar carrito
+// ======================================================
+async function vaciarTodo(){
+    const confirmado = await confirmarAccion(
+        "¿Vaciar el carrito?"
+    );
+
+    if(!confirmado){
+        return;
+    }
+    try{
+        mostrarSpinner();
+        await vaciarCarrito();
+        mostrarToast(
+            "Carrito vacío"
+        );
+        await actualizarVista();
+    }
+    catch(error){
+        console.error(error);
+        mostrarToast(
+            "No se pudo vaciar"
+        );
+    }
+    finally{
+        ocultarSpinner();
+    }
 }
 
 document.addEventListener(

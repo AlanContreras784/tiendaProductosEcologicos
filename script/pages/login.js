@@ -44,16 +44,33 @@ function iniciarLogin() {
 // ======================================================
 async function enviarFormulario(event) {
     event.preventDefault();
+    if (
+        !username.value.trim() ||
+        !password.value.trim()
+    ) {
+        mostrarToast(
+            "Complete usuario y contraseña."
+        );
+        return;
+    }
     try {
         mostrarSpinner();
         const respuesta =
             await login({ username: username.value.trim(), password: password.value });
+            // ------------------------------
+            // Guardar la sesión del usuario
+            // ------------------------------
+
             cerrarSesion();
             guardarToken( respuesta.token );
             guardarUsuario( respuesta.username );
             guardarRol( respuesta.role );
+            // ------------------------------
+            // Notificar y redirigir
+            // ------------------------------
+
             mostrarToast( "Bienvenido " + respuesta.username );
-            setTimeout(() => { window.location.href = "tienda.html" }, 1000);
+            setTimeout(() => { window.location.href = "../pages/tienda.html" }, 1000);
         }
         catch (error) {
             console.error(error);

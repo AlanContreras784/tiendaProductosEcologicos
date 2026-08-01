@@ -1,64 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Iniciar sesión</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+        <link 
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <!-- Estilos globales -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Estilos propios del login -->
+    <link rel="stylesheet" href="../css/pages/login.css">
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h3>Login</h3>
-                </div>
-                <div class="card-body">
-                    <form id="loginForm">
-                        <div class="mb-3">
-                            <label>Usuario</label>
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    id="username"
-                                    required>
-                        </div>
-                        <div class="mb-3">
-                            <label>Contraseña</label>
-                            <input
-                                    type="password"
-                                    class="form-control"
-                                    id="password"
-                                    required>
-                        </div>
-                        <button
-                                class="btn btn-success w-100">
-                            Iniciar sesión
-                        </button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <a href="registro.html">
-                            ¿No tienes cuenta? Registrate
-                        </a>
-                    </div>
-                    <div class="text-center mt-2">
-                        <a href="../index.html">Volver al inicio</a>
-                    </div>
-                    <div id="toast" class="toast-custom">
-                        <span id="toastMensaje"></span>
-                        <button id="btnCerrarToast">✕</button>
-                    </div>
-                </div>
+<body>
+<!-- NAVBAR -->
+<!-- ==================== HEADER ==================== -->
+<header class="header">
+    <a href="../index.html">
+        <img 
+            src="../img/logo1.png" 
+            class="logo" 
+            alt="Logo Talento Tech"
+            width="40"
+            height="40">
+    </a>
+    <div>
+        <ul id="navbar" class="navbar">
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="tienda.html">
+                    Tienda
+                </a>
+            </li>
+            <li>
+                <a href="contacto.html">
+                    Contacto
+                </a>
+            </li>
+            <li>
+                <a href="carrito.html">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-badge">
+                        0
+                    </span>
+                </a>
+            </li>
+            <!-- Solo visible para ADMIN -->
+            <li id="menuAdmin" style="display:none;">
+                <a href="admin.html">
+                    Panel Admin
+                </a>
+            </li>
+            <!-- Usuario logueado -->
+            <span id="navUsuario"></span>
+            <a href="login.html" id="loginLink">
+                Iniciar Sesión
+            </a>
+            <a href="#" id="logoutLink">
+                Cerrar Sesión
+            </a>
+            <a href="#" id="close" class="close">
+                 ✕
+            </a>
+        </ul>
+    </div>
+    <!-- MENU MOBILE -->
+    <div class="mobile">
+        <a href="carrito.html">
+            <i class="fa fa-shopping-bag"></i>
+            <span class="cart-badge">
+                0
+            </span>
+        </a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</header>
+<main>
+<section class="auth-page">
+    <article class="auth-card">
+        <span class="auth-subtitle">
+            BIENVENIDO
+        </span>
+        <h2>
+            Iniciar sesión
+        </h2>
+        <form id="loginForm">
+            <div class="campo-control">
+                <label for="username">
+                    Usuario
+                </label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Ingrese usuario"
+                    required>
+            </div>
+            <div class="campo-control">
+                <label for="password">
+                    Contraseña
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingrese contraseña"
+                    required>
+            </div>
+            <button 
+                type="submit"
+                class="normal">
+                Iniciar sesión
+            </button>
+        </form>
+        <div class="auth-links">
+            <p>
+                ¿No tienes cuenta?
+                <a href="registro.html">
+                    Registrate
+                </a>
+            </p>
+            <a href="../index.html">
+                Volver al inicio
+            </a>
+        </div>
+    </article>
+</section>
+</main>
+ <!-- ==================== NEWSLETTER ==================== -->
+        <section class="newsletter section-p1 section-m1">
+            <div class="newstext">
+                <h4>Suscribite al Newsletter</h4>
+                <p>Recibí novedades de nuestra tienda y <span>ofertas exclusivas</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Tu correo electrónico">
+                <button>Suscribirme</button>
+            </div>
+        </section>
+
+ <!-- ====================TOAST ==================== -->
+        <div id="toast" class="toast-custom">
+            <span id="toastMensaje"></span>
+            <button id="btnCerrarToast">✕</button>
+        </div>
+
+
+<!-- FOOTER -->
+<footer id="footer"></footer>
+ <!-- ==================== FOOTER ==================== -->
+
+<footer class="section-p1">
+    <div class="col">
+        <h4>
+            Contacto
+        </h4>
+        <p>
+            <strong>Dirección:</strong>
+            Av. Siempreviva 742, Ciudad Autónoma de Buenos Aires
+        </p>
+        <p>
+            <strong>Teléfono:</strong>
+            +54 11 1234 5678
+        </p>
+        <p>
+            <strong>Horario:</strong>
+            9:00 - 18:00, Lunes a Viernes
+        </p>
+        <div class="follow">
+            <h4>
+                Seguinos
+            </h4>
+            <div class="icon">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-pinterest-p"></i>
+                <i class="fab fa-youtube"></i>
             </div>
         </div>
     </div>
-
+    <div class="col">
+        <h4>
+            Mi Cuenta
+        </h4>
+        <a href="login.html">
+            Iniciar Sesión
+        </a>
+        <a href="carrito.html">
+            Ver Carrito
+        </a>
+        <a href="#">
+            Mis Favoritos
+        </a>
+        <a href="#">
+            Seguimiento de Pedido
+        </a>
+        <a href="#">
+            Ayuda
+        </a>
+    </div>
+    <div class="col install">
+        <h4>
+            Descargá la App
+        </h4>
+        <p>
+            Desde App Store o Google Play
+        </p>
+        <div class="row">
+            <img 
+            src="../img/pay/app.jpg"
+            alt="App Store">
+            <img 
+            src="../img/pay/play.jpg"
+            alt="Google Play">
+        </div>
+        <p>
+            Pasarelas de pago seguras
+        </p>
+        <img 
+        src="../img/pay/pay.png"
+        alt="Métodos de Pago">
+    </div>
+    <div class="copyright">
+        <p>
+            © 2026, Alan Contreras | Talento Tech - Ecommerce
+        </p>
+    </div>
+</footer>
+<!-- Toast -->
+<div id="toast" class="toast-custom">
+    <span id="toastMensaje"></span>
+    <button id="btnCerrarToast">
+        ✕
+    </button>
 </div>
-<script src="../script/toast.js"></script>
-<script src="../script/api.js"></script>
-<script src="../script/navbar.js"></script>
-<script src="../script/auth.js"></script>
-
+<script type="module" src="../script/components/toast.js"></script>
+<script type="module" src="../script/components/navbar.js"></script>
+<script type="module" src="../script/pages/login.js"></script>
 </body>
+
 </html>
