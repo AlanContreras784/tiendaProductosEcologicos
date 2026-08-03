@@ -5,7 +5,6 @@
 
 /* Google Fonts - Fuente principal del proyecto */
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 /* Reset general: elimina márgenes y paddings por defecto del navegador */
 * {
     margin: 0;
@@ -13,59 +12,47 @@
     box-sizing: border-box;
     font-family: "Spartan", sans-serif;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 /* Tipografía base */
 h1 {
     font-size: 50px;
     line-height: 64px;
     color: #222;
 }
-
 h2 {
     font-size: 46px;
     line-height: 54px;
     color: #222;
 }
-
 h4 {
     font-size: 20px;
     color: #222;
 }
-
 h6 {
     font-weight: 700;
     font-size: 12px;
 }
-
 p {
     font-size: 16px;
     color: #465b52;
     margin: 15px 0 20px 0;
 }
-
 body {
     width: 100%;
 }
-
 /* Clases utilitarias de espaciado reutilizadas en varias secciones */
 .section-p1 {
     padding: 40px 80px;
 }
-
 .section-m1 {
     margin: 40px 0;
 }
-
-
 /* ============================================================
    HEADER Y NAVEGACIÓN
    Barra superior fija con logo y menú
    ============================================================ */
-
 .header {
     display: flex;
     align-items: center;
@@ -79,19 +66,16 @@ body {
     top: 0;
     left: 0;
 }
-
 /* Lista de navegación horizontal */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .navbar li {
     list-style: none;
     padding: 0 20px;
 }
-
 .navbar a {
     text-decoration: none;
     font-size: 16px;
@@ -99,22 +83,18 @@ body {
     color: #1a1a1a;
     transition: 0.3s ease;
 }
-
 .navbar a:hover {
     color: #088178;
 }
-
 /* Botón hamburguesa - oculto en desktop, visible en mobile */
 .mobile {
     display: none;
     align-items: center;
 }
-
 /* Botón cerrar menú mobile */
 .close {
     display: none;
 }
-
 /* toast */
 .toast-custom {
     position: fixed;
@@ -136,12 +116,10 @@ body {
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
-
 .toast-custom.mostrar {
     opacity: 1;
     pointer-events: all;
 }
-
 .toast-custom button {
     background: none;
     border: none;
@@ -151,9 +129,7 @@ body {
     line-height: 1;
     padding: 0;
 }
-
 /* Modal */
-
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -166,12 +142,10 @@ body {
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
-
 .modal-overlay.visible {
     opacity: 1;
     pointer-events: all;
 }
-
 .modal-custom {
     background: #fff;
     border-radius: 16px;
@@ -181,33 +155,28 @@ body {
     text-align: center;
     position: relative;
 }
-
 .modal-custom img {
     height: 200px;
     object-fit: contain;
     margin-bottom: 16px;
 }
-
 .modal-custom h5 {
     font-size: 16px;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 10px;
 }
-
 .modal-custom p {
     font-size: 13px;
     color: #465b52;
     line-height: 1.6;
     margin-bottom: 16px;
 }
-
 .modal-custom h4 {
     font-size: 20px;
     font-weight: 700;
     color: #088178;
 }
-
 .modal-cerrar {
     position: absolute;
     top: 14px;
@@ -218,10 +187,6 @@ body {
     cursor: pointer;
     color: #222;
 }
-
-
-
-
 /* Responsive: menú deslizante desde la derecha en pantallas pequeñas */
 @media (max-width: 799px) {
     .navbar {
@@ -239,27 +204,22 @@ body {
         padding: 80px 0 0 10px;
         transition: 0.3s;
     }
-
     .navbar li {
         margin-bottom: 25px;
     }
-
     .mobile {
         display: flex;
         align-items: center;
     }
-
     .mobile i {
         color: #1a1a1a;
         font-size: 24px;
         padding-left: 20px;
     }
-
     /* Clase que se agrega con JS para mostrar el menú */
     .active {
         right: 0px;
     }
-
     .close {
         display: initial;
         position: absolute;
@@ -269,13 +229,10 @@ body {
         font-size: 24px;
     }
 }
-
-
 /* ============================================================
    HERO
    Sección principal con imagen de fondo y texto destacado
    ============================================================ */
-
 .hero {
     background-image: url('../img/hero4.jpg');
     display: flex;
@@ -288,7 +245,6 @@ body {
     padding: 0 80px;
     margin-bottom: 40px;
 }
-
 .hero .hero-content {
     width: 50%;
     display: flex;
@@ -297,30 +253,25 @@ body {
     text-align: right;
     z-index: 1;
 }
-
 .hero .hero-content h4 {
     color: #088178;
     margin-bottom: 10px;
     font-size: 1rem;
 }
-
 .hero .hero-content h2 {
     color: #222;
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
-
 .hero .hero-content h1 {
     color: #088178;
     font-size: 3rem;
     margin-bottom: 15px;
 }
-
 .hero .hero-content p {
     color: #555;
     margin-bottom: 20px;
 }
-
 .hero .hero-content button {
     background-color: #088178;
     color: white;
@@ -330,17 +281,14 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .hero .hero-content button:hover {
     background-color: #066f66;
 }
-
 /* Responsive Hero */
 @media (max-width: 1200px) {
     .hero { padding: 0 60px; }
     .hero .hero-content { width: 55%; }
 }
-
 @media (max-width: 992px) {
     .hero { height: 85vh; padding: 0 60px; }
     .hero .hero-content { width: 60%; }
@@ -348,7 +296,6 @@ body {
     .hero .hero-content h2 { font-size: 2.2rem; }
     .hero .hero-content p { font-size: 0.9rem; }
 }
-
 @media (max-width: 768px) {
     .hero {
         height: 70vh;
@@ -365,7 +312,6 @@ body {
     .hero .hero-content h2 { font-size: 1.8rem; }
     .hero .hero-content h1 { font-size: 2.2rem; }
 }
-
 @media (max-width: 576px) {
     .hero { height: 60vh; padding: 0 20px; background-position: 55% center; }
     .hero .hero-content { width: 100%; }
@@ -375,18 +321,14 @@ body {
     .hero .hero-content p { font-size: 0.8rem; margin-bottom: 15px; }
     .hero .hero-content button { padding: 10px 20px; font-size: 0.9rem; }
 }
-
-
 /* ============================================================
    SECCIÓN PRODUCTOS
    Grilla de cards con imagen, descripción y precio
    Usa Flexbox para distribuir los productos
    ============================================================ */
-
 .section-productos {
     text-align: center;
 }
-
 /* Contenedor Flexbox de las cards */
 .section-productos .productos-container {
     display: flex;
@@ -394,7 +336,6 @@ body {
     padding-top: 20px;
     flex-wrap: wrap;
 }
-
 /* Card individual de producto */
 .section-productos .productos-container .producto {
     width: 23%;
@@ -410,7 +351,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 .section-productos .productos-container .producto img {
     width: 100%;
     border-radius: 20px;
@@ -418,7 +358,6 @@ body {
     object-fit: contain;
     display: block;
 }
-
 /* Descripción dentro de la card */
 .section-productos .productos-container .producto .producto-descripcion {
     text-align: start;
@@ -429,18 +368,15 @@ body {
     justify-content: flex-start;
     flex-grow: 1;
 }
-
 .section-productos .productos-container .producto .producto-descripcion span {
     color: #606063;
     font-size: 12px;
 }
-
 .section-productos .productos-container .producto .producto-descripcion h5 {
     padding-top: 7px;
     color: #1a1a1a;
     font-size: 16px;
 }
-
 /* Precio del producto */
 .section-productos .productos-container .producto .producto-descripcion h4 {
     padding-top: 7px;
@@ -449,12 +385,10 @@ body {
     color: #088178;
     margin-top: auto;
 }
-
 /* Efecto hover en la card */
 .section-productos .productos-container .producto:hover {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.15);
 }
-
 /* Botón agregar al carrito */
 .section-productos .productos-container .producto .carrito {
     display: flex;
@@ -473,45 +407,37 @@ body {
     letter-spacing: 0.5px;
     transition: background-color 0.3s ease;
 }
-
 .section-productos .productos-container .producto .carrito:hover {
     background-color: #066f66;
 }
-
 /* Responsive Productos */
 @media (max-width: 1200px) {
     .section-productos .productos-container { justify-content: space-around; }
     .section-productos .productos-container .producto { margin: 15px 10px; }
 }
-
 @media (max-width: 992px) {
     .section-productos h2 { font-size: 1.8rem; }
     .section-productos p { font-size: 0.9rem; }
     .section-productos .productos-container .producto { width: 30%; min-width: 220px; }
 }
-
 @media (max-width: 768px) {
     .section-productos .productos-container .producto { width: 45%; min-width: 200px; }
     .section-productos .productos-container { justify-content: space-between; }
 }
-
 @media (max-width: 576px) {
     .section-productos { padding: 20px 10px; }
     .section-productos h2 { font-size: 1.5rem; }
     .section-productos .productos-container .producto { width: 100%; min-width: unset; margin: 10px 0; }
     .section-productos .productos-container .producto .producto-descripcion h5 { font-size: 13px; }
 }
-
-
-/* ============================================================
+/* ===========================================================
    BANNER
    Sección con imagen de fondo y texto promocional
    ============================================================ */
-
 .banner {
     width: 100%;
     height: 40vh;
-    background-image: url(img/banner/b19.jpg);
+    background-image: url(../img/banner/b19.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -521,22 +447,18 @@ body {
     align-items: center;
     text-align: center;
 }
-
 .banner h4 {
     color: #fff;
     font-size: 16px;
 }
-
 .banner h2 {
     color: #fff;
     font-size: 30px;
     padding: 10px 0;
 }
-
 .banner span {
     color: #ef3636;
 }
-
 .banner button {
     font-size: 14px;
     font-weight: 600;
@@ -549,43 +471,35 @@ body {
     outline: none;
     transition: 0.2s;
 }
-
 .banner button:hover {
     background: #088178;
     color: #fff;
 }
-
 /* Responsive Banner */
 @media (max-width: 1200px) {
     .banner { padding: 0 60px; }
     .banner h2 { font-size: 28px; }
 }
-
 @media (max-width: 992px) {
     .banner { height: 35vh; }
     .banner h2 { font-size: 26px; }
 }
-
 @media (max-width: 768px) {
     .banner { height: 30vh; padding: 0 20px; }
     .banner h4 { font-size: 14px; }
     .banner h2 { font-size: 22px; }
     .banner button { padding: 12px 20px; }
 }
-
 @media (max-width: 576px) {
     .banner { height: 25vh; }
     .banner h4 { font-size: 12px; }
     .banner h2 { font-size: 18px; }
     .banner button { padding: 10px 15px; font-size: 12px; }
 }
-
-
 /* ============================================================
    NEWSLETTER
    Sección de suscripción con fondo oscuro e input de email
    ============================================================ */
-
 .newsletter {
     display: flex;
     justify-content: space-between;
@@ -595,29 +509,24 @@ body {
     background-position: 20% 30%;
     background-color: #041e42;
 }
-
 .newsletter h4 {
     font-size: 22px;
     font-weight: 700;
     color: #fff;
 }
-
 .newsletter p {
     font-size: 14px;
     font-weight: 600;
     color: #818ea0;
 }
-
 .newsletter p span {
     color: #ffbd27;
 }
-
 /* Formulario de suscripción */
 .newsletter .form {
     display: flex;
     width: 40%;
 }
-
 .newsletter .form input {
     height: 3.125rem;
     padding: 0 1.25rem;
@@ -627,7 +536,6 @@ body {
     border-radius: 4px 0 0 4px;
     outline: none;
 }
-
 .newsletter .form button {
     font-size: 14px;
     font-weight: 600;
@@ -641,135 +549,109 @@ body {
     outline: none;
     transition: 0.2s;
 }
-
 /* Responsive Newsletter */
 @media (max-width: 1200px) {
     .newsletter { padding: 40px 60px; }
     .newsletter .form { width: 45%; }
 }
-
 @media (max-width: 992px) {
     .newsletter .form { width: 80%; }
 }
-
 @media (max-width: 768px) {
     .newsletter { flex-direction: column; align-items: flex-start; }
     .newsletter .newstext { margin-bottom: 20px; width: 100%; }
 }
-
 @media (max-width: 576px) {
     .newsletter { padding: 20px 10px; }
     .newsletter h4 { font-size: 18px; }
     .newsletter .form { width: 100%; }
     .newsletter .form button { padding: 12px 15px; }
 }
-
-
 /* ============================================================
    FOOTER
    Pie de página con columnas de información
    ============================================================ */
-
 footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
 footer .col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
 }
-
 footer h4 {
     font-size: 14px;
     padding-bottom: 20px;
 }
-
 footer p {
     font-size: 13px;
     margin: 0 0 8px 0;
 }
-
 footer a {
     font-size: 13px;
     text-decoration: none;
     color: #222;
     margin-bottom: 10px;
 }
-
 footer .follow {
     margin-top: 20px;
 }
-
 footer .follow i {
     color: #465b52;
     padding-right: 4px;
     cursor: pointer;
 }
-
 /* Imágenes de tiendas de apps */
 footer .install .row img {
     margin: 10px 0 15px 0;
     border: 1px solid #088178;
     border-radius: 6px;
 }
-
 footer .follow i:hover,
 footer a:hover {
     color: #088178;
 }
-
 footer .copyright {
     width: 100%;
     text-align: center;
 }
-
 /* Responsive Footer */
 @media (max-width: 1200px) {
     footer { padding: 40px 60px; }
     footer .col { padding-right: 20px; }
 }
-
 @media (max-width: 992px) {
     footer { padding: 40px 20px; }
     footer .col { width: 45%; margin-bottom: 25px; }
 }
-
 @media (max-width: 768px) {
     footer .col { width: 48%; }
     footer .copyright { margin-top: 20px; }
 }
-
 @media (max-width: 576px) {
     footer { flex-direction: column; }
     footer .col { width: 100%; margin-bottom: 30px; }
     footer .copyright { margin-top: 10px; font-size: 13px; }
 }
-
-
 /* ============================================================
    SECCIÓN RESEÑAS
    Opiniones de clientes usando CSS Grid de 3 columnas
    ============================================================ */
-
 .section-resenias {
     text-align: center;
     background-color: #f8faf9;
 }
-
 .section-resenias h2 {
     font-size: 36px;
     color: #222;
 }
-
 .section-resenias > p {
     color: #465b52;
     margin-bottom: 30px;
 }
-
 /* Grid de 3 columnas para las cards */
 .resenias-container {
     display: grid;
@@ -777,7 +659,6 @@ footer .copyright {
     gap: 30px;
     padding-top: 20px;
 }
-
 /* Card individual de reseña */
 .resenia-card {
     background-color: #fff;
@@ -791,18 +672,15 @@ footer .copyright {
     flex-direction: column;
     gap: 15px;
 }
-
 .resenia-card:hover {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
     transform: translateY(-4px);
 }
-
 /* Estrellas de calificación */
 .resenia-estrellas i {
     color: #f5a623;
     font-size: 14px;
 }
-
 .resenia-card > p {
     font-size: 14px;
     color: #465b52;
@@ -810,7 +688,6 @@ footer .copyright {
     margin: 0;
     flex-grow: 1;
 }
-
 /* Datos del autor de la reseña */
 .resenia-autor {
     display: flex;
@@ -820,7 +697,6 @@ footer .copyright {
     padding-top: 15px;
     margin-top: auto;
 }
-
 .resenia-autor img {
     width: 50px;
     height: 50px;
@@ -828,26 +704,22 @@ footer .copyright {
     object-fit: cover;
     border: 2px solid #cce7d0;
 }
-
 .resenia-autor h5 {
     font-size: 14px;
     font-weight: 700;
     color: #1a1a1a;
     margin: 0;
 }
-
 .resenia-autor span {
     font-size: 12px;
     color: #088178;
 }
-
 /* Responsive Reseñas */
 @media (max-width: 992px) {
     .resenias-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (max-width: 576px) {
     .section-resenias { padding: 20px 15px; }
     .section-resenias h2 { font-size: 26px; }
@@ -856,7 +728,6 @@ footer .copyright {
         gap: 20px;
     }
 }
-
 /* ============================================================
     MODAL DE CONFIRMACIÓN
    ============================================================ */
@@ -872,7 +743,6 @@ footer .copyright {
     align-items: center;
     z-index: 9999;
 }
-
 .modal-box {
     background: white;
     padding: 20px;
@@ -880,35 +750,29 @@ footer .copyright {
     width: 300px;
     text-align: center;
 }
-
 .modal-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
-
 .hidden {
     display: none;
 }
-
 .btn-ok {
     background: green;
     color: white;
     border: none;
     padding: 8px 12px;
 }
-
 .btn-cancel {
     background: red;
     color: white;
     border: none;
     padding: 8px 12px;
 }
-
 /* ============================================================
     ESTILO DEL BADGE DEL CARRITO
    ============================================================ */
-
    .cart-badge {
     position: absolute;
     background: red;
@@ -919,189 +783,128 @@ footer .copyright {
     min-width: 18px;
     text-align: center;
 }
-
 /* ============================================================
     ANIMACIÓN DEL BADGE DEL CARRITO
    ============================================================ */
-
 @keyframes bounceBadge {
-
     0% {
         transform: scale(1);
     }
-
     40% {
         transform: scale(1.4);
     }
-
     70% {
         transform: scale(.9);
     }
-
     100% {
         transform: scale(1);
     }
-
 }
-
 .badge-bounce{
-
     animation:bounceBadge .35s;
-
 }
-
 /* ============================================================
    FORMULARIOS LOGIN / REGISTRO
    Estilo compartido de autenticación
 ============================================================ */
-
 .auth-container {
-
     min-height: calc(100vh - 100px);
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     padding: 40px 20px;
-
 }
-
-
 .auth-card {
-
     width: 100%;
-
     max-width: 420px;
-
     background: #fff;
-
     border: 1px solid #cce7d0;
-
     border-radius: 20px;
-
     padding: 35px;
-
     box-shadow: 
     20px 20px 30px rgba(0,0,0,0.05);
-
 }
-
-
-
 .auth-card h3 {
-
     text-align: center;
-
     color: #088178;
-
     font-weight: 700;
-
     margin-bottom: 25px;
-
 }
-
-
-
 .auth-card label {
-
     font-size: 14px;
-
     font-weight: 600;
-
     color: #222;
-
 }
-
-
-
 .auth-card input {
-
     width: 100%;
-
     padding: 12px 15px;
-
     border-radius: 6px;
-
     border: 1px solid #e1e1e1;
-
     margin-top: 8px;
-
     margin-bottom: 15px;
-
 }
-
-
-
 .auth-card input:focus {
-
     outline: none;
-
     border-color: #088178;
-
 }
-
-
-
 .btn-auth {
-
-
     width:100%;
-
     background-color:#088178;
-
     color:white;
-
     border:none;
-
     padding:12px;
-
     border-radius:5px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
-
-
 }
-
-
-
 .btn-auth:hover {
-
     background-color:#066f66;
-
 }
-
-
-
 .auth-link {
-
     text-align:center;
-
     margin-top:20px;
-
 }
-
-
-
 .auth-link a {
-
     text-decoration:none;
-
     color:#088178;
-
     font-weight:600;
-
 }
-
-
 .auth-link a:hover {
-
     text-decoration:underline;
-
+}
+/* ============================================================
+   VALIDACIÓN DE FORMULARIOS
+   Estilos reutilizables para Login, Registro,
+   Contacto y futuros formularios.
+============================================================ */
+.campo-control{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+.campo-control label{
+    margin-bottom:6px;
+    font-weight:600;
+}
+.error-text{
+    display:block;
+    min-height:18px;
+    margin-top:4px;
+    color:#dc3545;
+    font-size:.85rem;
+    font-weight:500;
+}
+.input-error{
+    border:2px solid #dc3545 !important;
+    outline:none;
+}
+.input-error:focus{
+    box-shadow:0 0 0 3px rgba(220,53,69,.15);
+}
+.input-success{
+    border:2px solid #198754 !important;
+}
+.input-success:focus{
+    box-shadow:0 0 0 3px rgba(25,135,84,.15);
 }

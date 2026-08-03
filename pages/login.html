@@ -88,7 +88,7 @@
         <h2>
             Iniciar sesión
         </h2>
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
             <div class="campo-control">
                 <label for="username">
                     Usuario
@@ -98,6 +98,10 @@
                     id="username"
                     placeholder="Ingrese usuario"
                     required>
+                <small
+                    id="username-error"
+                    class="error-text">
+                </small>
             </div>
             <div class="campo-control">
                 <label for="password">
@@ -108,6 +112,10 @@
                     id="password"
                     placeholder="Ingrese contraseña"
                     required>
+                <small
+                    id="password-error"
+                    class="error-text">
+                </small>
             </div>
             <button 
                 type="submit"

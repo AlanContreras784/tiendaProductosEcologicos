@@ -22,6 +22,12 @@ import {
     mostrarSpinner,
     ocultarSpinner
 } from "../components/spinner.js";
+import {
+    esCampoVacio,
+    validarLongitud,
+    mostrarError,
+    limpiarError
+} from "../utils/validator.js";
 // ======================================================
 // Elementos del DOM
 // ======================================================
@@ -34,9 +40,25 @@ const password = document.getElementById("password");
 // ======================================================
 function iniciarLogin() {
     if (!formulario) return;
+     inicializarValidaciones();
     formulario.addEventListener(
         "submit",
         enviarFormulario
+    );
+}
+// ======================================================
+// Configura los eventos para limpiar errores
+// mientras el usuario escribe.
+// ======================================================
+
+function inicializarValidaciones() {
+    username.addEventListener(
+        "input",
+        () => limpiarError(username)
+    );
+    password.addEventListener(
+        "input",
+        () => limpiarError(password)
     );
 }
 // ======================================================
@@ -44,13 +66,36 @@ function iniciarLogin() {
 // ======================================================
 async function enviarFormulario(event) {
     event.preventDefault();
-    if (
-        !username.value.trim() ||
-        !password.value.trim()
-    ) {
-        mostrarToast(
-            "Complete usuario y contraseña."
+    // ------------------------------
+    // Limpiar errores anteriores
+    // ------------------------------
+    limpiarError(username);
+    limpiarError(password); 
+    // ------------------------------
+    // Validaciones
+    // ------------------------------
+    if (esCampoVacio(username.value)) {
+        mostrarError(
+            username,
+            "Ingrese su usuario."
         );
+        username.focus();
+        return;
+    }
+    if (!validarLongitud(username.value, 3, 50)) {
+        mostrarError(
+            username,
+            "Debe tener entre 3 y 50 caracteres."
+        );
+        username.focus();
+        return;
+    }
+    if (esCampoVacio(password.value)) {
+        mostrarError(
+            password,
+            "Ingrese su contraseña."
+        );
+        password.focus();
         return;
     }
     try {
