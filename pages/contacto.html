@@ -9,9 +9,9 @@
     <!-- Font Awesome: librería de íconos -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <!-- Estilos generales compartidos con el home -->
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Estilos específicos de la página de contacto -->
-    <link rel="stylesheet" href="../estilos/contacto.css">
+    <link rel="stylesheet" href="../css/pages/contacto.css">
 </head>
 
 <body>
@@ -56,7 +56,9 @@
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </header>
-
+    <header class="header">
+    <!-- navbar.js renderiza el contenido -->
+    </header>
     <main>
 
         <!-- ==================== FORMULARIO DE CONTACTO ==================== -->
@@ -66,35 +68,41 @@
 
             <!-- Formulario conectado a Formspree -->
             <!-- Reemplazar TU_ID_FORMSPREE con el ID obtenido en formspree.io -->
-            <form action="https://tuFormulario" method="POST" id="formularioContacto">
+            <!-- <form action="https://tuFormulario" method="POST" id="formularioContacto " novalidate> -->
+            <form id="formularioContacto" novalidate>
                 <span>DEJA UN MENSAJE</span>
                 <h2>Queremos saber de ti</h2>
 
                 <!-- Campo: Nombre -->
                 <div class="campo-control">
-                    <input type="text" id="tuNombre" name="nombre" placeholder="Tu Nombre">
-                    <div class="texto-error"></div>
+                    <input type="text" id="tuNombre" name="nombre" placeholder="Tu Nombre" required>
+                    <small id="tuNombre-error" class="texto-error"></small>
                 </div>
 
                 <!-- Campo: Correo electrónico -->
                 <div class="campo-control">
                     <input type="text" id="tuCorreo" name="correo" placeholder="Correo electrónico">
-                    <div class="texto-error"></div>
+                    <small id="tuCorreo-error" class="texto-error"></small>
                 </div>
 
                 <!-- Campo: Asunto -->
                 <div class="campo-control">
                     <input type="text" id="asunto" name="asunto" placeholder="Asunto">
-                    <div class="texto-error"></div>
+                    <small id="asunto-error" class="texto-error"></small>
                 </div>
 
                 <!-- Campo: Mensaje -->
                 <div class="campo-control">
                     <textarea id="tuMensaje" name="mensaje" cols="30" rows="10" placeholder="Tu mensaje"></textarea>
-                    <div class="texto-error"></div>
+                    <small id="tuMensaje-error" class="texto-error"></small>
                 </div>
 
                 <button type="submit">Enviar</button>
+                 <!-- <button
+                            type="submit"
+                            class="btn-auth">
+                            Enviar
+                        </button> -->
             </form>
 
             <!-- Información del equipo de contacto -->
@@ -167,6 +175,9 @@
 
     <!-- ==================== FOOTER ==================== -->
     <!-- Mismo footer que en index.html -->
+     <footer class="section-p1">
+    <!-- footer.js renderiza el contenido -->
+    </footer>
     <footer class="section-p1">
         <div class="col">
             <h4>Contacto</h4>
@@ -206,12 +217,14 @@
             <p>© 2025, Alan Contreras | Talento Tech - Ecommerce</p>
         </div>
     </footer>
+    <div id="spinner" class="spinner-overlay">
+        <div class="spinner"></div>
+    </div>
+    <script type="module" src="../script/components/navbar.js"></script>
 
-    <script src="../script/api.js"></script>
-    <script src="../script/navbar.js"></script>
-    <script src="../script/script.js"></script>
-    <script src="../script/contactoStorage.js"></script>
-    <script src="../script/contactoValidacion.js"></script>
+    <script type="module" src="../script/components/toast.js"></script>
+    <script type="module" src="../script/components/spinner.js"></script>
+    <script type="module" src="../script/pages/contacto.js"></script>
 
 </body>
 

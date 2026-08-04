@@ -79,26 +79,48 @@
 }
 
 /* Borde rojo cuando el campo tiene error */
-.campo-control.error input,
+/* .campo-control.error input,
 .campo-control.error textarea {
     border-color: #ff0000;
-}
+} */
 
 /* Mensaje de error - oculto por defecto */
-.campo-control .texto-error {
+/* .campo-control .error-text {
     color: #ff0000;
     font-size: 0.8em;
     margin-top: -15px;
     margin-bottom: 10px;
     display: none;
-}
+} */
 
 /* Se muestra cuando el campo tiene la clase error */
-.campo-control.error .texto-error {
+.campo-control.error .error-text {
     display: block;
 }
 
+/* ==============================
+   Mensajes de validación
+================================ */
 
+.input-error {
+    border: 1px solid #dc3545 !important;
+}
+
+.input-success {
+    border: 1px solid #198754 !important;
+}
+
+.texto-error {
+    display: block;
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    min-height: 18px;
+}
+
+.campo-control {
+    margin-bottom: 9px;
+}
 /* ============================================================
    INFORMACIÓN DEL EQUIPO
    Columna derecha con foto y datos de cada contacto
@@ -210,3 +232,4 @@
         padding: 20px 15px;
     }
 }
+

@@ -40,7 +40,7 @@ const password = document.getElementById("password");
 // ======================================================
 function iniciarLogin() {
     if (!formulario) return;
-     inicializarValidaciones();
+    inicializarValidaciones();
     formulario.addEventListener(
         "submit",
         enviarFormulario

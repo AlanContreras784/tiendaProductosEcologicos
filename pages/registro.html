@@ -77,24 +77,54 @@
                     <h3>
                         Crear cuenta
                     </h3>
-                    <form id="registroForm">
-                        <label>
-                            Usuario
-                        </label>
-                        <input type="text" id="username" required>
-                        <label>
-                            Nombre
-                        </label>
-                        <input type="text" id="nombre" required>
-                        <label>
-                            Apellido
-                        </label>
-                        <input type="text" id="apellido" required>
-                        <label>
-                            Contraseña
-                        </label>
-                        <input type="password" id="password" required>
-                        <button class="btn-auth">
+                    <form id="registroForm" novalidate>
+                        <div class="campo-control">
+                            <label for="username"> Usuario </label>
+                            <input type="text" id="username" required>
+                            <small id="username-error" class="error-text"></small>
+                        </div>
+                        <div class="campo-control">
+                            <label for="nombre">
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                required>
+                            <small
+                                id="nombre-error"
+                                class="error-text">
+                            </small>
+                        </div>
+                        <div class="campo-control">
+                            <label for="apellido">
+                                Apellido
+                            </label>
+                            <input
+                                type="text"
+                                id="apellido"
+                                required>
+                            <small
+                                id="apellido-error"
+                                class="error-text">
+                            </small>
+                        </div>
+                        <div class="campo-control">
+                            <label for="password">
+                                Contraseña
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                required>
+                            <small
+                                id="password-error"
+                                class="error-text">
+                            </small>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn-auth">
                             Registrarse
                         </button>
                     </form>
