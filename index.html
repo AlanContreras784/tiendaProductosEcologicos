@@ -10,42 +10,7 @@
 </head>
 <body>
     <!-- ==================== HEADER ==================== -->
-    <header class="header">
-        <a href="index.html">
-            <img src="./img/logo1.png" class="logo" alt="Logo Talento Tech" width="40px" height="40px">
-        </a>
-        <div>
-            <ul id="navbar" class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/tienda.html">Tienda</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="pages/contacto.html">Contacto</a></li>
-                <li>
-                    <a href="pages/carrito.html">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                        <span id="cart-badge" class="cart-badge">0</span>
-                    </a>
-                </li>
-                <!-- Panel admin: solo visible si el rol del token es ADMIN -->
-                <li id="menuAdmin" style="display:none;"><a href="pages/admin.html">Panel Admin</a></li>
-                <!-- Nombre de usuario cuando hay sesión iniciada -->
-                <span id="navUsuario"></span>
-                <a href="pages/login.html" id="loginLink">Iniciar Sesión</a>
-                <a href="#" id="logoutLink">Cerrar Sesión</a>
-                <a href="#" id="close" class="close">
-                    <i class="far fa-times" aria-hidden="true"></i>
-                </a>
-            </ul>
-        </div>
-        <div class="mobile">
-            <a href="pages/carrito.html">
-                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                <span class="cart-badge">0</span>
-            </a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
-    </header>
+    <header id="header-principal" class="header"></header>
     <main>
         <!-- ==================== HERO ==================== -->
         <section class="hero">
@@ -204,46 +169,13 @@
         </div>
     </main>
     <!-- ==================== FOOTER ==================== -->
-    <footer class="section-p1">
-        <div class="col">
-            <h4>Contacto</h4>
-            <p><strong>Dirección:</strong> Av. Siempreviva 742, Ciudad Autónoma de Buenos Aires</p>
-            <p><strong>Teléfono:</strong> +54 11 1234 5678</p>
-            <p><strong>Horario:</strong> 9:00 - 18:00, Lunes a Viernes</p>
-            <div class="follow">
-                <h4>Seguinos</h4>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i><i class="fab fa-pinterest-p"></i>
-                    <i class="fab fa-youtube"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <h4>Mi Cuenta</h4>
-            <a href="pages/login.html">Iniciar Sesión</a>
-            <a href="pages/carrito.html">Ver Carrito</a>
-            <a href="#">Mis Favoritos</a>
-            <a href="#">Seguimiento de Pedido</a>
-            <a href="#">Ayuda</a>
-        </div>
-        <div class="col install">
-            <h4>Descargá la App</h4>
-            <p>Desde App Store o Google Play</p>
-            <div class="row">
-                <img src="img/pay/app.jpg" alt="App Store">
-                <img src="img/pay/play.jpg" alt="Google Play">
-            </div>
-            <p>Pasarelas de pago seguras</p>
-            <img src="img/pay/pay.png" alt="Métodos de Pago">
-        </div>
-        <copyright class="copyright">
-            <p>© 2026, Alan Contreras | Talento Tech - Ecommerce</p>
-        </copyright>
-    </footer>
+         <footer id="footer-principal" class="section-p1">
+        <!-- footer.js renderiza el contenido -->
+        </footer>
     <!-- Componentes -->
     <script type="module" src="script/components/toast.js"></script>
     <script type="module" src="script/components/navbar.js"></script>
+    <script type="module" src="script/components/footer.js"></script>
     <!-- Páginas -->
     <!-- <script type="module" src="script/pages/home.js"></script> -->
     <!-- Scripts generales (solo si no usan imports) -->

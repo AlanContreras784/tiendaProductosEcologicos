@@ -13,8 +13,10 @@
 
 <body>
 
-    <!-- El navbar lo arma dinámicamente components/navbar.js -->
-    <div id="header"></div>
+    <!-- ==================== HEADER ==================== -->
+    <header id="header-principal" class="header">
+        <!-- navbar.js renderiza el contenido -->
+    </header>
 
     <main class="admin-main">
 
@@ -84,6 +86,11 @@
                 </table>
             </div>
         </section>
+        <!-- ==================== FOOTER ==================== -->
+        <!-- Mismo footer que en index.html -->
+         <footer id="footer-principal" class="section-p1">
+        <!-- footer.js renderiza el contenido -->
+        </footer>
 
         <!-- TOAST -->
         <div id="toast" class="toast-custom">
@@ -95,9 +102,10 @@
 
     <!-- toast.js es un script clásico (no módulo): tiene que cargar
          ANTES que admin.js para que mostrarToast ya exista -->
-    <script src="../script/toast.js"></script>
-    <script type="module" src="../script/admin.js"></script>
-
+         <script type="module" src="../script/components/navbar.js"></script>
+         <script type="module" src="../script/components/footer.js"></script>
+         <script type="module" src="../script/pages/admin.js"></script>
+         <script type="module" src="../script/components/toast.js"></script>
 </body>
 
 </html>

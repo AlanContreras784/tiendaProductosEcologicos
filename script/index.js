@@ -15,24 +15,4 @@ document.addEventListener('DOMContentLoaded', () =>{
     })
 } )
 
-// function agregarAlCarrito(producto) {
-//     let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
-
-//     const indiceExistente = carrito.findIndex(item => item.id === producto.id);
-
-//     if (indiceExistente !== -1) {
-//         carrito[indiceExistente].cantidad++;
-//     } else {
-//         carrito.push({
-//             id: producto.id,
-//             nombre: producto.nombre,
-//             precio: producto.precio,
-//             imagenUrl: producto.imagenUrl,
-//             cantidad: 1
-//         });
-//     }
-
-//     localStorage.setItem('carritoDeCompras', JSON.stringify(carrito));
-//     mostrarToast(`${producto.nombre} agregado al carrito!`);
-// }
 

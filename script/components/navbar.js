@@ -202,11 +202,75 @@ function protegerPaginaAdmin() {
     return true;
 }
 
+function renderizarNavbar() {
+    const header = document.getElementById("header-principal");
+    if (!header) return;
+    const enPages = window.location.pathname.includes("/pages/");
+    const rutaIndex = enPages ? "../index.html" : "index.html";
+    const rutaTienda = enPages ? "tienda.html" : "pages/tienda.html";
+    const rutaContacto = enPages ? "contacto.html" : "pages/contacto.html";
+    const rutaCarrito = enPages ? "carrito.html" : "pages/carrito.html";
+    const rutaLoginHtml = enPages ? "login.html" : "pages/login.html";
+    const rutaAdmin = enPages ? "admin.html" : "pages/admin.html";
+    header.innerHTML = `
+        <a href="${rutaIndex}">
+            <img src="${enPages ? "../img/logo1.png" : "img/logo1.png"}"
+                 class="logo"
+                 alt="Logo"
+                 width="40"
+                 height="40">
+        </a>
+        <div>
+            <ul id="navbar" class="navbar">
+                <li><a href="${rutaIndex}">Home</a></li>
+                <li><a href="${rutaTienda}">Tienda</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="${rutaContacto}">Contacto</a></li>
+                <li>
+                    <a href="${rutaCarrito}">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </li>
+                <li id="menuAdmin" style="display:none">
+                    <a href="${rutaAdmin}">
+                        Panel Admin
+                    </a>
+                </li>
+                <li>
+                    <span id="navUsuario"></span>
+                </li>
+                <li>
+                    <a id="loginLink" href="${rutaLoginHtml}">
+                        Iniciar Sesión
+                    </a>
+                </li>
+                <li>
+                    <a id="logoutLink" href="#">
+                        Cerrar Sesión
+                    </a>
+                </li>
+                <a href="#" id="close" class="close">
+                    <i class="far fa-times"></i>
+                </a>
+            </ul>
+        </div>
+        <div class="mobile">
+            <a href="${rutaCarrito}">
+                <i class="fa fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    `;
+}
 // ======================================================
 // INICIALIZACIÓN
 // ======================================================
 
 async function iniciarNavbar() {
+    renderizarNavbar();
     cargarEstadoSesion();
     cargarMenuAdmin();
     await cargarBadgeNavbar();

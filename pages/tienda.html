@@ -10,9 +10,7 @@
 
     <meta charset="UTF-8">
 
-    <meta 
-        name="viewport" 
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Tienda - Productos Ecológicos</title>
     <!-- CSS principal -->
@@ -21,241 +19,115 @@
     <link rel="stylesheet" href="../css/components/modal.css">
     <link rel="stylesheet" href="../css/components/toast.css">
     <!-- Font Awesome -->
-    <link 
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+
 <body>
-<!-- ==================== HEADER ==================== -->
-
-<header class="header">
-    <a href="../index.html">
-        <img 
-            src="../img/logo1.png"
-            class="logo"
-            alt="Logo Talento Tech"
-            width="40"
-            height="40">
-    </a>
-    <div>
-        <ul id="navbar" class="navbar">
-            <li>
-                <a href="../index.html">
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="tienda.html">
-                    Tienda
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Blog
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Acerca de
-                </a>
-            </li>
-            <li>
-                <a href="contacto.html">
-                    Contacto
-                </a>
-            </li>
-            <!-- Carrito -->
-            <li>
-                <a href="carrito.html">
-                    <i class="fa fa-shopping-bag"></i>
-                    <span class="cart-badge">
-                        0
-                    </span>
-                </a>
-            </li>
-            <!-- ADMIN -->
-            <li 
-                id="menuAdmin"
-                style="display:none;">
-                <a href="admin.html">
-                    Panel Admin
-                </a>
-            </li>
-            <!-- Usuario -->
-            <li>
-                <span id="navUsuario"></span>
-            </li>
-            <!-- Login -->
-            <li>
-                <a 
-                    href="login.html"
-                    id="loginLink">
-                    Iniciar Sesión
-                </a>
-            </li>
-            <!-- Logout -->
-            <li>
-                <a 
-                    href="#"
-                    id="logoutLink">
-                    Cerrar Sesión
-                </a>
-            </li>
-            <a 
-                href="#"
-                id="close"
-                class="close">
-                <i class="far fa-times"></i>
-            </a>
-        </ul>
-    </div>
-    <!-- Mobile -->
-    <div class="mobile">
-        <a href="carrito.html">
-            <i class="fa fa-shopping-bag"></i>
-            <span class="cart-badge">
-                0
-            </span>
-        </a>
-        <i 
-            id="bar"
-            class="fas fa-outdent">
-        </i>
-    </div>
-</header>
-<main>
-<!-- ==================== BANNER ==================== -->
-<section class="page-header">
-    <h2>
-        Compra Desde Casa
-    </h2>
-    <p>
-        Productos ecológicos para una vida sostenible
-    </p>
-</section>
-<!-- ==================== FILTROS ==================== -->
-<section class="filtros-productos section-p1">
-    <input
-        id="buscadorProductos"
-        type="search"
-        placeholder="Buscar productos...">
-    <select id="filtroCategoria">
-        <option value="">
-            Todas las categorías
-        </option>
-    </select>
-</section>
-<!-- ==================== PRODUCTOS ==================== -->
-<section 
-    class="section-productos section-p1">
-    <div 
-        id="listaProductos"
-        class="productos-container">
-        <!-- Aquí se cargan los productos desde JS -->
-    </div>
-</section>
-<!-- ==================== PAGINADOR ==================== -->
-<div 
-    id="paginador"
-    class="pagination-container">
-</div>
-<!-- ==================== MODAL ==================== -->
-<!-- <div 
-    id="overlayModal"
-    class="modal-overlay">
-    <div class="modal-custom">
-        <button
-            id="btnCerrarModal"
-            class="modal-cerrar">
-            ✕
-        </button>
-        <img
-            id="modalImagen"
-            src=""
-            alt="">
-        <h5 id="modalTitulo"></h5>
-        <p id="modalDescripcion"></p>
-        <h4 id="modalPrecio"></h4>
-
-    </div>
-</div> -->
-<!-- ======================================================
+    <!-- ==================== HEADER ==================== -->
+    <header id="header-principal" class="header">
+        <!-- navbar.js renderiza el contenido -->
+    </header>
+    
+    <main>
+        <!-- ==================== BANNER ==================== -->
+        <section class="page-header">
+            <h2>
+                Compra Desde Casa
+            </h2>
+            <p>
+                Productos ecológicos para una vida sostenible
+            </p>
+        </section>
+        <!-- ==================== FILTROS ==================== -->
+        <section class="filtros-productos section-p1">
+            <input id="buscadorProductos" type="search" placeholder="Buscar productos...">
+            <select id="filtroCategoria">
+                <option value="">
+                    Todas las categorías
+                </option>
+            </select>
+        </section>
+        <!-- ==================== PRODUCTOS ==================== -->
+        <section class="section-productos section-p1">
+            <div id="listaProductos" class="productos-container">
+                <!-- Aquí se cargan los productos desde JS -->
+            </div>
+        </section>
+        <!-- ==================== PAGINADOR ==================== -->
+        <div id="paginador" class="pagination-container">
+        </div>
+        <!-- ==================== MODAL ==================== -->
+        <!-- ======================================================
      MODAL DETALLE PRODUCTO
      Se reutiliza para mostrar la información completa
      de cualquier producto.
 ====================================================== -->
-<aside
-    id="overlayModal"
-    class="modal-overlay"
-    aria-hidden="true">
-    <section
-        class="modal-producto"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalTitulo">
-        <button
-            id="btnCerrarModal"
-            class="modal-cerrar"
-            aria-label="Cerrar">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <figure class="modal-imagen">
-            <img
-                id="modalImagen"
-                src=""
-                alt="">
-        </figure>
-        <section class="modal-info">
-            <header>
-                <span id="modalCategoria"></span>
-                <h2 id="modalTitulo"></h2>
-            </header>
-            <article>
-                <p id="modalDescripcion"></p>
-                <p class="modal-stock">
-                    Stock:
-                    <strong id="modalStock"></strong>
-                </p>
-            </article>
-            <footer>
-                <h3 id="modalPrecio"></h3>
-                <button
-                    id="modalAgregar"
-                    class="carrito">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Agregar al carrito
+        <aside id="overlayModal" class="modal-overlay" aria-hidden="true">
+            <section class="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+                <button id="btnCerrarModal" class="modal-cerrar" aria-label="Cerrar">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
-            </footer>
+                <figure class="modal-imagen">
+                    <img id="modalImagen" src="" alt="">
+                </figure>
+                <section class="modal-info">
+                    <header>
+                        <span id="modalCategoria"></span>
+                        <h2 id="modalTitulo"></h2>
+                    </header>
+                    <article>
+                        <p id="modalDescripcion"></p>
+                        <p class="modal-stock">
+                            Stock:
+                            <strong id="modalStock"></strong>
+                        </p>
+                    </article>
+                    <footer>
+                        <h3 id="modalPrecio"></h3>
+                        <button id="modalAgregar" class="carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Agregar al carrito
+                        </button>
+                    </footer>
+                </section>
+            </section>
+        </aside>
+
+        <!-- ==================== NEWSLETTER ==================== -->
+        <!-- Sección de suscripción por email - igual que en home -->
+        <section class="newsletter section-p1 section-m1">
+            <div class="newstext">
+                <h4>Suscribite al Newsletter</h4>
+                <p>Recibí novedades de nuestra tienda y <span>ofertas exclusivas</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Tu correo electrónico">
+                <button>Suscribirme</button>
+            </div>
         </section>
-    </section>
-</aside>
 
+        <!-- ==================== FOOTER ==================== -->
+        <!-- Mismo footer que en index.html -->
+         <footer id="footer-principal" class="section-p1">
+        <!-- footer.js renderiza el contenido -->
+        </footer>
 
-<!-- ==================== TOAST ==================== -->
-<div 
-    id="toast"
-    class="toast-custom">
-    <span id="toastMensaje"></span>
-    <button 
-        id="btnCerrarToast">
-        ✕
-    </button>
-</div>
-</main>
-<!-- ==================== FOOTER ==================== -->
-<footer class="section-p1">
-    <div class="copyright">
-        <p>
-            © 2025 Alan Contreras | Talento Tech - Ecommerce
-        </p>
-    </div>
-</footer>
-<!-- ==================== SCRIPTS ==================== -->
-<script type="module" src="../script/components/navbar.js"></script>
-<script type="module" src="../script/pages/tienda.js"></script>
-<script type="module"  src="../script/components/modalProducto.js"> </script>
-<script type="module" src="../script/components/toast.js"></script>
-<script type="module" src="../script/components/spinner.js"></script>
+        <!-- ==================== TOAST ==================== -->
+        <div id="toast" class="toast-custom">
+            <span id="toastMensaje"></span>
+            <button id="btnCerrarToast">
+                ✕
+            </button>
+        </div>
+    </main>
+    <!-- ==================== SCRIPTS ==================== -->
+    <script type="module" src="../script/components/navbar.js"></script>
+    <script type="module" src="../script/components/footer.js"></script>
+    <script type="module" src="../script/components/modalProducto.js"> </script>
+    <script type="module" src="../script/components/toast.js"></script>
+    <script type="module" src="../script/components/spinner.js"></script>
+    <script type="module" src="../script/pages/tienda.js"></script>
 </body>
+
 </html>
