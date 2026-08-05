@@ -13,17 +13,17 @@ export function mostrarToast(mensaje) {
     toast.classList.add("mostrar");
     setTimeout(() => {
         toast.classList.remove("mostrar");
-    },3000);
+    }, 3000);
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
     const btnCerrar =
         document.getElementById("btnCerrarToast");
-    if(btnCerrar){
-        btnCerrar.addEventListener("click",()=>{
+    if (btnCerrar) {
+        btnCerrar.addEventListener("click", () => {
             document
-            .getElementById("toast")
-            .classList.remove("mostrar");
+                .getElementById("toast")
+                .classList.remove("mostrar");
         });
     }
 });

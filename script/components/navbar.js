@@ -90,7 +90,6 @@ function cargarEstadoSesion() {
     const loginLink = document.getElementById("loginLink");
     const logoutLink = document.getElementById("logoutLink");
     const spanUsuario = document.getElementById("navUsuario");
-
     const logueado = usuarioLogueado();
 
     if (loginLink) loginLink.style.display = logueado ? "none" : "inline-block";
@@ -172,7 +171,6 @@ function iniciarMenuMobile() {
  */
 function protegerPagina() {
     if (usuarioLogueado()) return true;
-
     if (typeof mostrarToast === "function") {
         mostrarToast("Iniciá sesión para acceder a esta sección.");
     }
@@ -224,7 +222,6 @@ function renderizarNavbar() {
             <ul id="navbar" class="navbar">
                 <li><a href="${rutaIndex}">Home</a></li>
                 <li><a href="${rutaTienda}">Tienda</a></li>
-                <li><a href="#">Blog</a></li>
                 <li><a href="#">Acerca de</a></li>
                 <li><a href="${rutaContacto}">Contacto</a></li>
                 <li>
@@ -268,7 +265,6 @@ function renderizarNavbar() {
 // ======================================================
 // INICIALIZACIÓN
 // ======================================================
-
 async function iniciarNavbar() {
     renderizarNavbar();
     cargarEstadoSesion();
@@ -284,9 +280,6 @@ async function iniciarNavbar() {
         });
     }
 }
-
-
-
 document.addEventListener("DOMContentLoaded", iniciarNavbar);
 export {
     cargarBadgeNavbar,

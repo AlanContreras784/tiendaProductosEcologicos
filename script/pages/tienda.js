@@ -16,47 +16,15 @@
 // - lógica JWT.
 // - HTML de productos.
 // ======================================================
-
-
 import { obtenerProductos, buscarProductos } from "../api/productosApi.js";
-
-
-import {
-    cargarBadgeNavbar,
-    usuarioLogueado
-} from "../components/navbar.js";
-import {
-    obtenerCategorias
-} from "../api/categoriasApi.js";
-import {
-    agregarProducto
-} from "../api/carritoApi.js";
-
-
-import {
-    crearProductoCard
-} from "../components/productoCard.js";
-
-
-import {
-    Paginator
-} from "../components/paginator.js";
-
-import {
-    mostrarToast
-} from "../components/toast.js";
-
-import {
-    mostrarSpinner,
-    ocultarSpinner
-} from "../components/spinner.js";
-
-
-import {
-    abrirModalProducto,
-    inicializarModalProducto,
-    configurarAgregarCarrito
-} from "../components/modalProducto.js";
+import { cargarBadgeNavbar, usuarioLogueado } from "../components/navbar.js";
+import { obtenerCategorias } from "../api/categoriasApi.js";
+import { agregarProducto } from "../api/carritoApi.js";
+import { crearProductoCard } from "../components/productoCard.js";
+import { Paginator } from "../components/paginator.js";
+import { mostrarToast } from "../components/toast.js";
+import { mostrarSpinner, ocultarSpinner } from "../components/spinner.js";
+import { abrirModalProducto, inicializarModalProducto, configurarAgregarCarrito } from "../components/modalProducto.js";
 // ======================================================
 // Estado interno de la página
 // ======================================================
@@ -69,62 +37,48 @@ let paginator;
 // Elementos del DOM
 // ======================================================
 const elementos = {
-
     listaProductos:
         document.getElementById("listaProductos"),
-
     filtroCategoria:
         document.getElementById("filtroCategoria"),
-
     buscador:
         document.getElementById("buscadorProductos"),
-
     paginador:
         document.getElementById("paginador")
 };
 // ======================================================
 // Inicialización
 // ======================================================
-
 async function iniciarTienda() {
     console.log("Iniciando tienda");
-
-console.log(
-"Lista productos:",
-elementos.listaProductos
-);
+    console.log(
+        "Lista productos:",
+        elementos.listaProductos
+    );
     try {
         mostrarSpinner();
         inicializarEventos();
         inicializarModalProducto();
         const botonModal =
-    document.getElementById(
-        "modalAgregarCarrito"
-    );
-
-    configurarAgregarCarrito(async (producto) => {
-
-        try {
-
-            await agregarProducto(producto.id);
-
-            mostrarToast(
-                "Producto agregado al carrito"
+            document.getElementById(
+                "modalAgregarCarrito"
             );
+        configurarAgregarCarrito(async (producto) => {
+            try {
+                await agregarProducto(producto.id);
+                mostrarToast(
+                    "Producto agregado al carrito"
+                );
+                await cargarBadgeNavbar();
+            } catch (error) {
 
-            await cargarBadgeNavbar();
+                console.error(error);
 
-        } catch (error) {
-
-            console.error(error);
-
-            mostrarToast(
-                "No se pudo agregar el producto"
-            );
-
-        }
-
-    });
+                mostrarToast(
+                    "No se pudo agregar el producto"
+                );
+            }
+        });
         await cargarCategorias();
         await cargarProductos();
         inicializarPaginador();
@@ -177,7 +131,6 @@ async function cargarCategorias() {
 // ======================================================
 // Inicializar paginador
 // ======================================================
-
 function inicializarPaginador() {
     if (!elementos.paginador)
         return;
@@ -202,42 +155,35 @@ function inicializarPaginador() {
 // ======================================================
 // Render productos
 // ======================================================
-
 function renderizarProductos() {
     if (!elementos.listaProductos) return;
     elementos.listaProductos.innerHTML = "";
     if (paginator) {
-        paginator.setTotalItems( productosFiltrados.length );
+        paginator.setTotalItems(productosFiltrados.length);
     }
-    mostrarProductosPagina( 0, productosFiltrados.length );
+    mostrarProductosPagina(0, productosFiltrados.length);
 }
-
-
 // ======================================================
 // Mostrar productos de una página
 // ======================================================
-function mostrarProductosPagina(
-    inicio,
-    fin
-) {
-    if (!elementos.listaProductos)
-        return;
-    const productosPagina =
-        productosFiltrados.slice(
-            inicio,
-            fin
-        );
-    elementos.listaProductos.innerHTML =
-        productosPagina
-            .map(producto =>
-                crearProductoCard(producto)
-            )
-            .join("");
+function mostrarProductosPagina( inicio, fin ) {
+        if (!elementos.listaProductos)
+            return;
+        const productosPagina =
+            productosFiltrados.slice(
+                inicio,
+                fin
+            );
+        elementos.listaProductos.innerHTML =
+            productosPagina
+                .map(producto =>
+                    crearProductoCard(producto)
+                )
+                .join("");
 }
 // ======================================================
 // Aplicar filtros
 // ======================================================
-
 function aplicarFiltros() {
     productosFiltrados =
         productos.filter(producto => {
@@ -252,7 +198,7 @@ function aplicarFiltros() {
                 categoriaSeleccionada === ""
                 ||
                 producto.categoria.id ==
-                    categoriaSeleccionada;
+                categoriaSeleccionada;
             return (
                 coincideNombre
                 &&
@@ -261,7 +207,6 @@ function aplicarFiltros() {
         });
     renderizarProductos();
 }
-
 // ======================================================
 // Eventos
 // ======================================================
@@ -350,11 +295,9 @@ async function manejarClickProducto(e) {
                 typeof cargarBadgeNavbar ===
                 "function"
             ) {
-
                 await cargarBadgeNavbar();
-
             }
-        } catch(error) {
+        } catch (error) {
             console.error(error);
             mostrarToast(
                 "No se pudo agregar el producto"
@@ -365,29 +308,24 @@ async function manejarClickProducto(e) {
     // Ver detalle
     // ------------------------------
     if (
-    boton.classList.contains(
+        boton.classList.contains(
             "btn-detalle"
         )
     ) {
-
         const producto =
             productos.find(
                 p => p.id == idProducto
             );
-
         if (!producto) return;
-
         abrirModalProducto(producto);
-
     }
 }
-
 // ======================================================
 // Arranque
 // ======================================================
 
-    //iniciarTienda();
-    document.addEventListener(
-        "DOMContentLoaded",
-        iniciarTienda
-    );
+//iniciarTienda();
+document.addEventListener(
+    "DOMContentLoaded",
+    iniciarTienda
+);
