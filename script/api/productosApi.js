@@ -19,6 +19,41 @@ export async function obtenerProducto(id) {
  */
 export async function buscarProductos(nombre) {
     return await apiClient(
-        `/productos/buscar?nombre=${encodeURIComponent(nombre)}`
+        `/productos/nombre/${encodeURIComponent(nombre)}`
+    );
+}
+// ======================================================
+// Crea un producto.
+// ======================================================
+export async function crearProducto(producto) {
+    return await apiClient(
+        "/productos",
+        {
+            method: "POST",
+            body: JSON.stringify(producto)
+        }
+    );
+}
+// ======================================================
+// Actualiza un producto.
+// ======================================================
+export async function actualizarProducto(id, producto) {
+    return await apiClient(
+        `/productos/${id}`,
+        {
+            method: "PUT",
+            body: JSON.stringify(producto)
+        }
+    );
+}
+// ======================================================
+// Elimina un producto.
+// ======================================================
+export async function eliminarProducto(id) {
+    return await apiClient(
+        `/productos/${id}`,
+        {
+            method: "DELETE"
+        }
     );
 }

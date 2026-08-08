@@ -44,7 +44,13 @@ function obtenerRolUsuario() {
 }
 
 function esAdmin() {
-    return obtenerRolUsuario().toString().toUpperCase().includes("ADMIN");
+    const rol = obtenerRolUsuario();
+    if (!rol) return false;
+    return rol
+        .toString()
+        .trim()
+        .toUpperCase()
+        .includes("ADMIN");
 }
 
 /**
@@ -170,6 +176,9 @@ function iniciarMenuMobile() {
  *   });
  */
 function protegerPagina() {
+    console.log("Usuario:", obtenerNombreUsuario());
+    console.log("Rol:", obtenerRolUsuario());
+    console.log("¿Es admin?:", esAdmin());
     if (usuarioLogueado()) return true;
     if (typeof mostrarToast === "function") {
         mostrarToast("Iniciá sesión para acceder a esta sección.");
@@ -284,5 +293,7 @@ document.addEventListener("DOMContentLoaded", iniciarNavbar);
 export {
     cargarBadgeNavbar,
     usuarioLogueado,
-    rutaLogin
+    rutaLogin,
+    protegerPagina,
+    protegerPaginaAdmin
 };

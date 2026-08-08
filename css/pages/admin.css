@@ -1,0 +1,166 @@
+/* ==========================================================
+   PANEL DE ADMINISTRACIÓN
+========================================================== */
+.admin-main{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 30px;
+}
+.admin-main h2{
+    text-align:center;
+    color:#088178;
+    margin-bottom:10px;
+}
+.admin-subtitulo{
+    text-align:center;
+    color:#606063;
+    margin-bottom:40px;
+}
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+.admin-dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+.admin-card{
+    background:#fff;
+    border:1px solid #cce7d0;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:20px 20px 30px rgba(0,0,0,.04);
+    transition:.3s;
+}
+.admin-card:hover{
+    transform:translateY(-4px);
+}
+.admin-card h4{
+    color:#465b52;
+    margin-bottom:15px;
+}
+.admin-card span{
+    font-size:2rem;
+    font-weight:bold;
+    color:#088178;
+}
+/* ==========================================================
+   FORMULARIO
+========================================================== */
+.admin-form-section{
+    background:#fff;
+    border:1px solid #e1e1e1;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:40px;
+}
+.admin-form{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+.campo{
+    display:flex;
+    flex-direction:column;
+}
+.campo-full{
+    grid-column:1/-1;
+}
+.campo label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+.campo input,
+.campo select,
+.campo textarea{
+    padding:12px;
+    border:1px solid #dcdcdc;
+    border-radius:6px;
+    font-size:14px;
+}
+.campo textarea{
+    resize:vertical;
+}
+/* ==========================================================
+   BOTONES
+========================================================== */
+.campo-acciones{
+    grid-column:1/-1;
+    display:flex;
+    gap:15px;
+    margin-top:10px;
+}
+.btn-primario,
+.btn-secundario{
+    padding:12px 22px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+.btn-primario{
+    background:#088178;
+    color:white;
+}
+.btn-primario:hover{
+    background:#066f66;
+}
+.btn-secundario{
+    background:#6c757d;
+    color:white;
+}
+.btn-secundario:hover{
+    background:#555;
+}
+/* ==========================================================
+   TABLA
+========================================================== */
+.admin-tabla-section{
+    background:#fff;
+    border:1px solid #e1e1e1;
+    border-radius:15px;
+    padding:30px;
+}
+.admin-tabla-wrapper{
+    overflow:auto;
+}
+.admin-tabla{
+    width:100%;
+    border-collapse:collapse;
+}
+.admin-tabla thead{
+    background:#088178;
+    color:white;
+}
+.admin-tabla th,
+.admin-tabla td{
+    padding:14px;
+    border-bottom:1px solid #ececec;
+    text-align:center;
+}
+.admin-tabla img{
+    width:60px;
+    border-radius:8px;
+}
+.admin-cargando{
+    padding:40px;
+    color:#777;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media(max-width:768px){
+    .admin-form{
+        grid-template-columns:1fr;
+    }
+    .campo-full{
+        grid-column:auto;
+    }
+    .campo-acciones{
+        flex-direction:column;
+    }
+}
