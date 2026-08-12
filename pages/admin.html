@@ -1,136 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Productos Ecológicos</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages/admin.css">
 </head>
-
 <body>
-
     <!-- ==================== HEADER ==================== -->
     <header id="header-principal" class="header">
         <!-- navbar.js renderiza el contenido -->
     </header>
-
     <main class="admin-main">
 
         <h2>Centro de Administración</h2>
         <p class="admin-subtitulo">Administrá productos, categorías y usuarios desde un único lugar..</p>
-        <!-- ==================== DASHBOARD =================== -->
+        <!-- ==================== DASHBOARD ==================== -->
         <section class="admin-dashboard">
-            <article class="admin-card">
+            <!-- PRODUCTOS -->
+            <article id="cardProductos" class="admin-card admin-card-clickable" role="button" tabindex="0">
                 <h4>Productos</h4>
-                <span id="totalProductos">0</span>
+                <span id="totalProductos"> 0 </span>
             </article>
-            <article class="admin-card">
+            <!-- CATEGORÍAS -->
+            <article id="cardCategorias" class="admin-card admin-card-clickable" role="button" tabindex="0">
                 <h4>Categorías</h4>
-                <span id="totalCategorias">0</span>
+                <span id="totalCategorias"> 0 </span>
             </article>
-            <article class="admin-card">
+            <!-- USUARIOS -->
+            <article id="cardUsuarios" class="admin-card admin-card-clickable" role="button" tabindex="0">
                 <h4>Usuarios</h4>
-                <span id="totalUsuarios">0</span>
+                <span id="totalUsuarios"> 0 </span>
             </article>
         </section>
-        <!-- ==================== FORMULARIO ==================== -->
-        <section class="admin-form-section">
-            <h3 id="formTitulo">Nuevo producto</h3>
-
-            <form id="formProducto" class="admin-form">
-                <input type="hidden" id="productoId">
-
-                <div class="campo">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" required>
-                </div>
-
-                <div class="campo">
-                    <label for="precio">Precio</label>
-                    <input type="number" id="precio" min="0" step="0.01" required>
-                </div>
-                <div class="campo">
-                    <label for="stock">Stock</label>
-                    <input type="number" id="stock" min="0" step="1" required >
-                </div>
-
-                <div class="campo">
-                    <label for="categoria">Categoría</label>
-                    <select id="categoria" required></select>
-                </div>
-
-                <div class="campo campo-full">
-                    <label for="imagenUrl">URL de imagen</label>
-                    <input type="text" id="imagenUrl" placeholder="https://..." required>
-                </div>
-
-                <div class="campo campo-full">
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" rows="3" required></textarea>
-                </div>
-
-                <div class="campo-acciones">
-                    <button type="submit" id="btnGuardar" class="btn-primario">Crear producto</button>
-                    <button type="button" id="btnCancelarEdicion" class="btn-secundario" style="display:none;">
-                        Cancelar edición
-                    </button>
-                </div>
-            </form>
-        </section>
-
-        <!-- ==================== TABLA DE PRODUCTOS ==================== -->
-        <section class="admin-tabla-section">
-            <h3>Productos existentes</h3>
-            <div class="admin-tabla-wrapper">
-                <table class="admin-tabla">
-                    <thead>
-                        <tr>
-                            <th>Imagen</th>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaProductos">
-                        <tr>
-                            <td colspan="6" class="admin-cargando">Cargando productos...</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- ======================================================
+        CONTENIDO DINÁMICO DEL ADMIN
+        Aquí se cargan los módulos:
+        - Productos
+        - Categorías
+        - Usuarios
+        Cada módulo se importa dinámicamente cuando el
+        administrador selecciona una tarjeta del dashboard.
+    ====================================================== -->
+        <section id="adminContenido" class="admin-contenido">
+            <div class="admin-contenido-vacio">
+                <h3>
+                    Seleccioná una sección
+                </h3>
+                <p>
+                    Elegí Productos, Categorías o Usuarios
+                    desde el dashboard.
+                </p>
             </div>
         </section>
-        <!-- ==================== FOOTER ==================== -->
-        <!-- Mismo footer que en index.html -->
-         <footer id="footer-principal" class="section-p1">
-        <!-- footer.js renderiza el contenido -->
-        </footer>
-
-        <!-- ==================== MODAL DE CONFIRMACIÓN ==================== -->
-        <div id="modal-confirm" class="modal-overlay">
-            <div class="modal-content">
-                <h3 id="modal-title">Confirmar acción</h3>
-
+        <!-- ======================================================
+            MODAL DE CONFIRMACIÓN
+            Se reutiliza para acciones importantes del panel admin.
+        ====================================================== -->
+        <aside id="modal-confirm" class="modal-confirm hidden" aria-hidden="true">
+            <section class="modal-confirm-content" role="dialog" aria-modal="true" aria-labelledby="modal-message">
                 <p id="modal-message">
-                    ¿Está seguro?
+                    ¿Confirmar acción?
                 </p>
-
                 <div class="modal-actions">
-                    <button id="modal-no" class="btn-cancel">
+                    <button id="modal-no" type="button" class="btn-cancel">
                         Cancelar
                     </button>
-
-                    <button id="modal-yes" class="btn-ok">
+                    <button id="modal-yes" type="button" class="btn-ok">
                         Aceptar
                     </button>
                 </div>
-            </div>
-        </div>
+            </section>
+        </aside>
+        <!-- ==================== FOOTER ==================== -->
+        <!-- Mismo footer que en index.html -->
+        <footer id="footer-principal" class="section-p1">
+            <!-- footer.js renderiza el contenido -->
+        </footer>
         <!-- ==================== SPINNER ==================== -->
         <div id="spinner" class="spinner-overlay" style="display:none;">
             <div class="spinner"></div>
@@ -140,17 +89,16 @@
             <span id="toastMensaje"></span>
             <button id="btnCerrarToast">✕</button>
         </div>
-
     </main>
 
     <!-- toast.js es un script clásico (no módulo): tiene que cargar
          ANTES que admin.js para que mostrarToast ya exista -->
-         <script type="module" src="../script/components/navbar.js"></script>
-         <script type="module" src="../script/components/footer.js"></script>
-         <script type="module" src="../script/pages/admin.js"></script>
-         <script type="module" src="../script/components/modalConfirmacion.js"></script>
-         <script type="module" src="../script/components/spinner.js"></script>
-         <script type="module" src="../script/components/toast.js"></script>
+    <script type="module" src="../script/components/navbar.js"></script>
+    <script type="module" src="../script/components/footer.js"></script>
+    <script type="module" src="../script/components/modalConfirmacion.js"></script>
+    <script type="module" src="../script/components/toast.js"></script>
+    <script type="module" src="../script/components/spinner.js"></script>
+    <script type="module" src="../script/pages/admin.js"></script>
 </body>
 
 </html>

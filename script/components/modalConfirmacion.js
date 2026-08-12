@@ -9,16 +9,9 @@
 // - Esperar respuesta del usuario.
 // - Cerrar modal.
 // - Devolver true / false.
-//
-// Ejemplo:
-// const aceptar = await confirmarAccion(
-//      "¿Vaciar carrito?"
-// );
-//
-// if(aceptar){
-//      ejecutarAccion();
-// }
+// - Gestionar correctamente el foco y aria-hidden.
 // ======================================================
+
 // ======================================================
 // Elementos DOM
 // ======================================================
@@ -32,6 +25,9 @@ const elementos = {
     botonAceptar:
         document.getElementById("modal-yes")
 };
+// Guarda el elemento que tenía el foco antes
+// de abrir el modal.
+let elementoAnterior = null;
 // ======================================================
 // Mostrar confirmación
 // ======================================================
@@ -41,36 +37,47 @@ export function confirmarAccion(mensaje) {
             resolve(false);
             return;
         }
-        // Actualiza mensaje
+        // Guardamos el botón que abrió el modal.
+        elementoAnterior =
+            document.activeElement;
+        // Actualiza el mensaje.
         elementos.mensaje.textContent =
             mensaje;
-        // Muestra modal
+        // Hace visible el modal.
         elementos.modal.classList.remove(
             "hidden"
         );
-        // ------------------------------
+        // Ahora el modal es accesible.
+        elementos.modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+        // Movemos el foco dentro del modal.
+        elementos.botonCancelar.focus();
+        // ==================================================
         // Aceptar
-        // ------------------------------
+        // ==================================================
         const aceptar = () => {
             cerrarModal();
             limpiarEventos();
             resolve(true);
         };
-        // ------------------------------
+        // ==================================================
         // Cancelar
-        // ------------------------------
+        // ==================================================
         const cancelar = () => {
             cerrarModal();
             limpiarEventos();
             resolve(false);
         };
-        // ------------------------------
-        // Eventos temporales
-        // ------------------------------
+        // Eventos temporales.
         elementos.botonAceptar.onclick =
             aceptar;
         elementos.botonCancelar.onclick =
             cancelar;
+        // ==================================================
+        // Limpia los eventos después de responder.
+        // ==================================================
         function limpiarEventos() {
             elementos.botonAceptar.onclick =
                 null;
@@ -83,7 +90,22 @@ export function confirmarAccion(mensaje) {
 // Cerrar modal
 // ======================================================
 function cerrarModal() {
+    // Primero devolvemos el foco al elemento
+    // que abrió el modal.
+    if (
+        elementoAnterior &&
+        typeof elementoAnterior.focus === "function"
+    ) {
+        elementoAnterior.focus();
+    }
+    // Ocultamos visualmente el modal.
     elementos.modal.classList.add(
         "hidden"
     );
+    // Ahora sí lo ocultamos para lectores de pantalla.
+    elementos.modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+    elementoAnterior = null;
 }

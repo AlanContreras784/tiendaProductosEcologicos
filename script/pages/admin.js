@@ -1,251 +1,178 @@
 // ======================================================
 // admin.js
 //
-// Controlador del Panel de Administración.
+// Controlador principal del Centro de Administración.
 //
 // Responsabilidades:
-// - Verificar permisos de administrador.
-// - Inicializar el panel.
-// - Cargar dashboard.
-// - Cargar categorías.
-// - Cargar productos.
-// - Gestionar CRUD.
+// - Proteger la página para usuarios ADMIN.
+// - Inicializar el dashboard.
+// - Escuchar los clics en las tarjetas.
+// - Cargar dinámicamente los módulos:
+//      Productos
+//      Categorías
+//      Usuarios
+//
+// Cada módulo administra su propio formulario,
+// tabla y lógica.
+//
+// Esto permite mantener una arquitectura modular,
+// similar al concepto de componentes y vistas
+// utilizado en aplicaciones modernas.
 // ======================================================
+
 import { protegerPaginaAdmin } from "../components/navbar.js";
-import { obtenerProductos, obtenerProducto,actualizarProducto } from "../api/productosApi.js";
+import { obtenerProductos } from "../api/productosApi.js";
 import { obtenerCategorias } from "../api/categoriasApi.js";
-import { mostrarSpinner, ocultarSpinner } from "../components/spinner.js";
-import { mostrarToast } from "../components/toast.js";
+import { obtenerCantidadUsuarios, obtenerUsuarios } from "../api/usuariosApi.js";
+import { obtenerUsuario } from "../utils/storage.js";
+
 // ======================================================
-// Elementos del DOM
+// Elementos del Dashboard
 // ======================================================
+
 const totalProductos = document.getElementById("totalProductos");
 const totalCategorias = document.getElementById("totalCategorias");
 const totalUsuarios = document.getElementById("totalUsuarios");
-const tablaProductos = document.getElementById("tablaProductos");
-// ======================================================
-// capturar los controles del formulario
-// ======================================================
-const productoId = document.getElementById("productoId");
+const cardProductos = document.getElementById("cardProductos");
+const cardCategorias = document.getElementById("cardCategorias");
+const cardUsuarios = document.getElementById("cardUsuarios");
 
-const nombre = document.getElementById("nombre");
-const precio = document.getElementById("precio");
-const stock = document.getElementById("stock");
-const categoria = document.getElementById("categoria");
-const imagenUrl = document.getElementById("imagenUrl");
-const descripcion = document.getElementById("descripcion");
+// ======================================================
+// Contenedor donde se cargan los módulos dinámicamente
+// ======================================================
 
-const formulario = document.getElementById("formProducto");
-const formTitulo = document.getElementById("formTitulo");
-const btnGuardar = document.getElementById("btnGuardar");
-const btnCancelarEdicion = document.getElementById("btnCancelarEdicion");
+const adminContenido = document.getElementById("adminContenido");
+
 // ======================================================
 // Inicialización
 // ======================================================
+
 async function iniciarAdmin() {
-    if (!protegerPaginaAdmin()) return;
-    console.log("Panel de administración inicializado.");
-    await cargarCategorias();
+
+    // Verifica que el usuario tenga permisos ADMIN.
+    if (!protegerPaginaAdmin()) {
+        return;
+    }
     await cargarDashboard();
-    // Botón para cancelar la edición
-    btnCancelarEdicion?.addEventListener( "click", cancelarEdicion );
-    formulario?.addEventListener( "submit", guardarProducto );
+    inicializarEventos();
 }
+
 // ======================================================
-// Dashboard
+// Eventos del Dashboard
 // ======================================================
+
+function inicializarEventos() {
+
+    cardProductos?.addEventListener( "click", cargarModuloProductos);
+    cardCategorias?.addEventListener( "click", cargarModuloCategorias);
+    cardUsuarios?.addEventListener( "click", cargarModuloUsuarios);
+}
+
+// ======================================================
+// Carga información del Dashboard
+// ======================================================
+
 async function cargarDashboard() {
-    try {
-        const productos = await obtenerProductos();
-        totalProductos.textContent = productos.length;
-        renderizarTabla(productos);
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-// ======================================================
-// Editar un Producto
-// ======================================================
-async function editarProducto(event) {
 
     try {
-
-        const id =
-            event.currentTarget.dataset.id;
-        const producto =
-            await obtenerProducto(id);
-        productoId.value = producto.id;
-        nombre.value = producto.nombre;
-        precio.value = producto.precio;
-        stock.value = producto.stock;
-        categoria.value = producto.categoria.id;
-        imagenUrl.value = producto.imagenUrl;
-        descripcion.value = producto.descripcion;
-        formTitulo.textContent = "Editar producto";
-        btnGuardar.textContent = "Guardar cambios";
-        btnCancelarEdicion.style.display = "inline-block";
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        const [
+            productos,
+            categorias,
+            cantidadUsuarios
+        ] = await Promise.all([
+            obtenerProductos(),
+            obtenerCategorias(),
+            obtenerCantidadUsuarios()
+        ]);
+        totalProductos.textContent =  productos.length;
+        totalCategorias.textContent = categorias.length;
+        totalUsuarios.textContent = cantidadUsuarios;
     }
     catch (error) {
         console.error(
-            "Error al cargar producto:",
+            "Error al cargar dashboard:",
             error
         );
-        mostrarToast(
-            "No se pudo cargar el producto."
-        );
+        totalUsuarios.textContent = "0";
     }
 }
-// ======================================================
-// Cancelar Edición
-// ======================================================
-function cancelarEdicion() {
-    formulario.reset();
-    productoId.value = "";
-    formTitulo.textContent = "Nuevo producto";
-    btnGuardar.textContent = "Crear producto";
-    btnCancelarEdicion.style.display = "none";
-}
 
 // ======================================================
-// Renderiza la tabla de productos.
+// MÓDULO PRODUCTOS
 // ======================================================
 
-function renderizarTabla(productos) {
-    if (!tablaProductos) return;
-    if (productos.length === 0) {
-        tablaProductos.innerHTML = `
-            <tr>
-                <td colspan="6" class="admin-cargando">
-                    No hay productos registrados.
-                </td>
-            </tr>
-        `;
-        return;
-    }
-    tablaProductos.innerHTML = productos.map(producto => `
-        <tr>
-            <td>
-                <img
-                    src="${producto.imagenUrl}"
-                    alt="${producto.nombre}"
-                    width="60">
-            </td>
-            <td>${producto.nombre}</td>
-            <td>${producto.categoria.nombre}</td>
-            <td>$${producto.precio}</td>
-            <td>${producto.stock}</td>
-            <td>
-                <button
-                    class="btn-editar"
-                    data-id="${producto.id}">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button
-                    class="btn-eliminar"
-                    data-id="${producto.id}">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-    `).join("");
-    document
-    .querySelectorAll(".btn-editar")
-    .forEach(boton => {
+async function cargarModuloProductos() {
 
-        boton.addEventListener(
-            "click",
-            editarProducto
-        );
-
-    });
-}
-
-// ======================================================
-// Carga las categorías en el selector del formulario.
-// ======================================================
-async function cargarCategorias() {
-    if (!categoria) return;
     try {
-        const categorias = await obtenerCategorias();
-        categoria.innerHTML = `
-            <option value="">
-                Seleccioná una categoría
-            </option>
-        `;
-        categorias.forEach(cat => {
-            const option =
-                document.createElement("option");
-            option.value = cat.id;
-            option.textContent = cat.nombre;
-            categoria.appendChild(option);
-        });
+        const modulo = await import("../admin/adminProductos.js");
+
+        adminContenido.innerHTML = "";
+
+        await modulo.iniciarAdminProductos(
+            adminContenido
+        );
+
     }
     catch (error) {
         console.error(
-            "Error al cargar categorías:",
+            "Error al cargar módulo productos:",
             error
         );
     }
 }
-async function guardarProducto(event) {
-    event.preventDefault();
-    // Por ahora solamente permitimos actualizar.
-    // La creación la implementaremos después.
-    if (!productoId.value) {
 
-        mostrarToast(
-            "La creación de productos la implementaremos después."
-        );
+// ======================================================
+// MÓDULO CATEGORÍAS
+// ======================================================
 
-        return;
-    }
+async function cargarModuloCategorias() {
+
     try {
+        const modulo =
+            await import("../admin/adminCategorias.js");
 
-        const datos = {
-            nombre: nombre.value.trim(),
-            precio: Number(precio.value),
-            descripcion: descripcion.value.trim(),
-            stock: Number(stock.value),
-            imagenUrl: imagenUrl.value.trim(),
-            categoriaId: Number(categoria.value)
-        };
-        console.log(
-            "Datos enviados al backend:",
-            datos
+        adminContenido.innerHTML = "";
+
+        await modulo.iniciarAdminCategorias(
+            adminContenido
         );
-        mostrarSpinner();
-        await actualizarProducto(
-            productoId.value,
-            datos
-        );
-        mostrarToast(
-            "Producto actualizado correctamente."
-        );
-        cancelarEdicion();
-        await cargarDashboard();
     }
     catch (error) {
         console.error(
-            "Error al actualizar producto:",
+            "Error al cargar módulo categorías:",
             error
         );
-        mostrarToast(
-            error.message ??
-            "No se pudo actualizar el producto."
-        );
-    }
-    finally {
-        ocultarSpinner();
     }
 }
+
+// ======================================================
+// MÓDULO USUARIOS
+// ======================================================
+
+async function cargarModuloUsuarios() {
+
+    try {
+        const modulo =
+            await import("../admin/adminUsuarios.js");
+
+        adminContenido.innerHTML = "";
+
+        modulo.iniciarAdminUsuarios(
+            adminContenido
+        );
+    }
+    catch (error) {
+        console.error(
+            "Error al cargar módulo usuarios:",
+            error
+        );
+    }
+}
+
 // ======================================================
 // Arranque
 // ======================================================
+
 document.addEventListener(
     "DOMContentLoaded",
     iniciarAdmin
