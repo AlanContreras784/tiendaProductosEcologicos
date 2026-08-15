@@ -52,37 +52,55 @@ body {
 /* ============================================================
    HEADER Y NAVEGACIÓN
    Barra superior fija con logo y menú
+/* ============================================================
+   HEADER Y NAVEGACIÓN
    ============================================================ */
+
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 80px;
+
+    /* Se adapta progresivamente al ancho disponible */
+    padding: clamp(0.9rem, 2vw, 1.25rem)
+             clamp(1rem, 5vw, 5rem);
+
     background-color: #E3E6f3;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-    /* El header queda fijo en la parte superior al hacer scroll */
-    z-index: 999;
+
+    box-shadow:
+        0 0.3rem 0.9rem rgba(0, 0, 0, 0.06);
+
     position: sticky;
     top: 0;
     left: 0;
+
+    z-index: 999;
 }
+
+/*--------------------------------------------------------------------------------------------------- */ 
 /* Lista de navegación horizontal */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .navbar li {
     list-style: none;
-    padding: 0 20px;
+    padding: 0 clamp(0.6rem, 1.2vw, 1.25rem);
 }
+
 .navbar a {
     text-decoration: none;
-    font-size: 16px;
+
+    font-size: 1rem;
     font-weight: 600;
+
     color: #1a1a1a;
-    transition: 0.3s ease;
+
+    transition: color 0.3s ease;
 }
+
 .navbar a:hover {
     color: #088178;
 }
@@ -187,46 +205,189 @@ body {
     cursor: pointer;
     color: #222;
 }
-/* Responsive: menú deslizante desde la derecha en pantallas pequeñas */
+
+/* ============================================================
+   ICONO DEL CARRITO
+   Mantiene el mismo estilo visual del navbar
+   ============================================================ */
+
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+/* Icono del carrito */
+.cart-link i {
+    color: #1a1a1a;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover */
+.cart-link:hover,
+.cart-link:hover i {
+    color: #088178;
+}
+/* ============================================================
+   RESPONSIVE - MENÚ MOBILE
+   ============================================================ */
+
 @media (max-width: 799px) {
+
+    /* --------------------------------------------
+       Menú lateral
+       -------------------------------------------- */
+
     .navbar {
         display: flex;
+
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+
         position: fixed;
+
         top: 0;
-        right: -300px;
+        right: 0;
+
+        /*
+         * El menú ocupa como máximo 20rem,
+         * pero nunca más del 85% de la pantalla.
+         */
+        width: min(20rem, 85vw);
         height: 100vh;
-        width: 300px;
+
         background-color: #e3e6f3;
-        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-        padding: 80px 0 0 10px;
-        transition: 0.3s;
+
+        box-shadow:
+            -0.5rem 0 2rem rgba(0, 0, 0, 0.1);
+
+        padding: 5rem 1rem 1.5rem;
+
+        /*
+         * En lugar de right:-300px utilizamos
+         * transform para desplazar el menú.
+         */
+        transform: translateX(100%);
+
+        transition:
+            transform 0.3s ease;
+
+        z-index: 1000;
     }
+
+
+    /* --------------------------------------------
+       Menú abierto
+       -------------------------------------------- */
+
+    .navbar.active {
+        transform: translateX(0);
+    }
+
+
+    /* --------------------------------------------
+       Elementos del menú
+       -------------------------------------------- */
+
     .navbar li {
-        margin-bottom: 25px;
+        width: 100%;
+
+        margin-bottom: 1.25rem;
+
+        padding: 0;
     }
+
+
+    .navbar li a {
+        font-size: 1rem;
+    }
+
+
+    /* --------------------------------------------
+       Carrito dentro del menú
+       -------------------------------------------- */
+
+    .navbar .cart-link {
+        width: auto;
+    }
+   @media (max-width: 799px) {
+
+    .mobile .cart-link {
+        color: #1a1a1a;
+        text-decoration: none;
+    }
+
+    .mobile .cart-link i {
+        color: #1a1a1a;
+        font-size: 1.25rem;
+    }
+
+    .mobile .cart-link:hover i {
+        color: #088178;
+    }
+}
+
+    /* --------------------------------------------
+       Botón hamburguesa
+       -------------------------------------------- */
+
     .mobile {
         display: flex;
+
         align-items: center;
+
+        gap: 1.25rem;
     }
-    .mobile i {
+
+
+    .mobile > i {
         color: #1a1a1a;
-        font-size: 24px;
-        padding-left: 20px;
+
+        font-size: 1.5rem;
+
+        cursor: pointer;
     }
-    /* Clase que se agrega con JS para mostrar el menú */
-    .active {
-        right: 0px;
+
+
+    /* --------------------------------------------
+       Carrito mobile
+       -------------------------------------------- */
+
+    .mobile .cart-link {
+        position: relative;
+
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
     }
+
+
+    .mobile .cart-link i {
+        font-size: 1.35rem;
+    }
+
+
+    /* --------------------------------------------
+       Botón cerrar
+       -------------------------------------------- */
+
     .close {
         display: initial;
+
         position: absolute;
-        top: 30px;
-        left: 30px;
+
+        top: 1.5rem;
+        left: 1.5rem;
+
         color: #222;
-        font-size: 24px;
+
+        font-size: 1.5rem;
     }
 }
 /* ============================================================
@@ -810,15 +971,48 @@ footer .copyright {
 /* ============================================================
     ESTILO DEL BADGE DEL CARRITO
    ============================================================ */
-   .cart-badge {
+   /* ============================================================
+   BADGE DEL CARRITO
+   ============================================================ */
+
+.cart-badge {
     position: absolute;
-    background: red;
+
+    top: -0.55rem;
+    right: -0.65rem;
+
+    min-width: 1.2rem;
+    height: 1.2rem;
+
+    padding: 0.1rem 0.3rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: red;
     color: white;
+
     border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    min-width: 18px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+
     text-align: center;
+
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   ENLACES DEL CARRITO
+   El enlace funciona como referencia para el badge
+   ============================================================ */
+
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
 }
 /* ============================================================
     ANIMACIÓN DEL BADGE DEL CARRITO

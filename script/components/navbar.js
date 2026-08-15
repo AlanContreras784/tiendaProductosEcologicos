@@ -234,7 +234,7 @@ function renderizarNavbar() {
                 <li><a href="#">Acerca de</a></li>
                 <li><a href="${rutaContacto}">Contacto</a></li>
                 <li>
-                    <a href="${rutaCarrito}">
+                    <a href="${rutaCarrito}" class="cart-link">
                         <i class="fa fa-shopping-bag"></i>
                         <span class="cart-badge">0</span>
                     </a>
@@ -262,11 +262,12 @@ function renderizarNavbar() {
                 </a>
             </ul>
         </div>
-        <div class="mobile">
-            <a href="${rutaCarrito}">
+       <div class="mobile">
+            <a href="${rutaCarrito}" class="cart-link">
                 <i class="fa fa-shopping-bag"></i>
                 <span class="cart-badge">0</span>
             </a>
+
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     `;

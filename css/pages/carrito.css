@@ -1,56 +1,39 @@
-/* Cart Table Section */
+/* ======================================================
+   CARRITO - ESTILOS GENERALES
+   ------------------------------------------------------
+   Estilos específicos de la página del carrito.
+
+   Responsabilidades:
+   - Tabla de productos.
+   - Imágenes.
+   - Controles de cantidad.
+   - Botones de acciones.
+   - Cupón.
+   - Resumen de compra.
+   - Diseño responsive.
+
+   La lógica del carrito pertenece a carrito.js.
+   ====================================================== */
+
+
+/* ======================================================
+   TABLA DEL CARRITO
+   ====================================================== */
+
 #cart {
     overflow-x: auto;
-    /* Ensures table is scrollable on small screens */
 }
 
 #cart table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
     white-space: nowrap;
 }
 
-#cart table img {
-    width: 70px;
-    border-radius: 5px;
-}
 
-#cart table td:nth-child(1) {
-    /* REMOVE column */
-    width: 100px;
-    text-align: center;
-}
-
-#cart table td:nth-child(2) {
-    /* IMAGE column */
-    width: 150px;
-    text-align: center;
-}
-
-#cart table td:nth-child(3) {
-    /* PRODUCT column */
-    width: 250px;
-    text-align: center;
-}
-
-#cart table td:nth-child(4),
-/* PRICE column */
-#cart table td:nth-child(5),
-/* QUANTITY column */
-#cart table td:nth-child(6) {
-    /* SUBTOTAL column */
-    width: 150px;
-    text-align: center;
-}
-
-#cart table td:nth-child(5) input {
-    width: 50px;
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+/* ======================================================
+   ENCABEZADO DE LA TABLA
+   ====================================================== */
 
 #cart table thead {
     border: 1px solid #e2e9e1;
@@ -58,66 +41,260 @@
     border-right: none;
 }
 
-#cart table thead td {
+#cart table thead th {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 13px;
     padding: 18px 0;
 }
 
+
+/* ======================================================
+   FILAS Y CELDAS
+   ====================================================== */
+
 #cart table tbody tr td {
     padding-top: 15px;
-}
-
-#cart table tbody td {
     font-size: 13px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-/* Remove Button Styling */
+
+/* ======================================================
+   ANCHO DE COLUMNAS
+   ====================================================== */
+
+/* Columna eliminar */
+#cart table th:nth-child(1),
+#cart table td:nth-child(1) {
+    width: 100px;
+}
+
+/* Columna imagen */
+#cart table th:nth-child(2),
+#cart table td:nth-child(2) {
+    width: 150px;
+}
+
+/* Columna producto */
+#cart table th:nth-child(3),
+#cart table td:nth-child(3) {
+    width: 250px;
+}
+
+/* Columnas precio, cantidad y subtotal */
+#cart table th:nth-child(4),
+#cart table td:nth-child(4),
+
+#cart table th:nth-child(5),
+#cart table td:nth-child(5),
+
+#cart table th:nth-child(6),
+#cart table td:nth-child(6) {
+    width: 150px;
+}
+
+
+/* ======================================================
+   IMÁGENES DE LOS PRODUCTOS
+   ====================================================== */
+
+/*
+   Se establece ancho y alto iguales para que todas
+   las imágenes ocupen el mismo espacio visual.
+
+   object-fit: contain evita recortar el producto.
+*/
+
+#cart table img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+
+/* ======================================================
+   BOTÓN ELIMINAR
+   ====================================================== */
+
 .remove-btn {
-    background-color: transparent;
-    border: 1px solid #dc3545;
-    /* Red color for remove */
-    color: #dc3545;
-    border-radius: 50%;
     width: 30px;
     height: 30px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    background-color: transparent;
+    border: 1px solid #dc3545;
+    border-radius: 50%;
+
+    color: #dc3545;
+
     font-size: 0.9rem;
+
     cursor: pointer;
-    transition: 0.3s ease;
+
+    transition: all 0.3s ease;
 }
 
 .remove-btn:hover {
     background-color: #dc3545;
-    color: white;
+    color: #ffffff;
 }
 
 
-#cart button.normal {
-    background-color: #088178;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
+/* ======================================================
+   CONTROLES DE CANTIDAD
+   ====================================================== */
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+
+/* ======================================================
+   BOTONES + Y -
+   ====================================================== */
+
+.btn-restar,
+.btn-sumar {
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #088178;
+    border-radius: 50%;
+
+    background-color: transparent;
+    color: #088178;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.btn-restar:hover,
+.btn-sumar:hover {
+    background-color: #088178;
+    color: #ffffff;
+}
+
+
+/* ======================================================
+   BOTÓN RESTAR DESHABILITADO
+   ====================================================== */
+
+.btn-restar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* ======================================================
+   INPUT DE CANTIDAD
+   ====================================================== */
+
+.quantity-controls input {
+    width: 50px;
+    height: 30px;
+
+    padding: 5px;
+
+    text-align: center;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
     font-weight: 600;
 }
-/* Cart Add Section (Coupon and Totals) */
+
+
+/* ======================================================
+   BOTONES GENERALES DEL CARRITO
+   ====================================================== */
+
+#cart button.normal,
+#coupon button.normal,
+#subtotal button.normal {
+    background-color: #088178;
+    color: #ffffff;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+#cart button.normal:hover,
+#coupon button.normal:hover,
+#subtotal button.normal:hover {
+    opacity: 0.9;
+}
+
+
+/* ======================================================
+   ACCIONES DEL CARRITO
+   ====================================================== */
+
+.cart-actions {
+    margin-top: 25px;
+}
+
+#cart button.normal {
+    padding: 10px 20px;
+}
+
+
+/* ======================================================
+   SECCIÓN CUPÓN Y RESUMEN
+   ====================================================== */
+
 #cart-add {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    gap: 30px;
+
     margin-top: 50px;
 }
 
+
+/* ======================================================
+   TARJETAS CUPÓN / RESUMEN
+   ====================================================== */
+
 #coupon,
 #subtotal {
-    width: 48%;
+    width: calc(50% - 15px);
+
     border: 1px solid #e2e9e1;
+
     padding: 30px;
+
+    box-sizing: border-box;
 }
+
+
+/* ======================================================
+   TÍTULOS CUPÓN / RESUMEN
+   ====================================================== */
 
 #coupon h2,
 #subtotal h2 {
@@ -125,137 +302,406 @@
     font-size: 2rem;
 }
 
+
+/* ======================================================
+   INPUT CUPÓN
+   ====================================================== */
+
 #coupon input {
     width: 60%;
+
     padding: 10px 20px;
+
     outline: none;
+
     border: 1px solid #e2e9e1;
+
     margin-right: 10px;
+
+    box-sizing: border-box;
 }
 
+
+/* ======================================================
+   BOTÓN CUPÓN
+   ====================================================== */
+
 #coupon button.normal {
-    background-color: #088178;
-    color: #fff;
     padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
 }
+
+
+/* ======================================================
+   TABLA DEL RESUMEN
+   ====================================================== */
 
 #subtotal table {
     border-collapse: collapse;
+
     width: 100%;
+
     margin-bottom: 20px;
 }
 
 #subtotal table td {
-    padding: 10px 0;
+    padding: 10px;
+
     border: 1px solid #e2e9e1;
-    padding-left: 10px;
 }
 
 #subtotal table tr:last-child td {
     font-weight: bold;
 }
 
+
+/* ======================================================
+   BOTÓN PROCEDER AL PAGO
+   ====================================================== */
+
 #subtotal button.normal {
-    background-color: #088178;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
     width: 100%;
+
+    padding: 12px 20px;
+
     font-size: 1rem;
 }
 
 
-/* Responsive  */
+/* ======================================================
+   MENSAJE CARRITO VACÍO
+   ====================================================== */
+
+#cart table tbody tr td[colspan="6"] {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    font-size: 1rem;
+}
+
+
+/* ======================================================
+   RESPONSIVE - TABLET
+   ====================================================== */
+
 @media (max-width: 799px) {
-    #cart-add article {
+
+    #cart {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #cart-add {
         flex-direction: column;
     }
 
     #coupon,
     #subtotal {
         width: 100%;
-        margin-bottom: 20px;
+    }
+
+    #coupon {
+        margin-bottom: 0;
     }
 }
 
+
+/* ======================================================
+   RESPONSIVE - MOBILE
+   ====================================================== */
+
 @media (max-width: 477px) {
+
+    /* ----------------------------------------------
+       Reducir espacio lateral de la página
+       ---------------------------------------------- */
+
     .section-p1 {
-        padding: 20px;
+        padding: 8px 10px;
     }
 
+
+    /* ----------------------------------------------
+       Tabla del carrito
+       ---------------------------------------------- */
+
+    #cart {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #cart table {
+        min-width: 700px;
+    }
+
+
+    /* ----------------------------------------------
+       Columnas
+       ---------------------------------------------- */
+
+    #cart table th:nth-child(1),
     #cart table td:nth-child(1) {
         width: 60px;
     }
 
+    #cart table th:nth-child(2),
     #cart table td:nth-child(2) {
         width: 80px;
     }
 
+    #cart table th:nth-child(3),
     #cart table td:nth-child(3) {
-        width: 150px;
+        width: 140px;
     }
 
+    #cart table th:nth-child(4),
     #cart table td:nth-child(4) {
         width: 80px;
     }
 
+    #cart table th:nth-child(5),
     #cart table td:nth-child(5) {
-        width: 70px;
+        width: 90px;
     }
 
+    #cart table th:nth-child(6),
     #cart table td:nth-child(6) {
-        width: 80px;
+        width: 90px;
     }
 
-    #cart table td:nth-child(5) input {
-        width: 40px;
+
+    /* ----------------------------------------------
+       Imagen
+       ---------------------------------------------- */
+
+    #cart table img {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    /* ----------------------------------------------
+       Controles de cantidad
+       ---------------------------------------------- */
+
+    .quantity-controls {
+        gap: 4px;
+    }
+
+    .btn-restar,
+    .btn-sumar {
+        width: 27px;
+        height: 27px;
+        font-size: 16px;
+    }
+
+    .quantity-controls input {
+        width: 38px;
+        height: 27px;
+    }
+
+
+    /* ----------------------------------------------
+       Cupón y resumen
+       ---------------------------------------------- */
+
+    #coupon,
+    #subtotal {
+        padding: 18px;
+    }
+
+    #coupon h2,
+    #subtotal h2 {
+        font-size: 1.4rem;
+    }
+
+    #coupon input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #coupon button.normal {
+        width: 100%;
+    }
+
+}
+
+/* ============================================================
+   RESPONSIVE - CARRITO
+   ============================================================ */
+
+@media (max-width: 799px) {
+
+    #cart {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #cart-add {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
-/* ======================================================
-   CONTROLES DE CANTIDAD DEL CARRITO
-   ====================================================== */
-.quantity-controls {
+
+@media (max-width: 477px) {
+
+    #cart {
+        padding: 0.75rem;
+    }
+
+    #cart-add {
+        padding: 0.75rem;
+    }
+}
+/* ============================================================
+   MODAL DE CONFIRMACIÓN DEL CARRITO
+   ============================================================ */
+
+/* Fondo que cubre toda la pantalla */
+.modal-confirm {
+    position: fixed;
+    inset: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+    z-index: 10000;
+
+    padding: 1rem;
 }
-.btn-restar,
-.btn-sumar {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #088178;
-    border-radius: 50%;
-    background-color: transparent;
-    color: #088178;
-    font-size: 18px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+
+/* Ocultar modal */
+.modal-confirm.hidden {
+    display: none;
 }
-.btn-restar:hover,
-.btn-sumar:hover {
-    background-color: #088178;
-    color: white;
-}
-.quantity-controls input {
-    width: 50px;
-    padding: 5px;
+
+/* Tarjeta del modal */
+.modal-box {
+    width: min(100%, 26rem);
+
+    background-color: #ffffff;
+
+    border-radius: 0.75rem;
+
+    padding: 1.75rem;
+
     text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-weight: 600;
+
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.20);
+
+    animation: modalEntrada 0.2s ease-out;
 }
-/* Botón restar deshabilitado cuando la cantidad es mínima */
-.btn-restar:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+
+/* Título */
+.modal-box h3 {
+    margin: 0 0 0.75rem;
+
+    color: #1a1a1a;
+
+    font-size: 1.25rem;
+}
+
+/* Mensaje */
+.modal-box p {
+    margin: 0 0 1.5rem;
+
+    color: #465b52;
+
+    font-size: 1rem;
+
+    line-height: 1.5;
+}
+
+/* Contenedor de botones */
+.modal-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 0.75rem;
+}
+
+/* Botones */
+.modal-actions button {
+    min-width: 7rem;
+
+    padding: 0.65rem 1rem;
+
+    border-radius: 0.4rem;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Cancelar */
+.btn-cancel {
+    background-color: #ffffff;
+
+    color: #555;
+
+    border: 1px solid #ccc;
+}
+
+.btn-cancel:hover {
+    background-color: #f2f2f2;
+}
+
+/* Aceptar */
+.btn-ok {
+    background-color: #088178;
+
+    color: #ffffff;
+
+    border: 1px solid #088178;
+}
+
+.btn-ok:hover {
+    background-color: #066c65;
+}
+
+/* Pequeña animación de entrada */
+@keyframes modalEntrada {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+/* ============================================================
+   MODAL EN PANTALLAS PEQUEÑAS
+   ============================================================ */
+
+@media (max-width: 30rem) {
+
+    .modal-box {
+        width: 100%;
+        padding: 1.4rem;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-actions button {
+        width: 100%;
+    }
+
 }
