@@ -365,115 +365,7 @@ body {
     .hero .hero-content p { font-size: 0.8rem; margin-bottom: 15px; }
     .hero .hero-content button { padding: 10px 20px; font-size: 0.9rem; }
 }
-/* ============================================================
-   SECCIÓN PRODUCTOS
-   Grilla de cards con imagen, descripción y precio
-   Usa Flexbox para distribuir los productos
-   ============================================================ */
-.section-productos {
-    text-align: center;
-}
-/* Contenedor Flexbox de las cards */
-.section-productos .productos-container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-    flex-wrap: wrap;
-}
-/* Card individual de producto */
-.section-productos .productos-container .producto {
-    width: 23%;
-    min-width: 250px;
-    margin: 15px 0;
-    padding: 10px 12px;
-    border-radius: 20px;
-    border: 1px solid #cce7d0;
-    cursor: pointer;
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
-    transition: 0.8s ease;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-.section-productos .productos-container .producto img {
-    width: 100%;
-    border-radius: 20px;
-    height: 250px;
-    object-fit: contain;
-    display: block;
-}
-/* Descripción dentro de la card */
-.section-productos .productos-container .producto .producto-descripcion {
-    text-align: start;
-    padding: 10px 0;
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-grow: 1;
-}
-.section-productos .productos-container .producto .producto-descripcion span {
-    color: #606063;
-    font-size: 12px;
-}
-.section-productos .productos-container .producto .producto-descripcion h5 {
-    padding-top: 7px;
-    color: #1a1a1a;
-    font-size: 16px;
-}
-/* Precio del producto */
-.section-productos .productos-container .producto .producto-descripcion h4 {
-    padding-top: 7px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #088178;
-    margin-top: auto;
-}
-/* Efecto hover en la card */
-.section-productos .productos-container .producto:hover {
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.15);
-}
-/* Botón agregar al carrito */
-.section-productos .productos-container .producto .carrito {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 10px 0;
-    margin-top: 12px;
-    border-radius: 8px;
-    background-color: #088178;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: background-color 0.3s ease;
-}
-.section-productos .productos-container .producto .carrito:hover {
-    background-color: #066f66;
-}
-/* Responsive Productos */
-@media (max-width: 1200px) {
-    .section-productos .productos-container { justify-content: space-around; }
-    .section-productos .productos-container .producto { margin: 15px 10px; }
-}
-@media (max-width: 992px) {
-    .section-productos h2 { font-size: 1.8rem; }
-    .section-productos p { font-size: 0.9rem; }
-    .section-productos .productos-container .producto { width: 30%; min-width: 220px; }
-}
-@media (max-width: 768px) {
-    .section-productos .productos-container .producto { width: 45%; min-width: 200px; }
-    .section-productos .productos-container { justify-content: space-between; }
-}
-@media (max-width: 576px) {
-    .section-productos { padding: 20px 10px; }
-    .section-productos h2 { font-size: 1.5rem; }
-    .section-productos .productos-container .producto { width: 100%; min-width: unset; margin: 10px 0; }
-    .section-productos .productos-container .producto .producto-descripcion h5 { font-size: 13px; }
-}
+
 /* ===========================================================
    BANNER
    Sección con imagen de fondo y texto promocional
@@ -648,11 +540,24 @@ footer .follow i {
     padding-right: 4px;
     cursor: pointer;
 }
-/* Imágenes de tiendas de apps */
+/* ============================================================
+   IMÁGENES DE TIENDAS DE APPS
+   ============================================================ */
+
+footer .install .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 footer .install .row img {
+    width: 170px;
+    height: auto;
+    max-width: 100%;
     margin: 10px 0 15px 0;
     border: 1px solid #088178;
     border-radius: 6px;
+    object-fit: contain;
 }
 footer .follow i:hover,
 footer a:hover {
@@ -679,7 +584,15 @@ footer .copyright {
     footer { flex-direction: column; }
     footer .col { width: 100%; margin-bottom: 30px; }
     footer .copyright { margin-top: 10px; font-size: 13px; }
+    footer .install .row {
+        flex-wrap: wrap;
+    }
+
+    footer .install .row img {
+        width: 150px;
+    }
 }
+
 /* ============================================================
    SECCIÓN RESEÑAS
    Opiniones de clientes usando CSS Grid de 3 columnas

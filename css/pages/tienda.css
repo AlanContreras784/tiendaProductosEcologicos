@@ -2,165 +2,243 @@
    TIENDA
    Estilos específicos de la página tienda.
    ============================================================ */
+
+
 /* ============================================================
    HEADER DE PÁGINA
    ============================================================ */
+
 .page-header {
+
     background-image: url('/img/banner/banner.png');
+
     width: 100%;
     min-height: 40vh;
+
     background-size: cover;
     background-position: center;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     flex-direction: column;
+
     text-align: center;
+
     padding: 1rem;
 }
+
 .page-header h2,
 .page-header p {
+
     color: #fff;
 }
+
+
 /* ============================================================
    BOTÓN / LINK VER DESCRIPCIÓN
    ============================================================ */
+
 .ver-descripcion {
+
     display: block;
+
     text-align: center;
+
     padding: 0.375rem 0;
+
     margin-bottom: 0.375rem;
+
     color: #088178;
+
     font-size: 0.8125rem;
+
     font-weight: 600;
+
     cursor: pointer;
+
     text-decoration: underline;
 }
+
+
 /* ============================================================
    FILTROS DE PRODUCTOS
    Buscador + categorías
    ============================================================ */
+
 .filtros-productos {
+
     display: grid;
+
     grid-template-columns:
         minmax(0, 2fr)
         minmax(12rem, 1fr);
+
     gap: 1rem;
+
     margin-bottom: 2rem;
+
     background-color: #f8f9f8;
+
     border: 1px solid #e5e9e6;
+
     border-radius: 1rem;
+
     box-shadow:
         0 0.25rem 1rem
         rgba(0, 0, 0, 0.04);
 }
+
+
 /* ============================================================
    INPUT Y SELECT
    ============================================================ */
+
 .filtros-productos input[type="search"],
 .filtros-productos select {
+
     width: 100%;
+
     min-height: 3rem;
+
     padding:
         0.75rem
         1rem;
+
     border: 1px solid #d8dedb;
+
     border-radius: 0.625rem;
+
     background-color: #fff;
+
     color: #222;
+
     font-family: inherit;
+
     font-size: 0.9375rem;
+
     box-sizing: border-box;
+
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
 }
+
+
 /* ============================================================
    PLACEHOLDER
    ============================================================ */
+
 .filtros-productos input[type="search"]::placeholder {
+
     color: #8a918e;
 }
+
+
 /* ============================================================
    HOVER
    ============================================================ */
+
 .filtros-productos input[type="search"]:hover,
 .filtros-productos select:hover {
+
     border-color: #aebbb6;
 }
+
+
 /* ============================================================
    FOCUS
    ============================================================ */
+
 .filtros-productos input[type="search"]:focus,
 .filtros-productos select:focus {
+
     outline: none;
+
     border-color: #088178;
+
     box-shadow:
         0 0 0 0.1875rem
         rgba(8, 129, 120, 0.12);
 }
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 700px) {
-    .filtros-productos {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        border-radius: 0.875rem;
-    }
-}
 
-@media (max-width: 480px) {
-    .filtros-productos {
-        gap: 0.65rem;
-        border-radius: 0.75rem;
-    }
-    .filtros-productos input[type="search"],
-    .filtros-productos select {
-        min-height: 2.875rem;
-        font-size: 0.875rem;
-    }
-}
+
 /* ============================================================
    MENSAJES DE ESTADO
    ============================================================ */
+
 .mensaje-vacio,
 .mensaje-error {
+
     width: 100%;
+
     text-align: center;
+
     padding: 2.5rem 0;
+
     font-size: 1rem;
+
     color: #666;
 }
+
+
 /* ============================================================
    GRID DE PRODUCTOS
    ============================================================ */
-.productos-container {
-    display: grid;
-    grid-template-columns:
-        repeat( auto-fit, minmax( min(100%, 15rem), 1fr));
-    gap: 1.25rem;
 
+.productos-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                min(100%, 15rem),
+                1fr
+            )
+        );
+
+    gap: 1.25rem;
 }
+
+
 /* ============================================================
    CARD PRODUCTO
    ============================================================ */
+
 .producto {
+
     width: 100%;
+
     padding: 0.9375rem;
+
     border: 1px solid #e5e5e5;
+
     border-radius: 1.25rem;
+
     background: #fff;
+
     transition:
         box-shadow 0.3s ease,
         transform 0.3s ease;
+
+    box-sizing: border-box;
 }
-/* Hover */
+
+
+/* ============================================================
+   HOVER CARD
+   ============================================================ */
+
 .producto:hover {
+
     box-shadow:
         0 0.625rem 1.25rem
         rgba(0, 0, 0, 0.08);
+
     transform:
         translateY(-0.3125rem);
 }
@@ -171,18 +249,34 @@
    ============================================================ */
 
 .producto figure {
+
     padding: 0.9375rem;
+
     margin: 0;
+
     width: 100%;
+
+    aspect-ratio: 1 / 1;
+
     overflow: hidden;
+
     border-radius: 0.9375rem;
 
+    box-sizing: border-box;
 }
+
+
 .producto img {
+
     width: 100%;
+
     height: 100%;
-    object-fit: cover;
+
+    object-fit: contain;
+
     display: block;
+
+    border-radius: 0.75rem;
 }
 
 
@@ -191,31 +285,57 @@
    ============================================================ */
 
 .producto-descripcion {
+
     padding-top: 0.9375rem;
+
+    display: flex;
+
+    flex-direction: column;
 }
+
+
 .producto-descripcion span {
+
     color: #088178;
+
     font-size: 0.875rem;
 }
+
+
 .producto-descripcion h5 {
+
     font-size: 1rem;
+
     margin: 0.625rem 0;
+
+    color: #1a1a1a;
 }
 
 
 .producto-descripcion h4 {
+
     font-size: 1.125rem;
+
     color: #088178;
+
+    margin: 0;
 }
+
+
 /* ============================================================
    FOOTER DE LA CARD
-  ============================================================ */
+   ============================================================ */
 
 .producto footer {
-    padding: 0.9375rem;
+
+    padding: 0.9375rem 0 0;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 0.625rem;
 }
 
@@ -226,179 +346,414 @@
 
 .btn-detalle,
 .btn-agregar {
+
     border: none;
+
     cursor: pointer;
+
     font-size: 0.875rem;
+
+    font-family: inherit;
 }
 
-/* Ver detalle */
+
+/* ============================================================
+   BOTÓN VER DETALLE
+   ============================================================ */
+
 .btn-detalle {
+
     background: none;
+
     color: #088178;
+
     text-decoration: underline;
+
+    padding: 0.375rem 0;
 }
 
-/* Agregar */
+
+/* ============================================================
+   BOTÓN AGREGAR
+   ============================================================ */
+
 .btn-agregar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.375rem;
+
     background: #088178;
+
     color: #fff;
+
     padding:
         0.5rem
         0.75rem;
+
     border-radius: 0.3125rem;
+
     transition:
         background-color 0.3s ease;
 }
+
+
 .btn-agregar:hover {
+
     background: #066a64;
 }
+
+
 /* ============================================================
    PAGINACIÓN
    ============================================================ */
+
 .tienda-paginacion {
+
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 0.5rem;
+
     margin: 1.875rem 0;
 }
+
+
 .tienda-paginacion button {
+
     padding:
         0.5rem
         0.875rem;
+
     border: 1px solid #ccc;
+
     background-color: #fff;
+
     border-radius: 0.375rem;
+
     font-size: 0.875rem;
+
     cursor: pointer;
+
     transition: 0.2s ease;
 }
+
+
 .tienda-paginacion button:hover:not(:disabled) {
+
     background-color: #088178;
+
     color: #fff;
+
     border-color: #088178;
 }
+
+
 .tienda-paginacion button.activa {
+
     background-color: #088178;
+
     color: #fff;
+
     border-color: #088178;
+
     font-weight: 700;
 }
+
+
 .tienda-paginacion button:disabled {
+
     opacity: 0.4;
+
     cursor: not-allowed;
 }
 
 
 /* ============================================================
    RESPONSIVE - TABLET
+   Tablets y pantallas intermedias
    ============================================================ */
 
 @media (max-width: 780px) {
 
 
-    .producto {
+    /* --------------------------------------------------------
+       GRID DE PRODUCTOS
+       -------------------------------------------------------- */
 
-        padding: 0.625rem;
-        border-radius: 0.875rem;
+    .productos-container {
 
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(
+                    min(100%, 14rem),
+                    1fr
+                )
+            );
+
+        gap: 1rem;
     }
 
 
+    /* --------------------------------------------------------
+       CARD
+       -------------------------------------------------------- */
+
+    .producto {
+
+        padding: 0.75rem;
+
+        border-radius: 1rem;
+    }
+
+
+    /* --------------------------------------------------------
+       IMAGEN
+       -------------------------------------------------------- */
+
+    .producto figure {
+
+        padding: 0.625rem;
+
+        border-radius: 0.75rem;
+    }
+
+
+    /* --------------------------------------------------------
+       INFORMACIÓN
+       -------------------------------------------------------- */
+
     .producto-descripcion {
 
-        padding-top: 0.625rem;
+        padding-top: 0.75rem;
+    }
 
+
+    .producto-descripcion span {
+
+        font-size: 0.8125rem;
     }
 
 
     .producto-descripcion h5 {
 
-        font-size: 0.875rem;
-
+        font-size: 0.9375rem;
     }
 
 
     .producto-descripcion h4 {
 
-        font-size: 1rem;
-
+        font-size: 1.0625rem;
     }
 
 
-    .producto footer {
-        padding: 0.9375rem;
-        flex-direction: column;
-        gap: 0.625rem;
+    /* --------------------------------------------------------
+       FOOTER CARD
+       -------------------------------------------------------- */
 
+    .producto footer {
+
+        padding:
+            0.75rem
+            0
+            0;
+
+        gap: 0.5rem;
     }
 
 
     .btn-detalle,
     .btn-agregar {
 
-        width: 100%;
-
-        text-align: center;
-
+        font-size: 0.8125rem;
     }
 
 
+    .btn-agregar {
+
+        padding:
+            0.5rem
+            0.625rem;
+    }
+
+
+    /* --------------------------------------------------------
+       FILTROS
+       -------------------------------------------------------- */
+
+    .filtros-productos {
+
+        grid-template-columns:
+            minmax(0, 1.7fr)
+            minmax(10rem, 1fr);
+
+        gap: 0.75rem;
+
+        margin-bottom: 1.5rem;
+    }
+
+
+    .filtros-productos input[type="search"],
+    .filtros-productos select {
+
+        min-height: 2.875rem;
+
+        padding:
+            0.625rem
+            0.875rem;
+
+        font-size: 0.875rem;
+    }
+
+
+    /* --------------------------------------------------------
+       PAGINACIÓN
+       -------------------------------------------------------- */
+
+    .tienda-paginacion {
+
+        gap: 0.375rem;
+
+        margin:
+            1.5rem 0;
+    }
+
+
+    .tienda-paginacion button {
+
+        padding:
+            0.4375rem
+            0.75rem;
+
+        font-size: 0.8125rem;
+    }
 }
+
 
 /* ============================================================
    RESPONSIVE - CELULAR
    ============================================================ */
 
+@media (max-width: 700px) {
+
+    /* --------------------------------------------------------
+       FILTROS
+       -------------------------------------------------------- */
+
+    .filtros-productos {
+
+        grid-template-columns: 1fr;
+
+        gap: 0.75rem;
+
+        border-radius: 0.875rem;
+    }
+}
+
+
 @media (max-width: 480px) {
 
+
+    /* --------------------------------------------------------
+       FILTROS
+       -------------------------------------------------------- */
+
+    .filtros-productos {
+
+        gap: 0.65rem;
+
+        border-radius: 0.75rem;
+    }
+
+
+    .filtros-productos input[type="search"],
+    .filtros-productos select {
+
+        min-height: 2.875rem;
+
+        font-size: 0.875rem;
+    }
+
+
+    /* --------------------------------------------------------
+       CARD
+       -------------------------------------------------------- */
 
     .producto {
 
         padding: 0.625rem;
 
         border-radius: 0.875rem;
-
     }
 
+
+    /* --------------------------------------------------------
+       INFORMACIÓN
+       -------------------------------------------------------- */
 
     .producto-descripcion {
 
         padding-top: 0.625rem;
-
     }
 
 
     .producto-descripcion h5 {
 
         font-size: 0.875rem;
-
     }
 
 
     .producto-descripcion h4 {
 
         font-size: 1rem;
-
     }
 
+
+    /* --------------------------------------------------------
+       FOOTER
+       -------------------------------------------------------- */
 
     .producto footer {
 
         flex-direction: column;
-        gap: 0.625rem;
 
+        align-items: stretch;
+
+        gap: 0.625rem;
     }
 
+
+    /* --------------------------------------------------------
+       BOTONES
+       -------------------------------------------------------- */
 
     .btn-detalle,
     .btn-agregar {
 
         width: 100%;
+
+        min-height: 2.5rem;
+
         text-align: center;
 
+        box-sizing: border-box;
     }
 
 
+    .btn-agregar {
+
+        padding:
+            0.625rem
+            0.75rem;
+    }
 }
