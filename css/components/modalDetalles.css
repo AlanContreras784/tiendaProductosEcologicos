@@ -1,0 +1,434 @@
+/* ============================================================
+   MODAL DETALLE DE PRODUCTO
+   Componente visual independiente de la página Tienda.
+   ============================================================ */
+
+
+/* ============================================================
+   OVERLAY
+   ============================================================ */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1rem;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+}
+
+
+/* Modal visible */
+
+.modal-overlay.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ============================================================
+   CAJA PRINCIPAL
+   ============================================================ */
+
+.modal-producto {
+
+    position: relative;
+
+    display: flex;
+
+    width: min(56rem, 100%);
+
+    max-height: min(90vh, 45rem);
+
+    background: #fff;
+
+    border-radius: 1.25rem;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1rem 2.5rem
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   IMAGEN
+   ============================================================ */
+
+.modal-imagen {
+
+    flex: 0 1 45%;
+
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 1.5rem;
+
+    background: #f8f8f8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.modal-imagen img {
+
+    width: 100%;
+
+    height: min(24rem, 60vh);
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* ============================================================
+   INFORMACIÓN
+   ============================================================ */
+
+.modal-info {
+
+    flex: 1 1 55%;
+
+    min-width: 0;
+
+    padding:
+        clamp(
+            1.5rem,
+            4vw,
+            2.5rem
+        );
+
+    overflow-y: auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.modal-info header {
+
+    margin-bottom: 1.25rem;
+}
+
+
+.modal-info header span {
+
+    color: #088178;
+
+    font-size: 0.875rem;
+
+    font-weight: 600;
+}
+
+
+.modal-info header h2 {
+
+    margin:
+        0.625rem
+        0
+        0;
+
+    font-size:
+        clamp(
+            1.5rem,
+            3vw,
+            2rem
+        );
+
+    color: #222;
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.modal-info article {
+
+    margin-bottom: 1.5rem;
+}
+
+
+.modal-info article p {
+
+    color: #555;
+
+    line-height: 1.7;
+
+    margin-bottom: 1rem;
+}
+
+
+/* ============================================================
+   STOCK
+   ============================================================ */
+
+.modal-stock {
+
+    color: #465b52;
+
+    font-size: 0.9375rem;
+}
+
+
+.modal-stock strong {
+
+    color: #088178;
+}
+
+
+/* ============================================================
+   FOOTER / PRECIO
+   ============================================================ */
+
+.modal-info footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+
+.modal-info footer h3 {
+
+    margin: 0;
+
+    color: #088178;
+
+    font-size:
+        clamp(
+            1.5rem,
+            3vw,
+            1.875rem
+        );
+}
+
+
+/* ============================================================
+   BOTÓN AGREGAR AL CARRITO
+   ============================================================ */
+
+#modalAgregar {
+
+    border: none;
+
+    background: #088178;
+
+    color: #fff;
+
+    padding:
+        0.75rem
+        1.5rem;
+
+    border-radius: 0.375rem;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+#modalAgregar:hover {
+
+    background: #066a64;
+
+    transform:
+        translateY(-0.0625rem);
+}
+
+
+/* ============================================================
+   BOTÓN CERRAR
+   ============================================================ */
+
+.modal-cerrar {
+
+    position: absolute;
+
+    top: 0.875rem;
+
+    right: 0.875rem;
+
+    width: 2.375rem;
+
+    height: 2.375rem;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #222;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 1.125rem;
+
+    box-shadow:
+        0 0.125rem 0.625rem
+        rgba(0, 0, 0, 0.15);
+
+    z-index: 2;
+}
+
+
+.modal-cerrar:hover {
+
+    background: #f4f4f4;
+}
+
+
+/* ============================================================
+   BLOQUEAR SCROLL CUANDO EL MODAL ESTÁ ABIERTO
+   ============================================================ */
+
+body.modal-abierto {
+
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .modal-producto {
+
+        flex-direction: column;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+    }
+
+
+    .modal-imagen {
+
+        flex: none;
+
+        width: 100%;
+
+        padding: 1rem;
+    }
+
+
+    .modal-imagen img {
+
+        height:
+            clamp(
+                12rem,
+                40vh,
+                18rem
+            );
+    }
+
+
+    .modal-info {
+
+        width: 100%;
+
+        padding: 1.5rem;
+    }
+
+}
+
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .modal-overlay {
+
+        padding: 0.75rem;
+    }
+
+
+    .modal-producto {
+
+        width: 100%;
+
+        max-height: 94vh;
+
+        border-radius: 1rem;
+    }
+
+
+    .modal-imagen {
+
+        padding: 0.75rem;
+    }
+
+
+    .modal-imagen img {
+
+        height: 11rem;
+    }
+
+
+    .modal-info {
+
+        padding: 1.25rem;
+    }
+
+
+    .modal-info footer {
+
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    #modalAgregar {
+
+        width: 100%;
+    }
+
+}

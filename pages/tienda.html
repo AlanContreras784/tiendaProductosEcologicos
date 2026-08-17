@@ -16,8 +16,8 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages/tienda.css">
-    <link rel="stylesheet" href="../css/components/modalProducto.css">
-    <link rel="stylesheet" href="../css/components/toast.css">
+    <link rel="stylesheet" href="../css/components/modalDetalles.css">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -65,7 +65,7 @@
 ====================================================== -->
         <aside id="overlayModal" class="modal-overlay" aria-hidden="true">
             <section class="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
-                <button id="btnCerrarModal" class="modal-cerrar" aria-label="Cerrar">
+                <button id="btnCerrarModal" class="modal-cerrar" aria-label="Cerrar" type="button">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <figure class="modal-imagen">
@@ -85,7 +85,7 @@
                     </article>
                     <footer>
                         <h3 id="modalPrecio"></h3>
-                        <button id="modalAgregar" class="carrito">
+                        <button id="modalAgregar" class="carrito" type="button">
                             <i class="fa-solid fa-cart-shopping"></i>
                             Agregar al carrito
                         </button>

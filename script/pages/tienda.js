@@ -59,10 +59,6 @@ async function iniciarTienda() {
         mostrarSpinner();
         inicializarEventos();
         inicializarModalProducto();
-        const botonModal =
-            document.getElementById(
-                "modalAgregarCarrito"
-            );
         configurarAgregarCarrito(async (producto) => {
             try {
                 await agregarProducto(producto.id);

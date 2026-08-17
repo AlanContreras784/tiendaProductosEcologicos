@@ -705,3 +705,9 @@
     }
 
 }
+
+.page-header{
+     
+     padding: clamp(0.9rem, 2vw, 1.25rem)
+             clamp(1rem, 5vw, 5rem);
+}

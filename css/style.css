@@ -44,10 +44,10 @@ body {
 }
 /* Clases utilitarias de espaciado reutilizadas en varias secciones */
 .section-p1 {
-    padding: 40px 80px;
+    padding: 30px 80px;
 }
 .section-m1 {
-    margin: 40px 0;
+    margin: 5px 0;
 }
 /* ============================================================
    HEADER Y NAVEGACIÓN
@@ -60,24 +60,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     /* Se adapta progresivamente al ancho disponible */
     padding: clamp(0.9rem, 2vw, 1.25rem)
              clamp(1rem, 5vw, 5rem);
-
     background-color: #E3E6f3;
-
     box-shadow:
         0 0.3rem 0.9rem rgba(0, 0, 0, 0.06);
-
     position: sticky;
     top: 0;
     left: 0;
-
     z-index: 999;
 }
-
-/*--------------------------------------------------------------------------------------------------- */ 
 /* Lista de navegación horizontal */
 .navbar {
     display: flex;
@@ -147,70 +140,12 @@ body {
     line-height: 1;
     padding: 0;
 }
-/* Modal */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-.modal-overlay.visible {
-    opacity: 1;
-    pointer-events: all;
-}
-.modal-custom {
-    background: #fff;
-    border-radius: 16px;
-    padding: 30px;
-    max-width: 480px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-}
-.modal-custom img {
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 16px;
-}
-.modal-custom h5 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 10px;
-}
-.modal-custom p {
-    font-size: 13px;
-    color: #465b52;
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
-.modal-custom h4 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #088178;
-}
-.modal-cerrar {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #222;
-}
+
 
 /* ============================================================
    ICONO DEL CARRITO
    Mantiene el mismo estilo visual del navbar
    ============================================================ */
-
 .cart-link {
     position: relative;
     display: inline-flex;
@@ -235,22 +170,16 @@ body {
 /* ============================================================
    RESPONSIVE - MENÚ MOBILE
    ============================================================ */
-
 @media (max-width: 799px) {
-
     /* --------------------------------------------
        Menú lateral
        -------------------------------------------- */
-
     .navbar {
         display: flex;
-
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-
         position: fixed;
-
         top: 0;
         right: 0;
 
@@ -260,133 +189,87 @@ body {
          */
         width: min(20rem, 85vw);
         height: 100vh;
-
         background-color: #e3e6f3;
-
-        box-shadow:
-            -0.5rem 0 2rem rgba(0, 0, 0, 0.1);
-
+        box-shadow:-0.5rem 0 2rem rgba(0, 0, 0, 0.1);
         padding: 5rem 1rem 1.5rem;
-
         /*
          * En lugar de right:-300px utilizamos
          * transform para desplazar el menú.
          */
         transform: translateX(100%);
-
-        transition:
-            transform 0.3s ease;
-
+        transition: transform 0.3s ease;
         z-index: 1000;
     }
-
-
     /* --------------------------------------------
        Menú abierto
        -------------------------------------------- */
-
     .navbar.active {
         transform: translateX(0);
     }
-
-
     /* --------------------------------------------
        Elementos del menú
        -------------------------------------------- */
-
     .navbar li {
         width: 100%;
-
         margin-bottom: 1.25rem;
-
         padding: 0;
     }
-
-
     .navbar li a {
         font-size: 1rem;
     }
-
-
     /* --------------------------------------------
        Carrito dentro del menú
        -------------------------------------------- */
-
     .navbar .cart-link {
         width: auto;
     }
    @media (max-width: 799px) {
-
     .mobile .cart-link {
         color: #1a1a1a;
         text-decoration: none;
     }
-
     .mobile .cart-link i {
         color: #1a1a1a;
         font-size: 1.25rem;
     }
-
     .mobile .cart-link:hover i {
         color: #088178;
     }
 }
-
     /* --------------------------------------------
        Botón hamburguesa
        -------------------------------------------- */
-
     .mobile {
         display: flex;
-
         align-items: center;
-
         gap: 1.25rem;
     }
-
-
     .mobile > i {
         color: #1a1a1a;
-
         font-size: 1.5rem;
-
         cursor: pointer;
     }
-
-
     /* --------------------------------------------
        Carrito mobile
        -------------------------------------------- */
-
     .mobile .cart-link {
         position: relative;
-
         display: inline-flex;
-
         align-items: center;
         justify-content: center;
     }
-
-
     .mobile .cart-link i {
         font-size: 1.35rem;
     }
-
-
     /* --------------------------------------------
        Botón cerrar
        -------------------------------------------- */
-
     .close {
         display: initial;
-
         position: absolute;
-
         top: 1.5rem;
         left: 1.5rem;
-
         color: #222;
-
         font-size: 1.5rem;
     }
 }
@@ -971,44 +854,29 @@ footer .copyright {
 /* ============================================================
     ESTILO DEL BADGE DEL CARRITO
    ============================================================ */
-   /* ============================================================
-   BADGE DEL CARRITO
-   ============================================================ */
-
 .cart-badge {
     position: absolute;
-
     top: -0.55rem;
     right: -0.65rem;
-
     min-width: 1.2rem;
     height: 1.2rem;
-
     padding: 0.1rem 0.3rem;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     background-color: red;
     color: white;
-
     border-radius: 50%;
-
     font-size: 0.7rem;
     font-weight: 700;
     line-height: 1;
-
     text-align: center;
-
     box-sizing: border-box;
 }
-
 /* ============================================================
    ENLACES DEL CARRITO
    El enlace funciona como referencia para el badge
    ============================================================ */
-
 .cart-link {
     position: relative;
     display: inline-flex;
