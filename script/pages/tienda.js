@@ -24,7 +24,7 @@ import { crearProductoCard } from "../components/productoCard.js";
 import { Paginator } from "../components/paginator.js";
 import { mostrarToast } from "../components/toast.js";
 import { mostrarSpinner, ocultarSpinner } from "../components/spinner.js";
-import { abrirModalProducto, inicializarModalProducto, configurarAgregarCarrito } from "../components/modalProducto.js";
+import { abrirModalProducto, inicializarModalProducto, configurarAgregarCarrito } from "../components/modalDetalles.js";
 // ======================================================
 // Estado interno de la página
 // ======================================================

@@ -8,6 +8,12 @@ export async function obtenerProductos() {
 }
 
 // ======================================================
+// Obtiene solamente los productos destacados.
+// ======================================================
+export async function obtenerProductosDestacados() {
+    return await apiClient("/productos/destacados");
+}
+// ======================================================
 // Obtiene un producto por ID.
  // ======================================================
 export async function obtenerProducto(id) {

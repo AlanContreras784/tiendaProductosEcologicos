@@ -1,0 +1,87 @@
+/* ============================================================
+   HOME
+   Estilos específicos de la página principal.
+   ============================================================ */
+
+
+/* ============================================================
+   PRODUCTOS DESTACADOS
+   ============================================================ */
+
+.section-productos {
+    text-align: start;
+}
+
+.section-productos h2 {
+    margin-bottom: 10px;
+}
+
+.section-productos > p {
+    margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   CONTENEDOR DE PRODUCTOS
+   ============================================================ */
+
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+
+
+/* ============================================================
+   MENSAJE SIN PRODUCTOS DESTACADOS
+   ============================================================ */
+
+.mensaje-sin-productos {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1rem;
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+
+@media (max-width: 991px) {
+
+    .productos-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLET PEQUEÑA
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .productos-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE - CELULAR
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .productos-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+}

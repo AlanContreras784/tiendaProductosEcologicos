@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talento Tech Ecommerce</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages/home.css">
+
+    <link rel="stylesheet" href="/css/components/productoCard.css">
+    <link rel="stylesheet" href="/css/components/modalDetalles.css">
+    <link rel="stylesheet" href="/css/components/toast.css">
+    <link rel="stylesheet" href="/css/components/banner.css">
+    <link rel="stylesheet" href="/css/components/newslleter.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <!-- ==================== HEADER ==================== -->
@@ -22,77 +31,51 @@
                 <button>Comprar</button>
             </div>
         </section>
-        <!-- ==================== PRODUCTOS ==================== -->
-        <section class="section-productos section-p1">
-            <h2>Electrónica, Moda y Más</h2>
-            <p>Ofertas que no te podés perder</p>
-            <div class="productos-container">
-                <div class="producto">
-                    <img src="./img/productos/calular.jpg" alt="Celular">
-                    <div class="producto-descripcion">
-                        <span>Celulares</span>
-                        <h5>Smartphone último modelo</h5>
-                        <h4>$299.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="../img/productos/auriculares.jpg" alt="Auriculares">
-                    <div class="producto-descripcion">
-                        <span>Audio</span>
-                        <h5>Auriculares inalámbricos</h5>
-                        <h4>$89.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/f7.jpg" alt="Remera">
-                    <div class="producto-descripcion">
-                        <span>Moda</span>
-                        <h5>Remera estampada premium</h5>
-                        <h4>$39.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/f6.jpg" alt="Campera">
-                    <div class="producto-descripcion">
-                        <span>Moda</span>
-                        <h5>Campera impermeable</h5>
-                        <h4>$129.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/tablet.jpg" alt="Tablet">
-                    <div class="producto-descripcion">
-                        <span>Tablets</span>
-                        <h5>Tablet 10" Full HD</h5>
-                        <h4>$349.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/n6.jpg" alt="Accesorios">
-                    <div class="producto-descripcion">
-                        <span>Accesorios</span>
-                        <h5>Kit accesorios gaming</h5>
-                        <h4>$59.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/proyector.jpg" alt="Proyector">
-                    <div class="producto-descripcion">
-                        <span>Video</span>
-                        <h5>Proyector portátil HD</h5>
-                        <h4>$199.99</h4>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="img/productos/television.jpg" alt="Televisor">
-                    <div class="producto-descripcion">
-                        <span>TV</span>
-                        <h5>Smart TV 55" 4K</h5>
-                        <h4>$799.99</h4>
-                    </div>
-                </div>
+        <!-- ==================== PRODUCTOS DESTACADOS ==================== -->
+       <section class="section-productos section-p1">
+            <h2>Productos destacados</h2>
+            <p>Los productos que no te podés perder</p>
+
+            <div id="productos-destacados" class="productos-container">
+                <!-- home.js carga los productos desde el backend -->
             </div>
         </section>
+
+        <!-- ======================================================
+            MODAL DETALLE PRODUCTO
+            Se reutiliza para mostrar la información completa
+            de cualquier producto.
+        ====================================================== -->
+        <aside id="overlayModal" class="modal-overlay" aria-hidden="true">
+            <section class="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+                <button id="btnCerrarModal" class="modal-cerrar" aria-label="Cerrar" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <figure class="modal-imagen">
+                    <img id="modalImagen" src="" alt="">
+                </figure>
+                <section class="modal-info">
+                    <header>
+                        <span id="modalCategoria"></span>
+                        <h2 id="modalTitulo"></h2>
+                    </header>
+                    <article>
+                        <p id="modalDescripcion"></p>
+                        <p class="modal-stock">
+                            Stock:
+                            <strong id="modalStock"></strong>
+                        </p>
+                    </article>
+                    <footer>
+                        <h3 id="modalPrecio"></h3>
+                        <button id="modalAgregar" class="carrito" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Agregar al carrito
+                        </button>
+                    </footer>
+                </section>
+            </section>
+        </aside>
         <!-- ==================== BANNER ==================== -->
         <section class="banner section-m1">
             <h4>Ofertas que no te podés perder</h4>
@@ -173,11 +156,13 @@
         <!-- footer.js renderiza el contenido -->
         </footer>
     <!-- Componentes -->
-    <script type="module" src="script/components/toast.js"></script>
-    <script type="module" src="script/components/navbar.js"></script>
-    <script type="module" src="script/components/footer.js"></script>
+    <script type="module" src="/script/components/navbar.js"></script>
+    <script type="module" src="/script/components/footer.js"></script>
+    <script type="module" src="/script/components/modalDetalles.js"> </script>
+    <script type="module" src="/script/components/toast.js"></script>
+    <script type="module" src="/script/components/spinner.js"></script>
     <!-- Páginas -->
-    <!-- <script type="module" src="script/pages/home.js"></script> -->
+    <script type="module" src="script/pages/home.js"></script>
     
     </body>
 

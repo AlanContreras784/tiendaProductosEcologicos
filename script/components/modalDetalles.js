@@ -24,6 +24,14 @@
 // Estado interno del componente
 // ======================================================
 let productoActual = null;
+
+//====================================================
+// Elemento que tenía el foco antes de abrir el modal.
+// Permite devolver el foco correctamente al cerrar.
+// ======================================================
+
+let elementoAnterior = null;
+
 // ======================================================
 // Elementos del DOM
 // ======================================================
@@ -38,6 +46,7 @@ const elementos = {
     botonAgregar: document.getElementById("modalAgregar"),
     botonCerrar: document.getElementById("btnCerrarModal")
 };
+
 // ======================================================
 // Abre el modal cargando la información del producto.
 // ======================================================
@@ -45,61 +54,81 @@ export function abrirModalProducto(producto) {
     if (!producto || !elementos.overlay) {
         return;
     }
+    // --------------------------------------------------
+    // Guardamos el elemento que tenía el foco.
+    // Normalmente será el botón "Ver descripción".
+    // --------------------------------------------------
+    elementoAnterior = document.activeElement;
+    // --------------------------------------------------
     // Guardamos el producto actualmente mostrado.
+    // --------------------------------------------------
     productoActual = producto;
-    // ------------------------------
+    // --------------------------------------------------
     // Imagen
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.imagen) {
         elementos.imagen.src =
             producto.imagenUrl || "";
         elementos.imagen.alt =
             producto.nombre || "Producto";
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Categoría
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.categoria) {
         elementos.categoria.textContent =
             producto.categoria?.nombre ?? "";
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Nombre
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.titulo) {
         elementos.titulo.textContent =
             producto.nombre ?? "";
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Descripción
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.descripcion) {
         elementos.descripcion.textContent =
-            producto.descripcion ?? "Sin descripción disponible.";
+            producto.descripcion ??
+            "Sin descripción disponible.";
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Stock
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.stock) {
         elementos.stock.textContent =
             `${producto.stock ?? 0} unidades`;
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Precio
-    // ------------------------------
+    // --------------------------------------------------
     if (elementos.precio) {
         elementos.precio.textContent =
             `$${Number(producto.precio ?? 0).toFixed(2)}`;
     }
-    // ------------------------------
+    // --------------------------------------------------
     // Mostrar modal
-    // ------------------------------
+    // --------------------------------------------------
     elementos.overlay.classList.add("visible");
-    elementos.overlay.setAttribute("aria-hidden", "false");
-    // Evita que la página continúe desplazándose
-    // mientras el modal está abierto.
+    elementos.overlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+    // El modal vuelve a ser interactivo.
+    elementos.overlay.removeAttribute("inert");
+    // --------------------------------------------------
+    // Evita que la página continúe desplazándose.
+    // --------------------------------------------------
     document.body.classList.add("modal-abierto");
+    // --------------------------------------------------
+    // Pasamos el foco al botón cerrar.
+    // --------------------------------------------------
+    elementos.botonCerrar?.focus();
 }
+
+
 // ======================================================
 // Cierra el modal.
 // ======================================================
@@ -107,10 +136,27 @@ export function cerrarModalProducto() {
     if (!elementos.overlay) {
         return;
     }
+    // Devolver el foco al botón que abrió el modal.
+    if (
+        elementoAnterior &&
+        typeof elementoAnterior.focus === "function"
+    ) {
+        elementoAnterior.focus();
+    }
+    // Ocultar modal.
     elementos.overlay.classList.remove("visible");
-    elementos.overlay.setAttribute("aria-hidden", "true");
-    // Permite nuevamente el scroll de la página.
+    elementos.overlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+    // Evitar interacción con el modal cerrado.
+    elementos.overlay.setAttribute(
+        "inert",
+        ""
+    );
+    // Permitir nuevamente el scroll.
     document.body.classList.remove("modal-abierto");
+    elementoAnterior = null;
 }
 // ======================================================
 // Devuelve el producto mostrado actualmente.
@@ -140,6 +186,8 @@ export function inicializarModalProducto() {
     if (!elementos.overlay) {
         return;
     }
+    // El modal comienza oculto y sin posibilidad de recibir foco.
+    elementos.overlay.setAttribute("inert", "");
     // ------------------------------
     // Botón cerrar
     // ------------------------------

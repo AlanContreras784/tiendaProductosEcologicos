@@ -16,7 +16,11 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages/tienda.css">
+
+    <link rel="stylesheet" href="../css/components/productoCard.css">
+    <link rel="stylesheet" href="../css/components/newslleter.css">
     <link rel="stylesheet" href="../css/components/modalDetalles.css">
+    <link rel="stylesheet" href="../css/components/toast.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -59,10 +63,10 @@
         </div>
         <!-- ==================== MODAL ==================== -->
         <!-- ======================================================
-     MODAL DETALLE PRODUCTO
-     Se reutiliza para mostrar la información completa
-     de cualquier producto.
-====================================================== -->
+            MODAL DETALLE PRODUCTO
+            Se reutiliza para mostrar la información completa
+            de cualquier producto.
+        ====================================================== -->
         <aside id="overlayModal" class="modal-overlay" aria-hidden="true">
             <section class="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
                 <button id="btnCerrarModal" class="modal-cerrar" aria-label="Cerrar" type="button">
@@ -102,7 +106,7 @@
                 <p>Recibí novedades de nuestra tienda y <span>ofertas exclusivas</span></p>
             </div>
             <div class="form">
-                <input type="text" placeholder="Tu correo electrónico">
+                <input type="text" id="newsletter" name="newsletter" placeholder="Tu correo electrónico">
                 <button>Suscribirme</button>
             </div>
         </section>
@@ -124,7 +128,7 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script type="module" src="../script/components/navbar.js"></script>
     <script type="module" src="../script/components/footer.js"></script>
-    <script type="module" src="../script/components/modalProducto.js"> </script>
+    <script type="module" src="../script/components/modalDetalles.js"> </script>
     <script type="module" src="../script/components/toast.js"></script>
     <script type="module" src="../script/components/spinner.js"></script>
     <script type="module" src="../script/pages/tienda.js"></script>

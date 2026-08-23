@@ -1,0 +1,71 @@
+/* ============================================================
+   NEWSLETTER
+   Sección de suscripción con fondo oscuro e input de email
+   ============================================================ */
+.newsletter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+    background-color: #041e42;
+}
+.newsletter h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+}
+.newsletter p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #818ea0;
+}
+.newsletter p span {
+    color: #ffbd27;
+}
+/* Formulario de suscripción */
+.newsletter .form {
+    display: flex;
+    width: 40%;
+}
+.newsletter .form input {
+    height: 3.125rem;
+    padding: 0 1.25rem;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+.newsletter .form button {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: #fff;
+    background-color: #088178;
+    white-space: nowrap;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+}
+/* Responsive Newsletter */
+@media (max-width: 1200px) {
+    .newsletter { padding: 40px 60px; }
+    .newsletter .form { width: 45%; }
+}
+@media (max-width: 992px) {
+    .newsletter .form { width: 80%; }
+}
+@media (max-width: 768px) {
+    .newsletter { flex-direction: column; align-items: flex-start; }
+    .newsletter .newstext { margin-bottom: 20px; width: 100%; }
+}
+@media (max-width: 576px) {
+    .newsletter { padding: 20px 10px; }
+    .newsletter h4 { font-size: 18px; }
+    .newsletter .form { width: 100%; }
+    .newsletter .form button { padding: 12px 15px; }
+}

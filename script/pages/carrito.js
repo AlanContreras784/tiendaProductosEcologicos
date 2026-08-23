@@ -138,90 +138,53 @@ function renderizarProductos(){
 // Crear fila producto
 // ======================================================
 
-function crearFilaProducto(
-    item,
-    subtotal
-){
-
+function crearFilaProducto( item, subtotal) {
     return `
-
-    <tr>
-
-        <td>
-            <button
-                class="remove-btn"
-                data-id="${item.producto.id}"
-                title="Eliminar">
-
-                <i class="far fa-times-circle"></i>
-
-            </button>
-        </td>
-
-
-        <td>
-
-            <img
-                src="${item.producto.imagenUrl}"
-                alt="${item.producto.nombre}">
-
-        </td>
-
-
-        <td>
-            ${item.producto.nombre}
-        </td>
-
-
-        <td>
-            $${item.producto.precio.toFixed(2)}
-        </td>
-
-
-        <td>
-
-            <div class="quantity-controls">
-
-
+        <tr>
+            <td>
                 <button
-                    class="btn-restar"
+                    class="remove-btn"
                     data-id="${item.producto.id}"
-                    ${item.cantidad === 1 ? "disabled" : ""}>
-
-                    -
-
+                    title="Eliminar">
+                    <i class="far fa-times-circle"></i>
                 </button>
-
-
-                <input
-                    type="number"
-                    value="${item.cantidad}"
-                    readonly>
-
-
-                <button
-                    class="btn-sumar"
-                    data-id="${item.producto.id}">
-
-                    +
-
-                </button>
-
-
-            </div>
-
-        </td>
-
-
-        <td>
-            $${subtotal.toFixed(2)}
-        </td>
-
-
-    </tr>
-
+            </td>
+            <td>
+                <img
+                    src="${item.producto.imagenUrl}"
+                    alt="${item.producto.nombre}">
+            </td>
+            <td>
+                ${item.producto.nombre}
+            </td>
+            <td>
+                $${item.producto.precio.toFixed(2)}
+            </td>
+            <td>
+                <div class="quantity-controls">
+                    <button
+                        class="btn-restar"
+                        data-id="${item.producto.id}"
+                        ${item.cantidad === 1 ? "disabled" : ""}>
+                        -
+                    </button>
+                    <input
+                        type="number"
+                        name="cantProducto"
+                        value="${item.cantidad}"
+                        readonly>
+                    <button
+                        class="btn-sumar"
+                        data-id="${item.producto.id}">
+                        +
+                    </button>
+                </div>
+            </td>
+            <td>
+                $${subtotal.toFixed(2)}
+            </td>
+        </tr>
     `;
-
 }
 // ======================================================
 // Eventos
