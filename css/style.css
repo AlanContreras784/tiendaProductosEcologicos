@@ -724,13 +724,13 @@ footer .copyright {
     margin-bottom:18px;
 }
 .campo-control label{
-    margin-bottom:6px;
+    margin-bottom:3px;
     font-weight:600;
 }
 .error-text{
     display:block;
     min-height:18px;
-    margin-top:4px;
+    /* margin-top:4px; */
     color:#dc3545;
     font-size:.85rem;
     font-weight:500;

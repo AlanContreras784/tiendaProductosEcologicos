@@ -38,4 +38,4 @@ ecommerce/
 
 ## Author
 
-**Miguel Nefle** — [@MiguelNefle1](https://github.com/MiguelNefle1)
+**Alan Contreras** — [@AlanContreras784](https://github.com/AlanContreras784)

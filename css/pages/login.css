@@ -1,121 +1,304 @@
 /* ============================================================
    LOGIN PAGE
    Página de autenticación
-   Diseño basado en contacto.css
 ============================================================ */
+
+
 /* ============================================================
    CONTENEDOR PRINCIPAL
 ============================================================ */
+
 .auth-page {
     min-height: 80vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 60px 20px;
+
     background-color: #f8faf9;
 }
-/* ===========================================================
+
+
+/* ============================================================
    TARJETA LOGIN
 ============================================================ */
+
 .auth-card {
     width: 100%;
     max-width: 450px;
+
     padding: 50px;
-    background:white;
-    border:1px solid #e1e1e1;
-    border-radius:20px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+
     box-shadow:
-    20px 20px 30px rgba(0,0,0,0.04);
+        20px 20px 30px rgba(0, 0, 0, 0.04);
 }
-/* ===========================================================
-   TITULO
+
+
+/* ============================================================
+   SUBTÍTULO
 ============================================================ */
+
 .auth-subtitle {
-    font-size:12px;
-    color:#088178;
-    font-weight:600;
-    letter-spacing:1px;
+    display: block;
+
+    font-size: 12px;
+    color: #088178;
+
+    font-weight: 600;
+    letter-spacing: 1px;
 }
+
+
+/* ============================================================
+   TÍTULO
+============================================================ */
+
 .auth-card h2 {
-    font-size:30px;
-    margin:20px 0 30px;
-    color:#222;
+    font-size: 30px;
+
+    margin: 20px 0 30px;
+
+    color: #222;
 }
+
+
 /* ============================================================
    FORMULARIO
 ============================================================ */
-.auth-card form {
-    display:flex;
-    flex-direction:column;
-}
-.campo-control {
-    width:100%;
-    margin-bottom:20px;
-}
-.campo-control label {
-    display:block;
-    margin-bottom:8px;
-    font-size:14px;
-    font-weight:600;
-    color:#465b52;
-}
-.campo-control input {
 
-    width:100%;
-    padding:12px 15px;
-    border:
-    1px solid #e1e1e1;
-    border-radius:5px;
-    outline:none;
-    font-family:inherit;
+.auth-card form {
+    display: flex;
+    flex-direction: column;
 }
-.campo-control input:focus {
-    border-color:#088178;
-}
+
+
 /* ============================================================
-   BOTON
+   CAMPOS
 ============================================================ */
 
-.auth-card button {
-    background-color:#088178;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:5px;
-    cursor:pointer;
-    font-weight:600;
-    transition:.3s;
+.campo-control {
+    width: 100%;
+    /* margin-bottom: 20px; */
 }
-.auth-card button:hover {
-    background-color:#066f66;
+
+.campo-control label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #465b52;
+}
+
+.campo-control input {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+
+    outline: none;
+
+    font-family: inherit;
+}
+
+.campo-control input:focus {
+    border-color: #088178;
+}
+
+
+/* ============================================================
+   BOTÓN PRINCIPAL — INICIAR SESIÓN
+============================================================ */
+
+/*
+   Se aplica solamente al botón del formulario.
+   Evitamos afectar al botón de Google.
+*/
+
+.auth-card form button.normal {
+    width: 100%;
+
+    background-color: #088178;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 12px 25px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: background-color 0.3s ease;
+}
+
+.auth-card form button.normal:hover {
+    background-color: #066f66;
+}
+
+
+/* ============================================================
+   SEPARADOR "O"
+============================================================ */
+
+.login-separator {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px 0;
+}
+
+
+/*
+   Líneas a ambos lados de la "o".
+*/
+
+.login-separator::before,
+.login-separator::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background-color: #e1e1e1;
+}
+
+
+/*
+   La "o" queda centrada entre las dos líneas.
+*/
+
+.login-separator span {
+    padding: 0 15px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #777;
+
+    background-color: #ffffff;
+}
+
+
+/* ============================================================
+   BOTÓN GOOGLE
+============================================================ */
+
+.btn-google {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    background-color: #ffffff;
+
+    color: #222;
+
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/*
+   Hover del botón Google.
+*/
+
+.btn-google:hover {
+    background-color: #088178;
+    color: #ffffff;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/*
+   Icono de Google.
+
+   Por ahora Font Awesome lo mostrará en un solo color.
+   En el siguiente paso lo reemplazaremos por el logo
+   multicolor de Google.
+*/
+
+/* ============================================================
+   LOGO DE GOOGLE
+============================================================ */
+
+.google-logo {
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
 }
 /* ============================================================
    LINKS
 ============================================================ */
-.auth-links {
-    text-align:center;
-    margin-top:25px;
-}
-.auth-links p {
-    font-size:14px;
-}
-.auth-links a {
-    color:#088178;
-    text-decoration:none;
-    font-weight:600;
-}
-.auth-links a:hover {
-    text-decoration:underline;
 
+.auth-links {
+    text-align: center;
+
+    margin-top: 25px;
 }
+
+.auth-links p {
+    font-size: 14px;
+}
+
+.auth-links a {
+    color: #088178;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+
 /* ============================================================
    RESPONSIVE
 ============================================================ */
-@media(max-width:477px){
-.auth-card{
-    padding:30px 20px;
-}
-.auth-card h2{
-    font-size:24px;
-}
+
+@media (max-width: 477px) {
+
+    .auth-card {
+        padding: 30px 20px;
+    }
+
+    .auth-card h2 {
+        font-size: 24px;
+    }
+
 }
