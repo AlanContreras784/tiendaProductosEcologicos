@@ -648,7 +648,7 @@ footer .copyright {
    Estilo compartido de autenticación
 ============================================================ */
 .auth-container {
-    min-height: calc(100vh - 100px);
+    min-height: calc(120vh - 100px);
     display: flex;
     justify-content: center;
     align-items: center;
