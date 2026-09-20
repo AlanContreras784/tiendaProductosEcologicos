@@ -176,41 +176,6 @@
     gap: 10px;
 }
 
-/* Estilo base */
-/* .btn-editar,
-.btn-eliminar {
-    border: none;
-    border-radius: 6px;
-
-    padding: 8px 12px;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-
-    transition: 
-        transform 0.2s ease,
-        opacity 0.2s ease;
-}
-
-.btn-editar {
-    background-color: #088178;
-    color: #ffffff;
-}
-
-.btn-eliminar {
-    background-color: #dc3545;
-    color: #ffffff;
-}
-
-.btn-editar:hover,
-.btn-eliminar:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
-} */
 /* ============================================================
    BOTONES DE ACCIONES
 ============================================================ */

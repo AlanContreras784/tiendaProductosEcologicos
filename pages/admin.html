@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages/admin.css">
 </head>
+
 <body>
     <!-- ==================== HEADER ==================== -->
     <header id="header-principal" class="header">
@@ -36,7 +38,7 @@
                 <span id="totalUsuarios"> 0 </span>
             </article>
         </section>
-    <!-- ======================================================
+        <!-- ======================================================
         CONTENIDO DINÁMICO DEL ADMIN
         Aquí se cargan los módulos:
         - Productos
@@ -74,8 +76,14 @@
                     </button>
                 </div>
             </section>
+            <!-- ==================== TOAST ==================== -->
+            <div id="toast" class="toast-custom">
+                <span id="toastMensaje"></span>
+                <button id="btnCerrarToast">✕</button>
+            </div>
         </aside>
-        <!-- ==================== FOOTER ==================== -->
+    </main>
+    <!-- ==================== FOOTER ==================== -->
         <!-- Mismo footer que en index.html -->
         <footer id="footer-principal" class="section-p1">
             <!-- footer.js renderiza el contenido -->
@@ -84,12 +92,6 @@
         <div id="spinner" class="spinner-overlay" style="display:none;">
             <div class="spinner"></div>
         </div>
-        <!-- ==================== TOAST ==================== -->
-        <div id="toast" class="toast-custom">
-            <span id="toastMensaje"></span>
-            <button id="btnCerrarToast">✕</button>
-        </div>
-    </main>
 
     <!-- toast.js es un script clásico (no módulo): tiene que cargar
          ANTES que admin.js para que mostrarToast ya exista -->

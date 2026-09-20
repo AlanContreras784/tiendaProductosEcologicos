@@ -15,7 +15,9 @@
 
 
 // URL del backend Spring Boot
-export const API_URL = "http://localhost:8080";
+// export const API_URL = "http://localhost:8080";
+// URL del backend Spring Boot en producción
+export const API_URL = "https://productos-ecologicos-render.onrender.com";
 
 // LocalStorage
 export const TOKEN_KEY = "token";

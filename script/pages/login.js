@@ -94,7 +94,7 @@ function iniciarLoginGoogle() {
     );
 
     window.location.href =
-        "http://localhost:8080/oauth2/authorization/google";
+        "https://productos-ecologicos-render.onrender.com/oauth2/authorization/google";
 }
 
 // ======================================================
