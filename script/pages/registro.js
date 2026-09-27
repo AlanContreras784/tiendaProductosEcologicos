@@ -269,7 +269,7 @@ async function enviarRegistro(event) {
 
         mostrarSpinner();
 
-
+        console.log(">>> INICIO REGISTRO");
         const respuesta =
             await registrar({
 
@@ -287,9 +287,9 @@ async function enviarRegistro(event) {
 
                 password:
                     password.value
-
+                
             });
-
+            console.log(">>> RESPUESTA REGISTRO", respuesta);
 
         // ==================================================
         // LIMPIAR SESIÓN ANTERIOR
@@ -343,7 +343,7 @@ async function enviarRegistro(event) {
             window.location.href =
                 "login.html";
 
-        }, 1500);
+        }, 3000);
 
 
     }

@@ -1,0 +1,165 @@
+/* ============================================================
+   CONFIRMACIÓN DE CUENTA
+   Página de confirmación de email
+============================================================ */
+
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+============================================================ */
+
+.confirmacion-container {
+    min-height: 80vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background-color: #f8faf9;
+}
+
+
+/* ============================================================
+   TARJETA DE CONFIRMACIÓN
+============================================================ */
+
+.confirmacion-card {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 40px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+
+    box-shadow:
+        20px 20px 30px rgba(0, 0, 0, 0.04);
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   ICONO DE CONFIRMACIÓN
+============================================================ */
+
+.confirmacion-icono {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background-color: #e8f5f2;
+
+    color: #088178;
+
+    font-size: 38px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   TÍTULO
+============================================================ */
+
+.confirmacion-card h1 {
+    margin: 0 0 20px;
+
+    color: #222;
+
+    font-size: 30px;
+}
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+.confirmacion-card p {
+    margin: 0 0 15px;
+
+    color: #465b52;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   TEXTO DESTACADO
+============================================================ */
+
+.confirmacion-card strong {
+    color: #088178;
+}
+
+
+/* ============================================================
+   BOTÓN INICIAR SESIÓN
+============================================================ */
+
+.btn-confirmacion {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 12px 25px;
+
+    background-color: #088178;
+    color: #ffffff;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: background-color 0.3s ease;
+}
+
+
+/*
+   Hover del botón.
+*/
+
+.btn-confirmacion:hover {
+    background-color: #066f66;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 477px) {
+
+    .confirmacion-card {
+        padding: 35px 20px;
+    }
+
+    .confirmacion-card h1 {
+        font-size: 24px;
+    }
+
+    .confirmacion-card p {
+        font-size: 14px;
+    }
+
+    .confirmacion-icono {
+        width: 60px;
+        height: 60px;
+
+        font-size: 32px;
+    }
+
+}
