@@ -55,6 +55,12 @@ export function esPasswordValida(password) {
     return regex.test(password);
 }
 // ======================================================
+// Valida que dos contraseñas coincidan.
+// ======================================================
+export function coincidenPasswords(password, repetirPassword) {
+    return password === repetirPassword;
+}
+// ======================================================
 // Valida texto simple.
 //
 // Solo letras, números, espacios y acentos.

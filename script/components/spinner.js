@@ -6,7 +6,7 @@ export function mostrarSpinner(){
     const spinner =
         document.getElementById("spinner");
     if(spinner){
-        spinner.style.display = "block";
+        spinner.style.display = "flex";
     }
 }
 export function ocultarSpinner(){

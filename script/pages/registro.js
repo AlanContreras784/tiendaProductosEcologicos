@@ -7,6 +7,8 @@
 //
 // - Validar formulario.
 // - Validar email.
+// - Validar contraseña.
+// - Validar repetición de contraseña.
 // - Enviar datos al backend.
 // - Informar el resultado del registro.
 // - Redirigir al login después del registro.
@@ -39,6 +41,7 @@ import {
     validarLongitud,
     esEmailValido,
     esPasswordValida,
+    coincidenPasswords,
     mostrarError,
     limpiarError
 } from "../utils/validator.js";
@@ -65,6 +68,9 @@ const email =
 
 const password =
     document.getElementById("password");
+
+const repetirPassword =
+    document.getElementById("repetirPassword");
 
 
 // ======================================================
@@ -114,6 +120,11 @@ function inicializarValidaciones() {
         "input",
         () => limpiarError(password)
     );
+
+    repetirPassword.addEventListener(
+        "input",
+        () => limpiarError(repetirPassword)
+    );
 }
 
 
@@ -135,6 +146,7 @@ async function enviarRegistro(event) {
     limpiarError(apellido);
     limpiarError(email);
     limpiarError(password);
+    limpiarError(repetirPassword);
 
 
     // ==================================================
@@ -262,6 +274,41 @@ async function enviarRegistro(event) {
 
 
     // ==================================================
+    // VALIDAR REPETICIÓN DE CONTRASEÑA
+    // ==================================================
+
+    if (esCampoVacio(repetirPassword.value)) {
+
+        mostrarError(
+            repetirPassword,
+            "Repita su contraseña."
+        );
+
+        repetirPassword.focus();
+
+        return;
+    }
+
+
+    if (
+        !coincidenPasswords(
+            password.value,
+            repetirPassword.value
+        )
+    ) {
+
+        mostrarError(
+            repetirPassword,
+            "Las contraseñas no coinciden."
+        );
+
+        repetirPassword.focus();
+
+        return;
+    }
+
+
+    // ==================================================
     // ENVIAR REGISTRO AL BACKEND
     // ==================================================
 
@@ -270,6 +317,7 @@ async function enviarRegistro(event) {
         mostrarSpinner();
 
         console.log(">>> INICIO REGISTRO");
+
         const respuesta =
             await registrar({
 
@@ -287,9 +335,14 @@ async function enviarRegistro(event) {
 
                 password:
                     password.value
-                
+
             });
-            console.log(">>> RESPUESTA REGISTRO", respuesta);
+
+        console.log(
+            ">>> RESPUESTA REGISTRO",
+            respuesta
+        );
+
 
         // ==================================================
         // LIMPIAR SESIÓN ANTERIOR
@@ -344,7 +397,6 @@ async function enviarRegistro(event) {
                 "login.html";
 
         }, 3000);
-
 
     }
     catch (error) {

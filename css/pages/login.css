@@ -302,3 +302,95 @@
     }
 
 }
+
+/* ======================================================
+   REGISTRO - DISEÑO RESPONSIVE
+   ====================================================== */
+
+/* Tarjeta más amplia para permitir dos columnas */
+.registro-page .auth-card {
+    max-width: 700px;
+}
+
+
+/* Formulario de registro en dos columnas */
+.registro-page #registroForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 25px;
+    row-gap: 0;
+}
+
+
+/* Los campos ocupan una columna */
+.registro-page #registroForm .campo-control {
+    width: 100%;
+}
+
+
+/* El botón ocupa las dos columnas */
+.registro-page #registroForm .btn-auth { 
+    grid-column: 1 / -1; 
+    width: auto; 
+    min-width: 350px; 
+    justify-self: center; 
+}
+
+/* Los mensajes inferiores mantienen su espacio */
+.registro-page #registroForm .error-text {
+    min-height: 18px;
+}
+
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 700px) {
+
+    .registro-page .auth-card {
+        max-width: 600px;
+    }
+
+}
+
+
+/* ======================================================
+   MÓVIL
+   ====================================================== */
+
+@media (max-width: 600px) {
+
+    .registro-page {
+        padding: 40px 15px;
+    }
+
+    .registro-page .auth-card {
+        padding: 30px 20px;
+    }
+
+    .registro-page #registroForm {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .registro-page #registroForm .btn-auth {
+        width: 100%;
+        min-width: 0;
+    }
+
+    
+}
+
+
+/* ======================================================
+   MÓVILES PEQUEÑOS
+   ====================================================== */
+
+@media (max-width: 400px) {
+
+    .registro-page .auth-card {
+        padding: 25px 15px;
+    }
+
+}
