@@ -1,90 +1,101 @@
-<div align="center">
+# Cero Huella — Tienda de Productos Ecológicos
 
-# 🌱 Cero Huella — Tienda de Productos Ecológicos
+E-commerce de productos ecológicos desarrollado como proyecto final, con frontend en JavaScript Vanilla y backend REST en Spring Boot.
 
-### 🛍️ Ecommerce Full Stack
-
-Frontend de una tienda online de productos ecológicos, desarrollado con HTML5, CSS3 y JavaScript modular, integrado con una API REST desarrollada con Spring Boot.
-
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
-
-</div>
+El proyecto implementa autenticación, registro con confirmación por email, login con Google, catálogo, categorías, carrito por usuario, checkout y despliegue en producción.
 
 ---
 
-## 📖 Descripción
+## Estado actual
 
-**Cero Huella** es un proyecto ecommerce desarrollado en el marco del programa **Talento Tech - Java Full Stack**.
+El backend está terminado, probado y desplegado.
 
-El proyecto comenzó como una tienda desarrollada con HTML y CSS y evolucionó progresivamente hacia una aplicación web integrada con un backend REST desarrollado con **Spring Boot**.
+El frontend está integrado con el backend y las funcionalidades principales de autenticación, tienda, carrito y checkout inicial están funcionando.
 
-Actualmente el frontend consume la API mediante JavaScript y cuenta con una arquitectura modular que separa:
+### Completado y probado
 
-- Comunicación con la API.
-- Componentes reutilizables.
-- Lógica específica de cada página.
-- Funciones administrativas.
-- Utilidades generales.
-- Estilos globales y específicos.
+- Registro de usuarios.
+- Validación de formularios.
+- Contraseña segura.
+- Confirmación de email.
+- Redirección a la página de confirmación.
+- Login.
+- Logout.
+- JWT.
+- Roles de usuario.
+- Login con Google.
+- Navbar dinámico según sesión y rol.
+- Catálogo de productos.
+- Categorías.
+- Tarjetas de productos.
+- Modal de detalle de producto.
+- Paginación.
+- Toasts.
+- Spinner.
+- Carrito asociado al usuario autenticado.
+- Agregar productos.
+- Aumentar cantidades.
+- Disminuir cantidades.
+- Eliminar productos.
+- Vaciar carrito.
+- Resumen del carrito.
+- Badge del carrito.
+- Modal de confirmación.
+- Botón "Proceder al pago".
+- Navegación carrito → checkout.
+- Checkout.
+- Carga de productos del carrito.
+- Cantidades y precios en checkout.
+- Subtotal, envío y total.
+- Validación de datos de envío.
+- Botón "Continuar al pago".
+- Toast de confirmación de datos enviados.
+- Responsive del formulario de registro.
+- Despliegue del backend en Render.
+- Base de datos en TiDB Cloud.
+- Frontend desplegado en Vercel.
 
-El objetivo es ofrecer una experiencia de compra completa, con catálogo de productos, categorías, carrito de compras, autenticación de usuarios y administración del contenido.
+### Pendiente
+
+- Verificación de stock en tiempo real al iniciar el pago.
+- Creación y persistencia del pedido.
+- Detalle del pedido.
+- Reserva/descuento seguro de stock al confirmar.
+- Integración del medio de pago.
+- Confirmación final de compra.
+- Comprobante/factura.
+- Vaciar el carrito después de una compra confirmada.
+- Revisión y tratamiento final de imágenes.
+- Panel de administración.
+- Endpoint específico para administración.
+- Revisión responsive general.
+- Revisión final de producción.
+- Documentación definitiva.
 
 ---
 
-# 🏗️ Arquitectura del proyecto
+# Arquitectura del proyecto
 
-El frontend utiliza una estructura modular basada en responsabilidades.
+## Frontend
+
+Tecnologías principales:
+
+- HTML5
+- CSS3
+- JavaScript Vanilla
+- Bootstrap 5
+- Font Awesome
+- Vercel
+
+El frontend está organizado por responsabilidades:
 
 ```text
-Frontend
-│
-├── pages
-│   └── Páginas HTML
-│
-├── script
-│   ├── api
-│   │   └── Comunicación con el backend
-│   │
-│   ├── components
-│   │   └── Componentes reutilizables
-│   │
-│   ├── pages
-│   │   └── Lógica de cada página
-│   │
-│   ├── admin
-│   │   └── Funcionalidades administrativas
-│   │
-│   └── utils
-│       └── Utilidades generales
-│
-├── css
-│   ├── components
-│   │   └── Estilos de componentes
-│   │
-│   └── pages
-│       └── Estilos específicos de páginas
-│
-└── img
-    └── Recursos gráficos
-```
-
----
-
-# 📁 Estructura
-
-```text
-tiendaProductosEcologicos/
-│
+/
 ├── index.html
-│
 ├── pages/
-│   ├── admin.html
 │   ├── carrito.html
+│   ├── checkout.html
+│   ├── confirmacion.html
 │   ├── contacto.html
 │   ├── login.html
 │   ├── registro.html
@@ -92,662 +103,646 @@ tiendaProductosEcologicos/
 │
 ├── css/
 │   ├── style.css
-│   │
-│   ├── components/
-│   │   ├── banner.css
-│   │   ├── modalDetalles.css
-│   │   ├── newslleter.css
-│   │   ├── productoCard.css
-│   │   └── toast.css
-│   │
-│   └── pages/
-│       ├── admin.css
-│       ├── carrito.css
-│       ├── contacto.css
-│       ├── home.css
-│       ├── login.css
-│       └── tienda.css
-│
-├── script/
-│   │
-│   ├── admin/
-│   │   ├── adminCategorias.js
-│   │   ├── adminProductos.js
-│   │   └── adminUsuarios.js
-│   │
-│   ├── api/
-│   │   ├── apiClient.js
-│   │   ├── authApi.js
-│   │   ├── carritoApi.js
-│   │   ├── categoriasApi.js
-│   │   ├── productosApi.js
-│   │   └── usuariosApi.js
-│   │
-│   ├── components/
-│   │   ├── footer.js
-│   │   ├── modalConfirmacion.js
-│   │   ├── modalDetalles.js
-│   │   ├── navbar.js
-│   │   ├── paginator.js
-│   │   ├── productoCard.js
-│   │   ├── spinner.js
-│   │   └── toast.js
-│   │
+│   ├── carrito.css
 │   ├── pages/
-│   │   ├── admin.js
-│   │   ├── carrito.js
-│   │   ├── contacto.js
-│   │   ├── home.js
-│   │   ├── login.js
-│   │   ├── registro.js
-│   │   └── tienda.js
-│   │
-│   └── utils/
-│       ├── auth.js
-│       ├── constants.js
-│       ├── storage.js
-│       └── validator.js
+│   │   └── checkout.css
+│   └── components/
+│       ├── banner.css
+│       ├── modalProducto.css
+│       ├── newsletter.css
+│       ├── productoCard.css
+│       └── toast.css
 │
-├── img/
-│   ├── banner/
-│   ├── pay/
-│   ├── people/
-│   └── productos/
-│
-└── README.md
+└── script/
+    ├── api/
+    │   ├── apiClient.js
+    │   ├── authApi.js
+    │   ├── carritoApi.js
+    │   ├── categoriasApi.js
+    │   └── productosApi.js
+    │
+    ├── components/
+    │   ├── footer.js
+    │   ├── modalConfirmacion.js
+    │   ├── modalProducto.js
+    │   ├── navbar.js
+    │   ├── paginator.js
+    │   ├── productoCard.js
+    │   ├── spinner.js
+    │   └── toast.js
+    │
+    ├── pages/
+    │   ├── carrito.js
+    │   ├── checkout.js
+    │   ├── home.js
+    │   ├── login.js
+    │   ├── registro.js
+    │   └── tienda.js
+    │
+    └── utils/
+        ├── auth.js
+        ├── constants.js
+        ├── formatter.js
+        ├── storage.js
+        └── validator.js
 ```
 
 ---
 
-# 🚀 Tecnologías utilizadas
+# Backend
 
-## Frontend
+Tecnologías:
 
-| Tecnología | Uso |
-|---|---|
-| **HTML5** | Estructura de las páginas |
-| **CSS3** | Diseño y responsive |
-| **JavaScript ES Modules** | Lógica de la aplicación |
-| **Fetch API** | Comunicación con el backend |
-| **Font Awesome** | Iconografía |
-| **SVG** | Iconos personalizados, incluido Google |
+- Java
+- Spring Boot
+- Spring Security
+- JWT
+- Spring Data JPA
+- Hibernate
+- MySQL/TiDB Cloud
+- Maven
+- Lombok
+- Bean Validation
+- Swagger / OpenAPI
+- Docker
+- Render
 
-## Backend
+Arquitectura:
 
-El frontend se encuentra integrado con una API REST desarrollada utilizando:
+```text
+Controller
+    ↓
+Service
+    ↓
+Repository
+    ↓
+Database
+```
 
-| Tecnología | Uso |
-|---|---|
-| **Java** | Lenguaje principal |
-| **Spring Boot 4** | Framework backend |
-| **Spring Security** | Seguridad |
-| **JWT** | Autenticación |
-| **Spring Data JPA** | Persistencia |
-| **Hibernate** | ORM |
-| **MySQL** | Base de datos |
-| **Bean Validation** | Validación |
-| **Swagger / OpenAPI** | Documentación de API |
-| **OAuth2** | Autenticación mediante Google |
-| **Spring Mail** | Confirmación de correo |
+Se utilizan DTOs y mappers para evitar devolver directamente las entidades JPA desde los endpoints.
 
-Repositorio del backend:
+También se implementa manejo global de excepciones mediante:
 
-🔗 https://github.com/AlanContreras784/EntregaFinal-BackEnd-Java
-
----
-
-# ✨ Funcionalidades
-
-## 🏠 Página de inicio
-
-La página principal incluye:
-
-- Hero principal.
-- Productos destacados.
-- Secciones informativas.
-- Reseñas.
-- Newsletter.
-- Navbar reutilizable.
-- Footer reutilizable.
-- Diseño responsive.
+- `ApiResponse<T>`
+- `ApiError`
+- `GlobalExceptionHandler`
 
 ---
 
-## 🛍️ Tienda
+# Autenticación
 
-La tienda permite:
+El sistema utiliza JWT para autenticar usuarios.
 
-- Visualizar productos.
-- Consultar información de cada producto.
-- Filtrar productos por categoría.
-- Buscar productos.
-- Utilizar paginación.
-- Agregar productos al carrito.
-- Abrir el detalle de un producto.
-- Controlar disponibilidad según stock.
+Flujo:
 
-Los productos son obtenidos desde la API REST.
+```text
+Registro
+   ↓
+Confirmación por email
+   ↓
+Login
+   ↓
+JWT
+   ↓
+Acceso a recursos protegidos
+```
+
+El frontend almacena el token y lo utiliza mediante `apiClient.js`.
+
+El navbar se adapta según:
+
+- Usuario autenticado.
+- Usuario no autenticado.
+- Rol del usuario.
+
+## Registro
+
+El formulario solicita:
+
+- Username.
+- Nombre.
+- Apellido.
+- Email.
+- Contraseña.
+- Repetición de contraseña.
+
+La contraseña requiere:
+
+- Mínimo 8 caracteres.
+- Una mayúscula.
+- Una minúscula.
+- Un número.
+
+## Confirmación de email
+
+Después del registro se envía un correo de confirmación.
+
+La confirmación redirige a:
+
+```text
+/pages/confirmacion.html
+```
+
+Una vez confirmada la cuenta, el usuario puede iniciar sesión.
+
+## Google Login
+
+El botón de Google está integrado y fue probado.
+
+El backend devuelve la información de autenticación correspondiente, incluyendo token, username y rol.
 
 ---
 
-## 🔎 Detalle de producto
+# Tienda
 
-Se implementó un componente reutilizable para mostrar información detallada del producto.
+La tienda obtiene los productos desde el backend.
 
 Incluye:
 
-- Imagen.
-- Nombre.
-- Descripción.
-- Precio.
-- Categoría.
+- Listado de productos.
+- Categorías.
+- Paginación.
+- Tarjetas de producto.
+- Modal de detalle.
 - Stock.
-- Acción para agregar al carrito.
-
-El detalle se muestra mediante un modal reutilizable.
+- Precio.
+- Integración con carrito.
 
 ---
 
-# 🛒 Carrito de compras
+# Carrito
 
-El carrito se encuentra integrado con el backend.
+El carrito pertenece al usuario autenticado.
 
-Las operaciones principales son:
+Funcionalidades:
 
-- Consultar carrito del usuario.
 - Agregar productos.
-- Incrementar cantidades.
-- Descontar unidades.
-- Eliminar productos.
+- Aumentar cantidad.
+- Disminuir cantidad.
+- Eliminar producto.
 - Vaciar carrito.
-- Consultar resumen.
-- Actualizar el badge del navbar.
-- Controlar stock.
-- Confirmar acciones mediante modal.
+- Mostrar subtotal.
+- Mostrar envío.
+- Mostrar total.
+- Actualizar badge del navbar.
+- Modal de confirmación.
 
-El carrito está asociado al usuario autenticado.
-
-### Flujo actual
+Flujo actual:
 
 ```text
-Producto
+Tienda
    ↓
 Agregar al carrito
    ↓
-API REST
+Carrito
    ↓
-Carrito del usuario
+Proceder al pago
    ↓
-Actualización de stock
-   ↓
-Actualización del frontend
+Checkout
 ```
 
 ---
 
-# 🔐 Autenticación
+# Checkout
 
-El frontend está integrado con el sistema de autenticación del backend.
+El checkout actualmente permite:
 
-Actualmente incluye:
+- Cargar productos del carrito.
+- Mostrar cantidades.
+- Mostrar precios.
+- Mostrar subtotal.
+- Mostrar envío.
+- Mostrar total.
+- Completar datos de envío.
+- Validar los datos.
+- Continuar al siguiente paso.
 
-- Registro de usuarios.
-- Login mediante usuario y contraseña.
-- JWT.
-- Persistencia de sesión.
-- Control del usuario autenticado.
-- Roles `USER` y `ADMIN`.
-- Confirmación de correo electrónico.
-- Validación de formularios.
-- Manejo de errores.
+Datos solicitados:
 
-La autenticación se centraliza mediante:
+- Nombre.
+- Apellido.
+- Email.
+- Teléfono.
+- Dirección.
+- Ciudad.
+- Provincia.
+- Código postal.
+
+Actualmente el botón "Continuar al pago" valida los datos y muestra un toast de confirmación.
+
+## Próxima etapa del checkout
+
+Para completar un flujo de compra real se debe implementar:
 
 ```text
-script/api/authApi.js
-script/utils/auth.js
-script/utils/storage.js
+Checkout
+   ↓
+Verificar stock actual
+   ↓
+Crear pedido
+   ↓
+Guardar datos de envío
+   ↓
+Guardar detalle del pedido
+   ↓
+Verificar stock nuevamente
+   ↓
+Descontar/reservar stock
+   ↓
+Procesar pago
+   ↓
+Confirmar pedido
+   ↓
+Generar comprobante
+```
+
+La comprobación definitiva del stock debe realizarse en el backend para evitar problemas cuando dos usuarios intentan comprar simultáneamente las mismas unidades.
+
+---
+
+# Pedido y factura
+
+Esta etapa todavía está pendiente.
+
+El pedido deberá conservar la información necesaria para que la compra no dependa de los valores actuales del catálogo.
+
+Como mínimo:
+
+```text
+Pedido
+├── id
+├── usuario
+├── fecha
+├── estado
+├── subtotal
+├── envío
+└── total
+```
+
+Y su detalle:
+
+```text
+DetallePedido
+├── producto
+├── cantidad
+├── precio unitario
+└── subtotal
+```
+
+Los datos de envío deberán quedar asociados al pedido.
+
+El precio unitario utilizado en el pedido deberá conservarse aunque posteriormente cambie el precio del producto en el catálogo.
+
+---
+
+# Stock
+
+La estrategia prevista para la compra es verificar el stock en más de un momento.
+
+## Al iniciar el pago
+
+Se comprueba el stock disponible actualmente.
+
+Si el stock no alcanza, el usuario debe ser informado y no podrá continuar.
+
+## Al confirmar la compra
+
+El backend debe volver a comprobar el stock dentro de una operación segura/transaccional antes de confirmar el pedido.
+
+Esto evita depender exclusivamente de una comprobación realizada en JavaScript.
+
+---
+
+# Validaciones
+
+Las validaciones del frontend se centralizan en:
+
+```text
 script/utils/validator.js
 ```
 
----
+Se utilizan para:
 
-# 📧 Confirmación de correo
+- Campos obligatorios.
+- Email.
+- Texto.
+- Contraseña.
+- Confirmación de contraseña.
+- Teléfono.
+- Código postal.
 
-El registro de usuarios incorpora un proceso de confirmación mediante correo electrónico.
-
-El backend genera un token de verificación y el usuario debe confirmar su cuenta antes de poder utilizarla mediante el flujo tradicional de autenticación.
-
-Esto permite mantener las cuentas registradas deshabilitadas hasta completar la verificación.
-
----
-
-# 🔵 Login con Google
-
-El proyecto incorpora integración con autenticación mediante Google utilizando OAuth2 en el backend.
-
-En el frontend se encuentra implementado el acceso visual mediante:
-
-```text
-Continuar con Google
-```
-
-El botón utiliza el logotipo de Google mediante SVG.
-
-La integración completa del flujo frontend/OAuth2 continúa en proceso de verificación.
+Los errores se muestran junto a los campos correspondientes.
 
 ---
 
-# 👨‍💼 Panel administrativo
+# Componentes reutilizables
 
-El frontend cuenta con una sección administrativa:
+El frontend utiliza componentes independientes para:
 
-```text
-pages/admin.html
-```
+- Navbar.
+- Footer.
+- Toast.
+- Spinner.
+- Modal de confirmación.
+- Modal de producto.
+- Producto.
+- Paginación.
 
-La lógica administrativa se encuentra separada en:
-
-```text
-script/pages/admin.js
-
-script/admin/
-├── adminCategorias.js
-├── adminProductos.js
-└── adminUsuarios.js
-```
-
-También existe una API específica para usuarios:
-
-```text
-script/api/usuariosApi.js
-```
-
-El panel está preparado para trabajar con la administración de:
-
-- Productos.
-- Categorías.
-- Usuarios.
-
-La implementación continúa en evolución y será ampliada con las funcionalidades administrativas restantes.
+Esto permite reutilizar la misma estructura en las diferentes páginas.
 
 ---
 
-# 🧩 Componentes reutilizables
+# Manejo de API
 
-El proyecto utiliza componentes JavaScript reutilizables.
-
-### Navbar
-
-```text
-script/components/navbar.js
-```
-
-Se encarga de:
-
-- Mostrar la navegación.
-- Gestionar el estado del usuario.
-- Mostrar opciones según autenticación/rol.
-- Actualizar el badge del carrito.
-
-### Footer
-
-```text
-script/components/footer.js
-```
-
-Permite reutilizar el footer en las distintas páginas.
-
-### Producto Card
-
-```text
-script/components/productoCard.js
-```
-
-Componente reutilizable para representar productos.
-
-### Paginador
-
-```text
-script/components/paginator.js
-```
-
-Gestiona la navegación entre páginas del catálogo.
-
-### Modal de confirmación
-
-```text
-script/components/modalConfirmacion.js
-```
-
-Reemplaza el uso de `confirm()` del navegador por un modal visual reutilizable.
-
-### Modal de detalles
-
-```text
-script/components/modalDetalles.js
-```
-
-Muestra la información detallada de un producto.
-
-### Toast
-
-```text
-script/components/toast.js
-```
-
-Permite mostrar mensajes de éxito, error o información.
-
-### Spinner
-
-```text
-script/components/spinner.js
-```
-
-Se utiliza para indicar estados de carga.
-
----
-
-# 🔌 Comunicación con la API
-
-La comunicación con el backend está centralizada mediante:
+Las llamadas al backend se centralizan mediante:
 
 ```text
 script/api/apiClient.js
 ```
 
-A partir de este cliente se organizan las diferentes APIs:
+Los módulos específicos contienen las operaciones de cada recurso:
 
 ```text
-script/api/
-├── authApi.js
-├── carritoApi.js
-├── categoriasApi.js
-├── productosApi.js
-└── usuariosApi.js
+authApi.js
+productosApi.js
+categoriasApi.js
+carritoApi.js
 ```
 
-Esto permite separar la comunicación HTTP de la lógica de presentación.
+No se utiliza `fetch` directamente desde las páginas.
 
 ---
 
-# 🧰 Utilidades
+# Variables de entorno
 
-Las funciones generales se encuentran organizadas en:
+El backend utiliza variables de entorno para información sensible.
 
-```text
-script/utils/
+Ejemplo:
+
+```env
+JWT_SECRET=
+DB_URL=
+DB_USERNAME=
+DB_PASSWORD=
+APP_BASE_URL=
+FRONTEND_URL=
+RESEND_API_KEY=
+RESEND_ADMIN_EMAIL=
 ```
 
-### auth.js
+Los valores reales no deben subirse al repositorio.
 
-Funciones relacionadas con:
-
-- Usuario autenticado.
-- Token.
-- Roles.
-- Sesión.
-
-### storage.js
-
-Centraliza operaciones de almacenamiento en el navegador.
-
-### constants.js
-
-Contiene constantes utilizadas por la aplicación.
-
-### validator.js
-
-Centraliza validaciones reutilizables de formularios.
+El archivo `.env` se encuentra excluido mediante `.gitignore`.
 
 ---
 
-# 📱 Responsive Design
+# Base de datos
 
-El proyecto utiliza:
+La base de datos utilizada en producción es TiDB Cloud mediante conexión compatible con MySQL.
 
-- CSS Flexbox.
-- CSS Grid.
-- Media queries.
-- Diseño adaptable para dispositivos móviles.
-- Componentes específicos para diferentes tamaños de pantalla.
-
-Los estilos se encuentran separados entre:
+Base principal:
 
 ```text
-css/style.css
+productos_ecologicos
 ```
 
-y los estilos específicos:
-
-```text
-css/components/
-css/pages/
-```
+La conexión utiliza SSL y el puerto correspondiente de TiDB Cloud.
 
 ---
 
-# 📡 API REST
+# Despliegue
 
-El frontend consume principalmente los siguientes recursos del backend:
+## Backend
 
-### Productos
-
-```text
-GET    /productos
-GET    /productos/{id}
-POST   /productos
-PUT    /productos/{id}
-DELETE /productos/{id}
-```
-
-### Categorías
-
-```text
-GET    /categorias
-GET    /categorias/{id}
-POST   /categorias
-PUT    /categorias/{id}
-DELETE /categorias/{id}
-```
-
-### Autenticación
-
-```text
-POST /auth/register
-POST /auth/login
-```
-
-### Carrito
-
-```text
-GET    /carritos/mi-carrito
-GET    /carritos/mi-carrito/resumen
-POST   /carritos/productos/{productoId}
-PUT    /carritos/productos/{productoId}/descontar
-DELETE /carritos/productos/{productoId}
-DELETE /carritos/mi-carrito/vaciar
-```
-
-> La API completa y su documentación se encuentra en el repositorio del backend.
-
----
-
-# 📊 Estado actual del proyecto
-
-## 🛍️ Tienda
-
-- [x] Página de inicio
-- [x] Catálogo de productos
-- [x] Búsqueda
-- [x] Filtros
-- [x] Paginación
-- [x] Modal de producto
-- [x] Producto reutilizable
-- [x] Carrito desde card
-- [x] Carrito desde modal
-- [x] Badge del carrito
-- [x] Responsive
-
-## 🛒 Carrito
-
-- [x] Integración con backend
-- [x] Carrito por usuario autenticado
-- [x] Agregar productos
-- [x] Incrementar cantidades
-- [x] Descontar cantidades
-- [x] Eliminar productos
-- [x] Vaciar carrito
-- [x] Control de stock
-- [x] Resumen del carrito
-- [x] Modal de confirmación
-
-## 🔐 Autenticación
-
-- [x] Registro
-- [x] Login
-- [x] JWT
-- [x] Gestión de sesión
-- [x] Roles USER / ADMIN
-- [x] Validaciones
-- [x] Confirmación de email
-- [ ] Integración completa de Google en frontend
-
-## 👨‍💼 Administración
-
-- [x] Estructura del panel administrativo
-- [x] Gestión de productos
-- [x] Gestión de categorías
-- [x] Gestión de usuarios
-- [ ] Revisión y finalización de funcionalidades administrativas
-
-## 💳 Checkout
-
-- [ ] Página de checkout
-- [ ] Confirmación de compra
-- [ ] Integración de pago
-- [ ] Gestión del estado del carrito después de una compra
-
-## 🔧 Finalización
-
-- [ ] Pruebas responsive generales
-- [ ] Optimización
-- [ ] Limpieza final del código
-- [ ] Revisión de seguridad
-- [ ] Documentación final
-- [ ] Bitácora completa
-
----
-
-# 🔗 Repositorios
-
-### Frontend
-
-https://github.com/AlanContreras784/tiendaProductosEcologicos
-
-### Backend
+Repositorio:
 
 https://github.com/AlanContreras784/EntregaFinal-BackEnd-Java
 
----
+Plataforma:
 
-# 🧪 Entorno de desarrollo
+Render
 
-Para ejecutar el frontend localmente se recomienda utilizar un servidor local debido al uso de:
+El backend se ejecuta mediante Docker.
 
-- JavaScript ES Modules.
-- `fetch()`.
-- Comunicación con la API REST.
-- Recursos externos.
+## Frontend
 
-El backend debe encontrarse ejecutándose para utilizar las funcionalidades conectadas a la API.
+Repositorio:
 
-Backend:
+https://github.com/AlanContreras784/tiendaProductosEcologicos
 
-```text
-http://localhost:8080
-```
+Plataforma:
 
-Swagger:
+Vercel
 
-```text
-http://localhost:8080/swagger-ui/index.html
-```
+## Base de datos
+
+Plataforma:
+
+TiDB Cloud
 
 ---
 
-# 🌱 Evolución del proyecto
+# Seguridad
 
-El proyecto comenzó como una tienda web desarrollada principalmente con HTML5 y CSS3.
+Se aplican varias medidas:
 
-Posteriormente fue evolucionando hacia una arquitectura frontend modular e integrada con un backend profesional.
+- JWT.
+- Spring Security.
+- Contraseñas gestionadas por Spring Security.
+- Roles `USER` y `ADMIN`.
+- Variables de entorno para secretos.
+- `.env` excluido de Git.
+- Validaciones mediante Bean Validation.
+- DTOs para las respuestas.
+- Control de acceso a recursos protegidos.
+
+El endpoint específico para administración queda pendiente para la etapa final.
+
+---
+
+# Responsive Design
+
+Ya se trabajó especialmente el responsive del registro.
+
+Incluye:
+
+- Dos columnas en escritorio.
+- Una columna en dispositivos pequeños.
+- Botón adaptable.
+- Ajustes para pantallas móviles.
+
+Queda pendiente realizar una revisión responsive general de todas las páginas como parte de la revisión final.
+
+---
+
+# Flujo general actual
 
 ```text
-HTML + CSS
-     ↓
-JavaScript
-     ↓
-JavaScript modular
-     ↓
-Componentes reutilizables
-     ↓
-API REST
-     ↓
-Spring Boot
-     ↓
-JWT + Spring Security
-     ↓
-Usuarios + Roles
-     ↓
-Confirmación de email
-     ↓
-Carrito asociado al usuario
-     ↓
-Control de stock
-     ↓
-OAuth2 / Google
-     ↓
-Panel administrativo
-     ↓
-Checkout / Pago
+Inicio
+  ↓
+Tienda
+  ↓
+Producto
+  ↓
+Agregar al carrito
+  ↓
+Carrito
+  ↓
+Proceder al pago
+  ↓
+Checkout
+  ↓
+Validación
+  ↓
+Continuar al pago
+```
+
+El siguiente bloque agregará:
+
+```text
+Verificación de stock
+  ↓
+Pedido
+  ↓
+Pago
+  ↓
+Confirmación
+  ↓
+Comprobante
 ```
 
 ---
 
-# 👨‍💻 Autor
+# Problemas resueltos durante el desarrollo
 
-Proyecto desarrollado por:
+## Confirmación de email
 
-**Alan Contreras**
+El enlace de confirmación inicialmente apuntaba a una ruta incorrecta del frontend.
+
+La redirección fue corregida para utilizar:
+
+```text
+/pages/confirmacion.html
+```
+
+El flujo fue probado correctamente.
+
+## Integración con Render
+
+Se configuró el despliegue mediante Docker y variables de entorno.
+
+El backend responde correctamente en producción.
+
+## TiDB Cloud
+
+La base de datos fue configurada para trabajar con el backend desplegado.
+
+## Carrito por usuario
+
+El carrito se obtiene asociado al usuario autenticado mediante JWT.
+
+## Navbar
+
+El navbar se adapta según el estado de autenticación y rol.
+
+---
+
+# Próximas etapas
+
+## 1. Compra y pedido
+
+- Verificación de stock.
+- Crear pedido.
+- Guardar datos de envío.
+- Guardar detalle del pedido.
+- Control transaccional del stock.
+- Estado del pedido.
+
+## 2. Pago
+
+- Seleccionar método de pago.
+- Integrar proveedor de pago.
+- Procesar resultado.
+- Manejar pago aprobado/rechazado.
+
+## 3. Confirmación
+
+- Confirmación de compra.
+- Comprobante.
+- Vaciar carrito después de compra confirmada.
+- Estado final del pedido.
+
+## 4. Imágenes
+
+- Revisar imágenes de productos.
+- Revisar imágenes de categorías.
+- Revisar imágenes de secciones.
+- Ajustar `object-fit`.
+- Revisar tamaños.
+- Revisar responsive.
+
+## 5. Administración
+
+- Panel administrativo.
+- Crear productos.
+- Editar productos.
+- Eliminar productos.
+- Gestionar categorías.
+- Gestionar usuarios.
+- Protección por rol `ADMIN`.
+- Endpoint administrativo del backend.
+
+## 6. Revisión final
+
+- Navegación.
+- Registro.
+- Confirmación de email.
+- Login.
+- Logout.
+- Google Login.
+- Tienda.
+- Categorías.
+- Modal.
+- Carrito.
+- Checkout.
+- Pago.
+- Responsive.
+- Consola del navegador.
+- Network.
+- Visual.
+- Producción.
+
+---
+
+# Documentación
+
+Durante el desarrollo se mantiene una bitácora con los cambios realizados y las funcionalidades probadas.
+
+La documentación final deberá incluir:
+
+- Descripción del proyecto.
+- Tecnologías.
+- Arquitectura.
+- Instalación.
+- Variables de entorno.
+- URLs de producción.
+- Funcionalidades.
+- Capturas.
+- Consideraciones.
+- Flujo de compra.
+
+---
+
+# Autor
+
+**Alan Contreras Flores**
 
 GitHub:
 
-🔗 https://github.com/AlanContreras784
+https://github.com/AlanContreras784
 
-Proyecto realizado en el marco del programa:
+Proyecto:
 
-**Talento Tech — Java Full Stack**
+**Cero Huella — Productos Ecológicos**
 
----
-
-# 📌 Próximas etapas
-
-El desarrollo continuará con:
-
-1. Finalización de la integración de Google en frontend.
-2. Revisión y finalización del Panel Administrativo.
-3. Desarrollo del Checkout.
-4. Integración del proceso de pago.
-5. Pruebas integrales.
-6. Optimización y limpieza.
-7. Documentación y bitácora final.
-
----
-
-<div align="center">
-
-### 🌱 Cero Huella
-
-**Tecnología para una experiencia de compra más simple y responsable.**
-
-</div>
+> La tecnología al servicio de la gente.

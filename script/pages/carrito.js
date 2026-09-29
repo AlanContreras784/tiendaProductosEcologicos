@@ -55,7 +55,9 @@ const elementos = {
     total:
         document.getElementById("totalImporte"),
     botonVaciar:
-        document.getElementById("btn-vaciar")
+        document.getElementById("btn-vaciar"),
+    botonPagar:
+        document.getElementById("btnPagar")
 
 };
 // ======================================================
@@ -202,6 +204,12 @@ function inicializarEventos(){
             vaciarTodo
         );
     }
+    if(elementos.botonPagar){
+        elementos.botonPagar.addEventListener(
+            "click",
+            irAlCheckout
+        );
+    }
 }
 // ======================================================
 // Delegación eventos tabla
@@ -329,6 +337,13 @@ async function vaciarTodo(){
     finally{
         ocultarSpinner();
     }
+}
+
+// ======================================================
+// Ir al checkout
+// ======================================================
+function irAlCheckout(){
+    window.location.href = "checkout.html";
 }
 
 document.addEventListener(
