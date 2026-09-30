@@ -221,7 +221,7 @@ function renderizarNavbar() {
     const rutaAdmin = enPages ? "admin.html" : "pages/admin.html";
     header.innerHTML = `
         <a href="${rutaIndex}">
-            <img src="${enPages ? "../img/Logo Cero Huella Horiz.png" : "img/logo1.png"}"
+            <img src="${enPages ? "../img/Logo Cero Huella Horiz.png" : "img/Logo Cero Huella Horiz.png"}"
                  class="logo"
                  alt="Logo"
                  width="70"
