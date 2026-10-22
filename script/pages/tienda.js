@@ -58,7 +58,7 @@ async function iniciarTienda() {
     try {
         mostrarSpinner();
          // PRUEBA TEMPORAL: mantiene el spinner visible durante 8 segundos
-        await new Promise(resolve => setTimeout(resolve, 8000));
+        //await new Promise(resolve => setTimeout(resolve, 8000));
         inicializarEventos();
         inicializarModalProducto();
         configurarAgregarCarrito(async (producto) => {
