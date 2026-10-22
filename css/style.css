@@ -753,7 +753,7 @@ footer .copyright {
    SPINNER DE CARGA
 ============================================================ */
 
-/* Capa que cubre la pantalla mientras se procesa una acción */
+/* Capa que cubre la pantalla mientras se cargan los datos */
 .spinner-overlay {
     position: fixed;
     inset: 0;
@@ -764,45 +764,125 @@ footer .copyright {
     align-items: center;
     justify-content: center;
 
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.88);
+
+    backdrop-filter: blur(3px);
 }
 
-
-/* Contenedor del mensaje */
+/* Contenedor principal de la animación */
 .spinner-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 30px 40px;
+    width: min(90%, 380px);
+
+    padding: 35px 30px;
 
     background-color: #ffffff;
 
     border: 1px solid #cce7d0;
-    border-radius: 15px;
+    border-radius: 18px;
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
     text-align: center;
 }
 
+/* ============================================================
+   PLANTA ANIMADA
+============================================================ */
 
-/* Círculo animado */
-.spinner-circle {
-    width: 42px;
-    height: 42px;
+/* Área donde se dibuja la planta */
+.spinner-planta {
+    position: relative;
 
-    margin-bottom: 18px;
+    width: 72px;
+    height: 72px;
 
-    border: 4px solid #cce7d0;
-    border-top-color: #088178;
-
-    border-radius: 50%;
-
-    animation: spinnerRotacion 0.8s linear infinite;
+    margin-bottom: 20px;
 }
 
+/* Pequeña base de tierra */
+.spinner-planta::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 46px;
+    height: 10px;
+
+    transform: translateX(-50%);
+
+    background-color: #cce7d0;
+
+    border-radius: 50%;
+}
+
+/* Tallo de la planta */
+.spinner-tallo {
+    position: absolute;
+
+    left: 50%;
+    bottom: 11px;
+
+    width: 5px;
+    height: 38px;
+
+    transform: translateX(-50%);
+    transform-origin: bottom center;
+
+    background-color: #088178;
+
+    border-radius: 5px;
+
+    animation: crecerTallo 2.2s ease-in-out infinite;
+}
+
+/* Hojas */
+.spinner-hoja {
+    position: absolute;
+
+    width: 25px;
+    height: 15px;
+
+    background-color: #088178;
+
+    border-radius: 100% 0 100% 0;
+
+    animation: crecerHoja 2.2s ease-in-out infinite;
+}
+
+/* Hoja izquierda */
+.spinner-hoja-izquierda {
+    left: 8px;
+    bottom: 31px;
+    
+
+    transform: rotate(25deg);
+    transform-origin: left bottom;
+
+    animation-delay: 0.25s;
+}
+
+/* Hoja derecha */
+.spinner-hoja-derecha {
+    right: 7px;
+    bottom: 40px;
+    transform: rotate(-1,25deg);
+    /* transform: scaleX(-1) rotate(-25deg); */
+    transform-origin: left bottom;
+
+    animation-delay: 0.45s;
+}
+
+/* ============================================================
+   TEXTOS DEL SPINNER
+============================================================ */
 
 /* Mensaje principal */
 .spinner-content p {
@@ -810,34 +890,59 @@ footer .copyright {
 
     color: #222;
 
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 
-
 /* Mensaje secundario */
-.spinner-content span {
-    margin-top: 7px;
+.spinner-content span#spinnerDetalle {
+    margin-top: 8px;
 
     color: #777;
 
     font-size: 13px;
 }
 
+/* ============================================================
+   ANIMACIONES
+============================================================ */
 
-/* Animación */
-@keyframes spinnerRotacion {
-
-    from {
-        transform: rotate(0deg);
+/* Movimiento suave del tallo */
+@keyframes crecerTallo {
+    0%,
+    100% {
+        transform: translateX(-50%) scaleY(0.88);
     }
 
-    to {
-        transform: rotate(360deg);
+    50% {
+        transform: translateX(-50%) scaleY(1);
     }
-
 }
 
+/* Movimiento suave de las hojas */
+@keyframes crecerHoja {
+    0%,
+    100% {
+        opacity: 0.65;
+        scale: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+/* ============================================================
+   ACCESIBILIDAD
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner-tallo,
+    .spinner-hoja {
+        animation: none;
+    }
+}
 
 /* ============================================================
    SPINNER - MÓVIL
@@ -848,7 +953,14 @@ footer .copyright {
     .spinner-content {
         width: calc(100% - 40px);
 
-        padding: 25px 20px;
+        padding: 30px 20px;
     }
 
+    .spinner-content p {
+        font-size: 16px;
+    }
+
+    .spinner-content span#spinnerDetalle {
+        font-size: 12px;
+    }
 }

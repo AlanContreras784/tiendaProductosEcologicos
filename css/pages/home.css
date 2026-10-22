@@ -85,3 +85,94 @@
     }
 
 }
+
+/* ============================================================
+   LOADER - PRODUCTOS DESTACADOS
+============================================================ */
+
+/* Contenedor del loader de productos destacados */
+.loader-productos-destacados {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 280px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+/* Mensaje principal */
+.loader-productos-destacados p {
+    margin: 0;
+
+    color: #222;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+/* Mensaje secundario */
+.loader-productos-destacados > span {
+    margin-top: 8px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+/* Espaciado de la planta dentro del loader */
+.loader-productos-destacados .spinner-planta {
+    margin-bottom: 20px;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .loader-productos-destacados .spinner-tallo,
+    .loader-productos-destacados .spinner-hoja {
+        animation: none;
+    }
+}
+
+/* ============================================================
+   LOADER - MÓVIL
+============================================================ */
+
+@media (max-width: 477px) {
+
+    .loader-productos-destacados {
+        min-height: 240px;
+
+        padding: 25px 15px;
+    }
+
+    .loader-productos-destacados p {
+        font-size: 16px;
+    }
+
+    .loader-productos-destacados > span {
+        font-size: 12px;
+    }
+}
+
+.loader-productos-destacados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 280px;
+    padding: 30px 20px;
+    text-align: center;
+
+    /* Evita que el layout de las cards lo deje pegado a un lado */
+    grid-column: 1 / -1;
+}

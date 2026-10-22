@@ -213,7 +213,7 @@ function renderizarNavbar() {
     const header = document.getElementById("header-principal");
     if (!header) return;
     const enPages = window.location.pathname.includes("/pages/");
-    const rutaIndex = enPages ? "../index.html" : "index.html";
+    const rutaIndex = enPages ? "../index.html" : "./index.html";
     const rutaTienda = enPages ? "tienda.html" : "pages/tienda.html";
     const rutaContacto = enPages ? "contacto.html" : "pages/contacto.html";
     const rutaCarrito = enPages ? "carrito.html" : "pages/carrito.html";

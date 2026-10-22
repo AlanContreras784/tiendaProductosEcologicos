@@ -32,15 +32,53 @@
             </div>
         </section>
         <!-- ==================== PRODUCTOS DESTACADOS ==================== -->
-       <section class="section-productos section-p1">
+       <!-- <section class="section-productos section-p1">
             <h2>Productos destacados</h2>
             <p>Los productos que no te podés perder</p>
 
             <div id="productos-destacados" class="productos-container">
                 <!-- home.js carga los productos desde el backend -->
-            </div>
-        </section>
+            <!-- </div>
+        </section>--> 
+        
+        <section class="section-productos section-p1">
+            <h2>Productos destacados</h2>
+            <p>Los productos que no te podés perder</p>
 
+        <div
+            id="productos-destacados"
+            class="productos-container productos-destacados-cargando"
+        >
+            <div
+                class="loader-productos-destacados"
+                aria-live="polite"
+                aria-busy="true"
+            >
+                <div
+                    class="spinner-planta"
+                    aria-hidden="true"
+                >
+                    <span class="spinner-tallo"></span>
+
+                    <span
+                        class="spinner-hoja spinner-hoja-izquierda"
+                    ></span>
+
+                    <span
+                        class="spinner-hoja spinner-hoja-derecha"
+                    ></span>
+                </div>
+
+                <p>
+                    Preparando productos destacados...
+                </p>
+
+                <span>
+                    Conectando con nuestros productos...
+                </span>
+            </div>
+        </div>
+        </section>  
         <!-- ======================================================
             MODAL DETALLE PRODUCTO
             Se reutiliza para mostrar la información completa

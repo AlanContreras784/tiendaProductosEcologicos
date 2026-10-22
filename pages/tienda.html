@@ -118,20 +118,33 @@
         </footer>
 
         <!-- ==================== SPINNER ==================== -->
-         <div id="spinner" class="spinner-overlay">
-                <div class="spinner-content">
-                    <div class="spinner-circle"></div>
-
-                    <p>
-                        Cargando productos...
-                    </p>
-
-                    <span>
-                        Por favor espere
-                    </span>
+        <div
+            id="spinner"
+            class="spinner-overlay"
+            aria-live="polite"
+            aria-busy="true"
+        >
+            <div class="spinner-content">
+                <div
+                    class="spinner-planta"
+                    aria-hidden="true"
+                >
+                    <span class="spinner-tallo"></span>
+                    <span
+                        class="spinner-hoja spinner-hoja-izquierda"
+                    ></span>
+                    <span
+                        class="spinner-hoja spinner-hoja-derecha"
+                    ></span>
                 </div>
+                <p id="spinnerMensaje">
+                    Preparando tu tienda...
+                </p>
+                <span id="spinnerDetalle">
+                    Conectando con nuestros productos...
+                </span>
             </div>
-
+        </div>
         <!-- ==================== TOAST ==================== -->
         <div id="toast" class="toast-custom">
             <span id="toastMensaje"></span>

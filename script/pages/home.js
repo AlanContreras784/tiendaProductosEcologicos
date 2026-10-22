@@ -16,10 +16,6 @@ import { agregarProducto } from "../api/carritoApi.js";
 import { cargarBadgeNavbar } from "../components/navbar.js";
 import { mostrarToast } from "../components/toast.js";
 import {
-    mostrarSpinner,
-    ocultarSpinner
-} from "../components/spinner.js";
-import {
     abrirModalProducto,
     inicializarModalProducto
 } from "../components/modalDetalles.js";
@@ -31,6 +27,27 @@ import {
 // Guarda los productos destacados obtenidos desde el backend.
 // Se reutiliza para mostrar el detalle sin volver a consultar la API.
 let productosDestacados = [];
+
+let temporizadoresCarga = [];
+
+const mensajesCargaHome = [
+    {
+        demora: 0,
+        mensaje: "Cargando productos destacados...",
+        detalle: "Estamos preparando nuestra selección."
+    },
+    {
+        demora: 5000,
+        mensaje: "Buscando tus productos favoritos...",
+        detalle: "Un momento, ya casi están listos."
+    },
+    {
+        demora: 10000,
+        mensaje: "Preparando algo especial para vos...",
+        detalle: "Gracias por esperar."
+    }
+];
+
 
 // ======================================================
 // Elementos del DOM
@@ -48,17 +65,17 @@ const elementos = {
 async function iniciarHome() {
 
     console.log("Home inicializada.");
+    iniciarMensajesCargaHome();
 
     try {
-
-        mostrarSpinner();
-
         // Inicializa el modal de detalle.
         inicializarModalProducto();
 
         // Inicializa los eventos de las cards.
         inicializarEventos();
 
+         // PRUEBA TEMPORAL: simula una carga lenta de 8 segundos.
+        //await new Promise(resolve => setTimeout(resolve, 11000));
         // Carga los productos destacados.
         await cargarProductosDestacados();
 
@@ -73,10 +90,8 @@ async function iniciarHome() {
             "No se pudieron cargar los productos destacados"
         );
 
-    } finally {
-
-        ocultarSpinner();
-
+    }finally {
+        detenerMensajesCargaHome();
     }
 }
 
@@ -225,6 +240,66 @@ async function manejarClickProducto(e) {
     }
 }
 
+
+// ======================================================
+// Limpia los temporizadores activos del loader de Home.
+// ======================================================
+function limpiarTemporizadoresCarga() {
+    temporizadoresCarga.forEach((temporizador) => {
+        clearTimeout(temporizador);
+    });
+
+    temporizadoresCarga = [];
+}
+
+// ======================================================
+// Actualiza el mensaje visible del loader de Home.
+// ======================================================
+function actualizarMensajeCargaHome(indice) {
+    const mensaje = document.querySelector(
+        ".loader-productos-destacados p"
+    );
+
+    const detalle = document.querySelector(
+        ".loader-productos-destacados > span"
+    );
+
+    const contenido = mensajesCargaHome[indice];
+
+    if (!contenido) return;
+
+    if (mensaje) {
+        mensaje.textContent = contenido.mensaje;
+    }
+
+    if (detalle) {
+        detalle.textContent = contenido.detalle;
+    }
+}
+
+// ======================================================
+// Inicia la secuencia de mensajes del loader de Home.
+// ======================================================
+function iniciarMensajesCargaHome() {
+    limpiarTemporizadoresCarga();
+
+    actualizarMensajeCargaHome(0);
+
+    mensajesCargaHome.slice(1).forEach((contenido, indice) => {
+        const temporizador = setTimeout(() => {
+            actualizarMensajeCargaHome(indice + 1);
+        }, contenido.demora);
+
+        temporizadoresCarga.push(temporizador);
+    });
+}
+
+// ======================================================
+// Detiene la secuencia de mensajes del loader de Home.
+// ======================================================
+function detenerMensajesCargaHome() {
+    limpiarTemporizadoresCarga();
+}
 // ======================================================
 // Arranque
 // ======================================================
